@@ -3,7 +3,7 @@ import * as React from 'react';
 
 const { Meta } = Card;
 
-const ProfileCard: React.FunctionComponent = () => (
+const PlayerCard: React.FunctionComponent = () => (
   <Card
     style={{ width: 300 }}
     cover={<img alt="example" src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png" />}
@@ -19,4 +19,4 @@ const ProfileCard: React.FunctionComponent = () => (
 );
 
 
-export default ProfileCard;
+export default PlayerCard;

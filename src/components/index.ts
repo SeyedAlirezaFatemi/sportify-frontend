@@ -1,10 +1,10 @@
 import EventTimeline from './EventTimeline/EventTimeline'
 import NewsList from './NewsList/NewsList'
-import ProfileCard from './ProfileCard/ProfileCard'
+import PlayerCard from './PlayerCard/PlayerCard'
 
 
 export {
-  ProfileCard,
+  PlayerCard,
   NewsList,
   EventTimeline
 }

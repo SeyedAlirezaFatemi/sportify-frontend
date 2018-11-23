@@ -1,7 +1,7 @@
 import { Breadcrumb, Icon, Layout, Menu } from 'antd';
 import * as React from 'react';
 import './App.css';
-import { EventTimeline } from "./components";
+import PlayerInfo from "./components/PlayerInfo/PlayerInfo";
 
 const { Header, Content, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -61,7 +61,7 @@ class App extends React.Component {
               <Breadcrumb.Item>App</Breadcrumb.Item>
             </Breadcrumb>
             <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
-              <EventTimeline />
+              <PlayerInfo />
             </Content>
           </Layout>
         </Layout>
