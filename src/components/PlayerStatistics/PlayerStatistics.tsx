@@ -5,16 +5,16 @@ import { PlayerInfo } from "../index";
 const PlayerStatistics: React.FunctionComponent = () => (
   <Carousel autoplay dots>
     <div>
-      <PlayerInfo/>
+      <PlayerInfo />
     </div>
     <div>
-      <PlayerInfo/>
+      <PlayerInfo />
     </div>
     <div>
-      <PlayerInfo/>
+      <PlayerInfo />
     </div>
     <div>
-      <PlayerInfo/>
+      <PlayerInfo />
     </div>
   </Carousel>
 );

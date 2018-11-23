@@ -3,7 +3,7 @@ import { Card, Icon, Row } from 'antd';
 import * as React from "react";
 
 const PlayerInfo: React.FunctionComponent = () => (
-  <div style={{ background: '#ECECEC', padding: '30px' }}>
+  <div style={{ padding: '30px', height: '100%' }}>
     <Card title={`Player Info`} bordered={false}>
       <Row>
         <Typography variant="subtitle2" gutterBottom>
