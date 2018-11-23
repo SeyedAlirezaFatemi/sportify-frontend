@@ -5,7 +5,6 @@ const { Meta } = Card;
 
 const PlayerCard: React.FunctionComponent = () => (
   <Card
-    style={{ width: 300 }}
     cover={<img alt="example" src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png" />}
     actions={[<Icon key="setting" type="setting" />, <Icon key="edit" type="edit" />,
       <Icon key="ellipsis" type="ellipsis" />]}

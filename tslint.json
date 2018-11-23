@@ -6,7 +6,8 @@
   ],
   "defaultSeverity": "warning",
   "rules": {
-    "object-literal-sort-keys": false
+    "object-literal-sort-keys": false,
+    "jsx-boolean-value": false
   },
   "linterOptions": {
     "exclude": [
