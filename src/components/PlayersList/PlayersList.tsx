@@ -1,79 +1,120 @@
-import { Table } from 'antd';
+import { Button, Icon, Input, Table } from 'antd';
 import * as React from "react";
+import { Component, createRef } from "react";
+import './PlayersList.css';
 
-const columns = [{
-  title: 'Name',
-  dataIndex: 'name',
-  filters: [{
-    text: 'Joe',
-    value: 'Joe',
-  }, {
-    text: 'Jim',
-    value: 'Jim',
-  }, {
-    text: 'Submenu',
-    value: 'Submenu',
-    children: [{
-      text: 'Green',
-      value: 'Green',
-    }, {
-      text: 'Black',
-      value: 'Black',
-    }],
-  }],
-  // specify the condition of filtering result
-  // here is that finding the name started with `value`
-  onFilter: (value, record) => record.name.indexOf(value) === 0,
-  sorter: (a, b) => a.name.length - b.name.length,
-}, {
-  title: 'Age',
-  dataIndex: 'age',
-  defaultSortOrder: 'descend',
-  sorter: (a, b) => a.age - b.age,
-}, {
-  title: 'Address',
-  dataIndex: 'address',
-  filters: [{
-    text: 'London',
-    value: 'London',
-  }, {
-    text: 'New York',
-    value: 'New York',
-  }],
-  filterMultiple: false,
-  onFilter: (value, record) => record.address.indexOf(value) === 0,
-  sorter: (a, b) => a.address.length - b.address.length,
-}];
 
 const data = [{
   key: '1',
   name: 'John Brown',
   age: 32,
-  address: 'New York No. 1 Lake Park',
+  role: 'Goalkeeper',
 }, {
   key: '2',
   name: 'Jim Green',
   age: 42,
-  address: 'London No. 1 Lake Park',
+  role: 'Midfielder',
 }, {
   key: '3',
   name: 'Joe Black',
   age: 32,
-  address: 'Sidney No. 1 Lake Park',
+  role: 'Midfielder',
 }, {
   key: '4',
   name: 'Jim Red',
   age: 32,
-  address: 'London No. 2 Lake Park',
+  role: 'Midfielder',
 }];
 
 function onChange(pagination, filters, sorter) {
   console.log('params', pagination, filters, sorter);
 }
 
-const PlayersList: React.FunctionComponent = () => (
-  // @ts-ignore
-  <Table columns={columns} dataSource={data} onChange={onChange} />
-);
+class PlayersList extends Component {
+  public state = {
+    searchText: '',
+  };
+  private searchInput = createRef<HTMLInputElement>();
+
+  public render(): React.ReactNode {
+    const columns = [{
+      title: 'Name',
+      dataIndex: 'name',
+      key: 'name',
+      filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
+        <div className="custom-filter-dropdown">
+          <Input
+            // @ts-ignore
+            ref={ele => this.searchInput = ele}
+            placeholder="Search name"
+            value={selectedKeys[0]}
+            onChange={e => setSelectedKeys(e.target.value ? [e.target.value] : [])}
+            onPressEnter={this.handleSearch(selectedKeys, confirm)}
+          />
+          <Button type="primary" onClick={this.handleSearch(selectedKeys, confirm)}>Search</Button>
+          <Button onClick={this.handleReset(clearFilters)}>Reset</Button>
+        </div>
+      ),
+      filterIcon: filtered => <Icon type="search" style={{ color: filtered ? '#108ee9' : '#aaa' }} />,
+      onFilter: (value, record) => record.name.toLowerCase().includes(value.toLowerCase()),
+      onFilterDropdownVisibleChange: (visible) => {
+        if (visible) {
+          setTimeout(() => {
+            // @ts-ignore
+            this.searchInput.focus();
+          });
+        }
+      },
+      render: (text) => {
+        const { searchText } = this.state;
+        return searchText ? (
+          <span>
+            {text.split(new RegExp(`(?<=${searchText})|(?=${searchText})`, 'i')).map((fragment, i) => (
+              fragment.toLowerCase() === searchText.toLowerCase()
+                ? <span key={i} className="highlight">{fragment}</span> : fragment // eslint-disable-line
+            ))}
+          </span>
+        ) : text;
+      },
+    }, {
+      title: 'Age',
+      dataIndex: 'age',
+      defaultSortOrder: 'descend',
+      sorter: (a, b) => a.age - b.age,
+    }, {
+      title: 'Role',
+      dataIndex: 'role',
+      filters: [{
+        text: 'Goalkeeper',
+        value: 'Goalkeeper',
+      }, {
+        text: 'Defender',
+        value: 'Defender',
+      }, {
+        text: 'Midfielder',
+        value: 'Midfielder',
+      }, {
+        text: 'Forward',
+        value: 'Forward',
+      }],
+      onFilter: (value, record) => record.role.indexOf(value) === 0,
+      sorter: (a, b) => a.role.length - b.role.length,
+    }];
+    return (
+      // @ts-ignore
+      <Table columns={columns} dataSource={data} onChange={onChange} />
+    )
+  }
+
+  private handleSearch = (selectedKeys, confirm) => () => {
+    confirm();
+    this.setState({ searchText: selectedKeys[0] });
+  };
+
+  private handleReset = clearFilters => () => {
+    clearFilters();
+    this.setState({ searchText: '' });
+  };
+}
 
 export default PlayersList;
