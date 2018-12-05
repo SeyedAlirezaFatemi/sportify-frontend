@@ -3,12 +3,13 @@ import * as React from 'react';
 import './App.css';
 import { NewsList, PlayerCard, PlayerInfo, PlayersList, PlayerStatistics } from "./components";
 import { HomePage } from "./pages";
+import PlayerPage from "./components/PlayerComponents/PlayerPage/PlayerPage";
 
 const { Header, Content } = Layout;
 
 class App extends React.Component {
   public render() {
-    return (<PlayerStatistics/>);
+    return (<PlayerPage/>);
   }
 
   private renderTemp() {

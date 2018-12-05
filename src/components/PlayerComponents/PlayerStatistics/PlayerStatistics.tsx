@@ -4,7 +4,7 @@ import {Component} from "react";
 import "./PlayerStatistics.css";
 
 
-const title = 'Premier League';
+// TODO using icon instead of string for player card
 
 const columns = [{
   title: 'Year',
@@ -55,15 +55,10 @@ const data = [{
   cards: "red",
 },];
 
-function onChange(pagination, filters, sorter) {
-  console.log('params', pagination, filters, sorter);
-}
-
-
 class PlayerStatistics extends Component {
   public render(): React.ReactNode {
     return (
-      <Table dataSource={data} columns={columns} onChange={onChange} title={() => (<h1 className="foot-title">{title}</h1>)}
+      <Table dataSource={data} columns={columns}
              rowClassName={(record, index) => (index % 2 ? 'even' : 'odd')}/>
     )
   }
