@@ -1,0 +1,18 @@
+.odd {
+    background-color: lightgray;
+}
+a {
+    color: black;
+}
+
+.foot-title {
+    text-align: center;
+    background-color: green;
+    color: white;
+}
+
+.basket-title {
+    text-align: center;
+    background-color: orange;
+    color: white;
+}
