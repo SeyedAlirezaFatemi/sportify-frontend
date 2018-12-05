@@ -2,11 +2,18 @@ import { Col, Layout, Menu, Row } from 'antd';
 import * as React from 'react';
 import './App.css';
 import { NewsList, PlayerCard, PlayerInfo, PlayersList, PlayerStatistics } from "./components";
+import { HomePage } from "./pages";
 
 const { Header, Content } = Layout;
 
 class App extends React.Component {
   public render() {
+    return (
+      <HomePage />
+    );
+  }
+
+  private renderTemp() {
     return (
       <Layout>
         <Header className="header">
@@ -34,7 +41,7 @@ class App extends React.Component {
                   <PlayerStatistics />
                 </Col>
               </Row>
-              <Row style={{ margin: '24px'}}>
+              <Row style={{ margin: '24px' }}>
                 <Col span={12}>
                   <PlayersList />
                 </Col>
@@ -46,7 +53,7 @@ class App extends React.Component {
           </Layout>
         </Layout>
       </Layout>
-    );
+    )
   }
 }
 
