@@ -8,7 +8,7 @@ const { Header, Content } = Layout;
 
 class App extends React.Component {
   public render() {
-    return (<HomePage />);
+    return (<PlayerStatistics/>);
   }
 
   private renderTemp() {
