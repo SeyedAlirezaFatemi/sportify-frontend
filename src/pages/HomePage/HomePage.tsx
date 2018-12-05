@@ -41,12 +41,12 @@ class HomePage extends React.Component<any, any> {
         </Header>
         <Content style={{ padding: '0 50px' }}>
           <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
-            <Grid container className={classes.root} direction="row">
-              <Grid item>
-                <NewsList />
-              </Grid>
-              <Grid item>
+            <Grid container className={classes.root} direction="row" spacing={24}>
+              <Grid item xs={4}>
                 <GamesList />
+              </Grid>
+              <Grid item xs={8}>
+                <NewsList />
               </Grid>
             </Grid>
           </div>
