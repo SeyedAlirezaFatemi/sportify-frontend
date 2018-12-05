@@ -1,13 +1,29 @@
-import { Breadcrumb, Layout, Menu } from 'antd';
+import Grid from '@material-ui/core/Grid';
+import { withStyles } from '@material-ui/core/styles';
+import { Layout, Menu } from 'antd';
 import * as React from 'react';
+import { GamesList, NewsList } from "../../components";
 import './HomePage.css';
-import GamesList from "../../components/GamesList/GamesList";
 
 const { Header, Content, Footer } = Layout;
 
-export default class HomePage extends React.Component {
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    height: 140,
+    width: 100,
+  },
+  control: {
+    padding: theme.spacing.unit * 2,
+  },
+});
 
-  render(): React.ReactNode {
+class HomePage extends React.Component<any, any> {
+
+  public render(): React.ReactNode {
+    const { classes } = this.props;
     return (
       <Layout className="layout">
         <Header>
@@ -24,13 +40,15 @@ export default class HomePage extends React.Component {
           </Menu>
         </Header>
         <Content style={{ padding: '0 50px' }}>
-          <Breadcrumb style={{ margin: '16px 0' }}>
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>List</Breadcrumb.Item>
-            <Breadcrumb.Item>App</Breadcrumb.Item>
-          </Breadcrumb>
           <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
-            <GamesList />
+            <Grid container className={classes.root} direction="row">
+              <Grid item>
+                <NewsList />
+              </Grid>
+              <Grid item>
+                <GamesList />
+              </Grid>
+            </Grid>
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>
@@ -39,5 +57,6 @@ export default class HomePage extends React.Component {
       </Layout>
     )
   }
-
 }
+
+export default withStyles(styles)(HomePage);
