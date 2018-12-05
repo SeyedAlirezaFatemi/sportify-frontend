@@ -1,5 +1,5 @@
-import * as React from "react";
 import { Table } from 'antd';
+import * as React from "react";
 import {Component} from "react";
 import "./PlayerStatistics.css";
 
@@ -18,7 +18,7 @@ const columns = [{
 }, {
   title: 'Goal pass',
   dataIndex: 'goal_pass',
-  render: text => <a href="javascript:;">{text}</a>,
+  render: text => <a href="javascript:">{text}</a>,
 }, {
   title: 'Cards',
   dataIndex: 'cards',
