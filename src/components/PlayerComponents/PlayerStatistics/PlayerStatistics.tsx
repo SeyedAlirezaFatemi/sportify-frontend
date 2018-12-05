@@ -1,6 +1,6 @@
 import { Table } from 'antd';
 import * as React from "react";
-import {Component} from "react";
+import { Component } from "react";
 import "./PlayerStatistics.css";
 
 
@@ -32,21 +32,21 @@ const data = [{
   goals: 5,
   goal_pass: 3,
   cards: "red",
-},{
+}, {
   key: '1',
   year: '2011',
   team: 'Arsenal',
   goals: 5,
   goal_pass: 3,
   cards: "red",
-},{
+}, {
   key: '1',
   year: '2011',
   team: 'Arsenal',
   goals: 5,
   goal_pass: 3,
   cards: "red",
-},{
+}, {
   key: '1',
   year: '2011',
   team: 'Arsenal',
@@ -59,7 +59,7 @@ class PlayerStatistics extends Component {
   public render(): React.ReactNode {
     return (
       <Table dataSource={data} columns={columns}
-             rowClassName={(record, index) => (index % 2 ? 'even' : 'odd')}/>
+             rowClassName={(record, index) => (index % 2 ? 'even' : 'odd')} />
     )
   }
 }
