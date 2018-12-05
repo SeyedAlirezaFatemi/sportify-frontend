@@ -1,6 +1,7 @@
 import { Breadcrumb, Layout, Menu } from 'antd';
 import * as React from 'react';
 import './HomePage.css';
+import GamesList from "../../components/GamesList/GamesList";
 
 const { Header, Content, Footer } = Layout;
 
@@ -28,7 +29,9 @@ export default class HomePage extends React.Component {
             <Breadcrumb.Item>List</Breadcrumb.Item>
             <Breadcrumb.Item>App</Breadcrumb.Item>
           </Breadcrumb>
-          <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>Content</div>
+          <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
+            <GamesList />
+          </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>
           Ant Design ©2018 Created by Ant UED

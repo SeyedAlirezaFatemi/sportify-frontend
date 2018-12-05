@@ -1,4 +1,5 @@
 import EventTimeline from './EventTimeline/EventTimeline'
+import GamesList from './GamesList/GamesList'
 import NewsList from './NewsList/NewsList'
 import PlayerCard from './PlayerCard/PlayerCard'
 import PlayerInfo from './PlayerInfo/PlayerInfo'
@@ -13,4 +14,5 @@ export {
   PlayerInfo,
   PlayerStatistics,
   PlayersList,
+  GamesList,
 }
