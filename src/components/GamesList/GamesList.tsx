@@ -1,9 +1,10 @@
 import Divider from '@material-ui/core/Divider';
+import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListSubheader from '@material-ui/core/ListSubheader';
+import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
 import { Radio, Tabs } from 'antd';
 import classnames from 'classnames';
 import * as _ from 'lodash';
@@ -47,38 +48,40 @@ class GamesList extends React.Component<any, any> {
     _.times(20, () => results.push(this.renderGame()));
     return (
       <Grid container direction="column" className={classes.root} justify="center">
-        <Grid item justify="center" container>
-          <Radio.Group onChange={this.handleModeChange} value={mode} style={{ marginBottom: 8 }}>
-            <Radio.Button value="soccer">Soccer</Radio.Button>
-            <Radio.Button value="basketball">Basketball</Radio.Button>
-          </Radio.Group>
-        </Grid>
-        <Grid item>
-          <Tabs
-            defaultActiveKey="1"
-            tabPosition='left'
-          >
-            <TabPane tab="All" key="1">
-              <List
-                subheader={<ListSubheader
-                  component="div"
-                  className={classnames(classes.subheader, classes.today)}
-                >Today</ListSubheader>}
-              >
-                {results}
-              </List>
-              <List
-                subheader={<ListSubheader
-                  component="div"
-                  className={classnames(classes.subheader, classes.yesterday)}
-                >Yesterday</ListSubheader>}
-              >
-                {results}
-              </List>
-            </TabPane>
-            <TabPane tab="Subscribed" key="2">Content of tab 2</TabPane>
-          </Tabs>
-        </Grid>
+        <Paper style={{ padding: '8px' }}>
+          <Grid item justify="center" container>
+            <Radio.Group onChange={this.handleModeChange} value={mode} style={{ marginBottom: 8 }}>
+              <Radio.Button value="soccer">Soccer</Radio.Button>
+              <Radio.Button value="basketball">Basketball</Radio.Button>
+            </Radio.Group>
+          </Grid>
+          <Grid item>
+            <Tabs
+              defaultActiveKey="1"
+              tabPosition='left'
+            >
+              <TabPane tab="All" key="1">
+                <List
+                  subheader={<ListSubheader
+                    component="div"
+                    className={classnames(classes.subheader, classes.today)}
+                  >Today</ListSubheader>}
+                >
+                  {results}
+                </List>
+                <List
+                  subheader={<ListSubheader
+                    component="div"
+                    className={classnames(classes.subheader, classes.yesterday)}
+                  >Yesterday</ListSubheader>}
+                >
+                  {results}
+                </List>
+              </TabPane>
+              <TabPane tab="Subscribed" key="2">Content of tab 2</TabPane>
+            </Tabs>
+          </Grid>
+        </Paper>
       </Grid>
     );
   }
