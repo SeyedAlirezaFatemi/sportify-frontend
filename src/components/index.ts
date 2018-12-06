@@ -5,7 +5,7 @@ import LeagueTableFootball from './LeagueTable/LeagueTableFootball'
 import NewsList from './NewsList/NewsList'
 
 export * from './PlayerComponents';
-export * from './TeamComponents';
+export * from './Team';
 
 export {
   NewsList,

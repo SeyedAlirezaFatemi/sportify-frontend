@@ -1,7 +1,7 @@
 import { Button, Icon, Input, Table } from 'antd';
 import * as React from "react";
 import { Component, createRef } from "react";
-import './PlayersList.css';
+import './TeamPlayersList.css';
 
 
 const data = [{
@@ -30,7 +30,7 @@ function onChange(pagination, filters, sorter) {
   console.log('params', pagination, filters, sorter);
 }
 
-class PlayersList extends Component {
+class TeamPlayersList extends Component {
   public state = {
     searchText: '',
   };
@@ -102,7 +102,7 @@ class PlayersList extends Component {
     }];
     return (
       // @ts-ignore
-      <Table columns={columns} dataSource={data} onChange={onChange} />
+      <Table columns={columns} pagination={false} dataSource={data} onChange={onChange} />
     )
   }
 
@@ -117,4 +117,4 @@ class PlayersList extends Component {
   };
 }
 
-export default PlayersList;
+export default TeamPlayersList;
