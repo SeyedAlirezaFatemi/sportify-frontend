@@ -1,11 +1,11 @@
 import * as React from 'react';
 import './App.css';
-import { NewsPage } from "./pages";
+import TeamPage from "./pages/TeamPage/TeamPage";
 
 
 class App extends React.Component {
   public render() {
-    return (<NewsPage />);
+    return (<TeamPage />);
   }
 }
 

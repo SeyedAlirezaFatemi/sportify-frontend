@@ -1,7 +1,7 @@
 import { withStyles } from '@material-ui/core/styles';
 import * as React from 'react';
 import { Template } from '..';
-import { TeamHistory } from "../../components";
+import { GameSchedule, NewsList, TeamHeader, TeamPlayersList } from "../../components";
 
 const styles = theme => ({
   root: {
@@ -15,10 +15,10 @@ class TeamPage extends React.Component<any, any> {
     const { classes } = this.props;
     return (
       <Template>
-        {/*<TeamHeader />*/}
-        <TeamHistory />
-        {/*<TeamPlayersList />*/}
-        {/*<NewsList />*/}
+        <TeamHeader />
+        <GameSchedule />
+        <TeamPlayersList />
+        <NewsList />
       </Template>
     )
   }

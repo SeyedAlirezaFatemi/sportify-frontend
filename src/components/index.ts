@@ -7,6 +7,7 @@ import LeagueTableFootball from './LeagueTable/LeagueTableFootball'
 import NewsContent from './NewsContent/NewsContent'
 import NewsList from './NewsList/NewsList'
 import TagList from './TagList/TagList'
+import GameSchedule from './GameSchedule/GameSchedule'
 
 export * from './PlayerComponents';
 export * from './Team';
@@ -21,4 +22,5 @@ export {
   Headline,
   TagList,
   NewsContent,
+  GameSchedule,
 }
