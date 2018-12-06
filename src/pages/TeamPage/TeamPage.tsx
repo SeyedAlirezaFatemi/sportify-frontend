@@ -2,9 +2,6 @@ import { withStyles } from '@material-ui/core/styles';
 import * as React from 'react';
 import { Template } from '..';
 import { TeamHeader, TeamHistory } from "../../components";
-// @ts-ignore
-import { Comment } from 'antd/lib/c'
-
 
 const styles = theme => ({
   root: {
@@ -20,7 +17,6 @@ class TeamPage extends React.Component<any, any> {
       <Template>
         <TeamHeader />
         <TeamHistory />
-        <Comment />
       </Template>
     )
   }
