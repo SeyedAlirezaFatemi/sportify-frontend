@@ -1,3 +1,4 @@
+import MaterialCard from '@material-ui/core/Card';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { Card } from 'antd';
@@ -11,15 +12,13 @@ import { Colors } from "../../utils";
 
 
 const styles = theme => ({
-  root: {
-    flexGrow: 1,
-  },
   container: {
-    padding: '32px',
+    flexGrow: 1,
+    marginTop: '8px',
+    marginBottom: '8px',
+    padding: '48px',
+    maxWidth: '750px',
     backgroundColor: Colors.DEEP_BLUE,
-  },
-  list: {
-    margin: '8px',
   },
   card: {
     maxWidth: '125px',
@@ -72,20 +71,24 @@ class GameSchedule extends Component<any, any> {
   public render(): React.ReactNode {
     const { classes } = this.props;
     const settings = {
-      dots: true,
       infinite: false,
       speed: 500,
-      slidesToShow: 4,
+      slidesToShow: 5,
       slidesToScroll: 4,
       initialSlide: 0,
       responsive: [
         {
-          breakpoint: 1024,
+          breakpoint: 1280,
+          settings: {
+            slidesToShow: 4,
+            slidesToScroll: 3,
+          }
+        },
+        {
+          breakpoint: 960,
           settings: {
             slidesToShow: 3,
             slidesToScroll: 3,
-            infinite: true,
-            dots: true
           }
         },
         {
@@ -106,11 +109,11 @@ class GameSchedule extends Component<any, any> {
       ]
     };
     return (
-      <div className={classes.container}>
+      <MaterialCard className={classes.container}>
         <Slider {...settings}>
           {data.map(this.renderItem)}
         </Slider>
-      </div>
+      </MaterialCard>
     )
   }
 
