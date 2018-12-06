@@ -78,9 +78,13 @@ const data = [{
 class LeagueTableFootball extends Component {
   public render(): React.ReactNode {
     return (
-      <Table dataSource={data} columns={columns} title={() => (<h1 className="foot-title">{title}</h1>)}
+      <Table dataSource={data} columns={columns} title={this.renderHeader}
              rowClassName={(record, index) => (index % 2 ? 'even' : 'odd')} />
     )
+  }
+
+  private renderHeader() {
+    return <h1 className="foot-title">{title}</h1>
   }
 }
 
