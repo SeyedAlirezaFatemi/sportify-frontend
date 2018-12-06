@@ -1,11 +1,10 @@
 import * as React from 'react';
 import './App.css';
-import { TeamPage } from "./pages";
-
+import {LeaguePage} from "./pages";
 
 class App extends React.Component {
   public render() {
-    return (<TeamPage />);
+    return (<LeaguePage />);
   }
 }
 
