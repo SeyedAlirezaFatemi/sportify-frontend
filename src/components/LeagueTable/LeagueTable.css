@@ -1,9 +1,9 @@
-.odd {
-    background-color: lightgray;
-}
-
 a {
     color: black;
+}
+
+.odd {
+    background-color: lightgray;
 }
 
 .foot-title {

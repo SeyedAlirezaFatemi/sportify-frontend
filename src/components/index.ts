@@ -3,9 +3,9 @@ import GamesList from './GamesList/GamesList'
 import LeagueTableBasketball from './LeagueTable/LeagueTableBasketball'
 import LeagueTableFootball from './LeagueTable/LeagueTableFootball'
 import NewsList from './NewsList/NewsList'
-import TeamHeader from './TeamHeader/TeamHeader'
 
 export * from './PlayerComponents';
+export * from './TeamComponents';
 
 export {
   NewsList,
@@ -13,5 +13,4 @@ export {
   GamesList,
   LeagueTableFootball,
   LeagueTableBasketball,
-  TeamHeader,
 }

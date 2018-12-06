@@ -1,6 +1,6 @@
 import HomePage from './HomePage/HomePage';
-import Template from './Template/Template';
 import TeamPage from './TeamPage/TeamPage';
+import Template from './Template/Template';
 
 export {
   HomePage,

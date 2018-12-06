@@ -1,18 +1,31 @@
+import { withStyles } from '@material-ui/core/styles';
 import * as React from "react";
 import { Component } from "react";
-import './LeagueTable.css';
 
 
 import { Table } from 'antd';
+import { Colors } from "../../../utils";
 
-const title = 'Premier League';
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  win: {
+    backgroundColor: Colors.WIN,
+  },
+  lose: {
+    backgroundColor: Colors.LOSE
+  },
+  draw: {
+    backgroundColor: Colors.DRAW
+  }
+});
+
+const title = 'Team History';
 
 const columns = [{
-  title: 'Rank',
-  dataIndex: 'rank',
-}, {
-  title: 'Team',
-  dataIndex: 'team',
+  title: 'Opponent',
+  dataIndex: 'opponent',
   render: text => <a href="javascript:">{text}</a>,
 }, {
   title: 'Games',
@@ -35,8 +48,7 @@ const columns = [{
 }];
 const data = [{
   key: '1',
-  rank: '1',
-  team: 'Arsenal',
+  opponent: 'Arsenal',
   games: 52,
   win: 32,
   draw: 10,
@@ -45,8 +57,7 @@ const data = [{
   points: 18,
 }, {
   key: '2',
-  rank: '2',
-  team: 'Manchester Utd',
+  opponent: 'Manchester Utd',
   games: 32,
   win: 12,
   draw: 10,
@@ -55,8 +66,7 @@ const data = [{
   points: 28,
 }, {
   key: '3',
-  rank: '3',
-  team: 'Manchester City',
+  opponent: 'Manchester City',
   games: 82,
   win: 32,
   draw: 20,
@@ -65,8 +75,7 @@ const data = [{
   points: 38,
 }, {
   key: '4',
-  rank: '4',
-  team: 'Chelsea',
+  opponent: 'Chelsea',
   games: 52,
   win: 32,
   draw: 10,
@@ -75,17 +84,22 @@ const data = [{
   points: 18,
 }];
 
-class LeagueTableFootball extends Component {
+class TeamHistory extends Component<any, any> {
   public render(): React.ReactNode {
     return (
       <Table dataSource={data} columns={columns} title={this.renderHeader}
-             rowClassName={(record, index) => (index % 2 ? 'even' : 'odd')} />
+             rowClassName={this.renderStyle} />
     )
   }
 
-  private renderHeader() {
-    return <h1 className="foot-title">{title}</h1>
+  private renderHeader = () => {
+    return <h1>{title}</h1>
+  };
+
+  private renderStyle = (record, index: number) => {
+    const { classes } = this.props;
+    return classes.win;
   }
 }
 
-export default LeagueTableFootball
+export default withStyles(styles)(TeamHistory);

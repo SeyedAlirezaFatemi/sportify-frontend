@@ -32,7 +32,8 @@ const styles = theme => ({
     width: 38,
   },
   followButton: {
-    borderRadius: '100px'
+    marginLeft: '8px',
+    borderRadius: '100px',
   }
 });
 
