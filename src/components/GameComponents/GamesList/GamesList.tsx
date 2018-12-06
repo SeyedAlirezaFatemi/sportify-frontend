@@ -47,42 +47,38 @@ class GamesList extends React.Component<any, any> {
     const results: JSX.Element[] = [];
     _.times(20, () => results.push(this.renderGame()));
     return (
-      <Grid container direction="column" className={classes.root} justify="center">
-        <Paper style={{ padding: '8px' }}>
-          <Grid item justify="center" container>
-            <Radio.Group onChange={this.handleModeChange} value={mode} style={{ marginBottom: 8 }}>
-              <Radio.Button value="soccer">Soccer</Radio.Button>
-              <Radio.Button value="basketball">Basketball</Radio.Button>
-            </Radio.Group>
-          </Grid>
-          <Grid item>
-            <Tabs
-              defaultActiveKey="1"
-              tabPosition='left'
+      <Paper style={{ padding: '8px' }}>
+        <Grid item justify="center" container>
+          <Radio.Group onChange={this.handleModeChange} value={mode} style={{ marginBottom: 8 }}>
+            <Radio.Button value="soccer">Soccer</Radio.Button>
+            <Radio.Button value="basketball">Basketball</Radio.Button>
+          </Radio.Group>
+        </Grid>
+        <Tabs
+          defaultActiveKey="1"
+          tabPosition='left'
+        >
+          <TabPane tab="All" key="1">
+            <List
+              subheader={<ListSubheader
+                component="div"
+                className={classnames(classes.subheader, classes.today)}
+              >Today</ListSubheader>}
             >
-              <TabPane tab="All" key="1">
-                <List
-                  subheader={<ListSubheader
-                    component="div"
-                    className={classnames(classes.subheader, classes.today)}
-                  >Today</ListSubheader>}
-                >
-                  {results}
-                </List>
-                <List
-                  subheader={<ListSubheader
-                    component="div"
-                    className={classnames(classes.subheader, classes.yesterday)}
-                  >Yesterday</ListSubheader>}
-                >
-                  {results}
-                </List>
-              </TabPane>
-              <TabPane tab="Subscribed" key="2">Content of tab 2</TabPane>
-            </Tabs>
-          </Grid>
-        </Paper>
-      </Grid>
+              {results}
+            </List>
+            <List
+              subheader={<ListSubheader
+                component="div"
+                className={classnames(classes.subheader, classes.yesterday)}
+              >Yesterday</ListSubheader>}
+            >
+              {results}
+            </List>
+          </TabPane>
+          <TabPane tab="Subscribed" key="2">Content of tab 2</TabPane>
+        </Tabs>
+      </Paper>
     );
   }
 

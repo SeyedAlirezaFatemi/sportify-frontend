@@ -1,4 +1,4 @@
-import { Button, Icon, Input, Table } from 'antd';
+import { Button, Icon, Input, Table, } from 'antd';
 import * as React from "react";
 import { Component, createRef } from "react";
 import './TeamPlayersList.css';
@@ -34,6 +34,7 @@ class TeamPlayersList extends Component {
   public state = {
     searchText: '',
   };
+
   private searchInput = createRef<HTMLInputElement>();
 
   public render(): React.ReactNode {

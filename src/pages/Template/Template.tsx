@@ -11,7 +11,7 @@ const styles = theme => ({
   },
 });
 
-class HomePage extends React.Component<any, any> {
+class Template extends React.Component<any, any> {
 
   public render(): React.ReactNode {
     const { classes } = this.props;
@@ -43,4 +43,4 @@ class HomePage extends React.Component<any, any> {
   }
 }
 
-export default withStyles(styles)(HomePage);
+export default withStyles(styles)(Template);
