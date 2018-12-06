@@ -1,12 +1,13 @@
 import {Tabs} from "antd";
 import * as React from "react";
-import GameHeader from "../../components/GameHeader/GameHeader";
+import {Component} from "react";
+import GameHeader from "../../components/GameComponents/GameHeader/GameHeader";
 import NewsList from "../../components/NewsList/NewsList";
 import {Template} from "../index";
 import Grid from "@material-ui/core/Grid/Grid";
-import GameTimeLine from "../../components/GameTimeLine/GameTimeLine";
+import GameTimeLine from "../../components/GameComponents/GameTimeLine/GameTimeLine";
 import withStyles from "@material-ui/core/styles/withStyles";
-import {Component} from "react";
+import GameStat from "../../components/GameComponents/GameStat/GameStat";
 
 const TabPane = Tabs.TabPane;
 
@@ -31,6 +32,7 @@ class GamePage extends Component<any, any> {
             <Grid item xs={8}>
               <Tabs defaultActiveKey="1">
                 <TabPane tab="Game Statistics" key="1">
+                  <GameStat/>
                 </TabPane>
                 <TabPane tab="Game News" key="2">
                   <NewsList/>

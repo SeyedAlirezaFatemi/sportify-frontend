@@ -4,7 +4,6 @@ import Timeline from "antd/es/timeline/Timeline";
 import {Icon} from "antd";
 import withStyles from "@material-ui/core/es/styles/withStyles";
 import {Simulate} from "react-dom/test-utils";
-import progress = Simulate.progress;
 
 
 const styles = theme => ({

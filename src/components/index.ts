@@ -1,6 +1,6 @@
 import CommentList from './CommentList/CommentList'
 import EventTimeline from './EventTimeline/EventTimeline'
-import GamesList from './GamesList/GamesList'
+import GamesList from './GameComponents/GamesList/GamesList'
 import Headline from './Headline/Headline'
 import LeagueTableBasketball from './LeagueTable/LeagueTableBasketball'
 import LeagueTableFootball from './LeagueTable/LeagueTableFootball'

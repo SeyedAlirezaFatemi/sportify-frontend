@@ -4,7 +4,6 @@ import {Avatar} from "antd";
 import * as React from "react";
 import {Component} from "react";
 import "./GameHeader.css";
-import GameTimeLine from "../GameTimeLine/GameTimeLine";
 
 const styles = theme => ({
   root: {
