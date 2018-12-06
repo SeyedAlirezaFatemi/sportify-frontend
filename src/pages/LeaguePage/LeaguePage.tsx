@@ -1,8 +1,8 @@
 import {Component} from "react";
 import * as React from "react";
-import {Bracket} from 'react-tournament-bracket';
 import LeagueTableFootball from "../../components/LeagueTable/LeagueTableFootball";
 import Template from "../Template/Template";
+import GameSchedule from "../../components/GameSchedule/GameSchedule";
 
 
 class LeaguePage extends Component {
