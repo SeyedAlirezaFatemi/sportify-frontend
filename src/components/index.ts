@@ -1,21 +1,20 @@
 import CommentList from './CommentList/CommentList'
 import EventTimeline from './EventTimeline/EventTimeline'
-import GamesList from './GameComponents/GamesList/GamesList'
+import GameSchedule from './GameSchedule/GameSchedule'
 import Headline from './Headline/Headline'
 import LeagueTableBasketball from './LeagueTable/LeagueTableBasketball'
 import LeagueTableFootball from './LeagueTable/LeagueTableFootball'
 import NewsContent from './NewsContent/NewsContent'
 import NewsList from './NewsList/NewsList'
 import TagList from './TagList/TagList'
-import GameSchedule from './GameSchedule/GameSchedule'
 
 export * from './PlayerComponents';
 export * from './Team';
+export * from './GameComponents';
 
 export {
   NewsList,
   EventTimeline,
-  GamesList,
   LeagueTableFootball,
   LeagueTableBasketball,
   CommentList,

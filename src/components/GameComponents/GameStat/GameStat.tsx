@@ -1,7 +1,7 @@
-import * as React from "react";
-import {Component} from "react";
 import withStyles from "@material-ui/core/es/styles/withStyles";
-import {Table} from "antd";
+import { Table } from "antd";
+import * as React from "react";
+import { Component } from "react";
 
 
 const styles = theme => ({});

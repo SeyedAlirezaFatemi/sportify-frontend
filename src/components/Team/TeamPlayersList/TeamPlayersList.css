@@ -17,3 +17,7 @@
 .highlight {
     color: #f50;
 }
+
+.odd {
+    background-color: lightgray;
+}

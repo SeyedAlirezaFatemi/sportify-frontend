@@ -1,9 +1,9 @@
 import HomePage from './HomePage/HomePage';
 import LeaguePage from './LeaguePage/LeaguePage';
+import LeaguesHome from './LeaguesHome/LeaguesHome';
 import NewsPage from './NewsPage/NewsPage';
 import TeamPage from './TeamPage/TeamPage';
 import Template from './Template/Template';
-import LeaguesHome from  './LeaguesHome/LeaguesHome';
 
 export {
   HomePage,

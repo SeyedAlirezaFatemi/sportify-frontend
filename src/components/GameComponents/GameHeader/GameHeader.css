@@ -1,8 +1,8 @@
-text{
+text {
     font-size: 200%;
 }
 
-.header-container{
+.header-container {
     display: flex;
     flex-direction: row;
     align-items: center;

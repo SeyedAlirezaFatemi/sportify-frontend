@@ -1,9 +1,8 @@
-import * as React from "react";
-import {Component} from "react";
-import Timeline from "antd/es/timeline/Timeline";
-import {Icon} from "antd";
 import withStyles from "@material-ui/core/es/styles/withStyles";
-import {Simulate} from "react-dom/test-utils";
+import { Icon } from "antd";
+import Timeline from "antd/es/timeline/Timeline";
+import * as React from "react";
+import { Component } from "react";
 
 
 const styles = theme => ({

@@ -102,7 +102,8 @@ class TeamPlayersList extends Component {
     }];
     return (
       // @ts-ignore
-      <Table columns={columns} pagination={false} dataSource={data} onChange={onChange} />
+      <Table columns={columns} pagination={false} dataSource={data} onChange={onChange}
+             rowClassName={this.renderRowStyle} />
     )
   }
 
@@ -115,6 +116,10 @@ class TeamPlayersList extends Component {
     clearFilters();
     this.setState({ searchText: '' });
   };
+
+  private renderRowStyle = (record, index) => {
+    return (index % 2 ? 'even' : 'odd');
+  }
 }
 
 export default TeamPlayersList;
