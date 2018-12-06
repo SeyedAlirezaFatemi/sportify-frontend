@@ -65,6 +65,3 @@ class PlayerStatistics extends Component {
 }
 
 export default PlayerStatistics;
-
-
-
