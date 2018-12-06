@@ -1,43 +1,33 @@
-import { Breadcrumb, Layout, Menu } from 'antd';
+import Grid from '@material-ui/core/Grid';
+import { withStyles } from '@material-ui/core/styles';
 import * as React from 'react';
-import './HomePage.css';
-import GamesList from "../../components/GamesList/GamesList";
+import { Template } from '..';
+import { GamesList, NewsList } from "../../components";
 
-const { Header, Content, Footer } = Layout;
 
-export default class HomePage extends React.Component {
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+  },
+});
 
-  render(): React.ReactNode {
+class HomePage extends React.Component<any, any> {
+
+  public render(): React.ReactNode {
+    const { classes } = this.props;
     return (
-      <Layout className="layout">
-        <Header>
-          <div className="logo" />
-          <Menu
-            theme="dark"
-            mode="horizontal"
-            defaultSelectedKeys={['2']}
-            style={{ lineHeight: '64px' }}
-          >
-            <Menu.Item key="1">nav 1</Menu.Item>
-            <Menu.Item key="2">nav 2</Menu.Item>
-            <Menu.Item key="3">nav 3</Menu.Item>
-          </Menu>
-        </Header>
-        <Content style={{ padding: '0 50px' }}>
-          <Breadcrumb style={{ margin: '16px 0' }}>
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>List</Breadcrumb.Item>
-            <Breadcrumb.Item>App</Breadcrumb.Item>
-          </Breadcrumb>
-          <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
+      <Template>
+        <Grid container className={classes.root} direction="row" spacing={24}>
+          <Grid item xs={4}>
             <GamesList />
-          </div>
-        </Content>
-        <Footer style={{ textAlign: 'center' }}>
-          Ant Design ©2018 Created by Ant UED
-        </Footer>
-      </Layout>
+          </Grid>
+          <Grid item xs={8}>
+            <NewsList />
+          </Grid>
+        </Grid>
+      </Template>
     )
   }
-
 }
+
+export default withStyles(styles)(HomePage);
