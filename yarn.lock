@@ -98,6 +98,12 @@
   version "23.3.9"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-23.3.9.tgz#c16b55186ee73ae65e001fbee69d392c51337ad1"
 
+"@types/jquery@*":
+  version "3.3.23"
+  resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-3.3.23.tgz#e681aa2428e819edace9b30c91d987ef302c4e96"
+  dependencies:
+    "@types/sizzle" "*"
+
 "@types/json5@^0.0.29":
   version "0.0.29"
   resolved "http://registry.npmjs.org/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
@@ -140,6 +146,16 @@
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
+
+"@types/sizzle@*":
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/@types/sizzle/-/sizzle-2.3.2.tgz#a811b8c18e2babab7d542b3365887ae2e4d9de47"
+
+"@types/slick-carousel@^1.6.32":
+  version "1.6.32"
+  resolved "https://registry.yarnpkg.com/@types/slick-carousel/-/slick-carousel-1.6.32.tgz#b0a6379e969fc3085fb0e487cd1f73bee6c2f48c"
+  dependencies:
+    "@types/jquery" "*"
 
 abab@^1.0.3:
   version "1.0.4"
@@ -6676,7 +6692,7 @@ react-scripts-ts@3.1.0:
   optionalDependencies:
     fsevents "^1.1.3"
 
-react-slick@~0.23.2:
+react-slick@^0.23.2, react-slick@~0.23.2:
   version "0.23.2"
   resolved "https://registry.yarnpkg.com/react-slick/-/react-slick-0.23.2.tgz#8d8bdbc77a6678e8ad36f50c32578c7c0f1c54f6"
   dependencies:
@@ -7285,6 +7301,10 @@ signal-exit@^3.0.0, signal-exit@^3.0.2:
 slash@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/slash/-/slash-1.0.0.tgz#c41f2f6c39fc16d1cd17ad4b5d896114ae470d55"
+
+slick-carousel@^1.8.1:
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/slick-carousel/-/slick-carousel-1.8.1.tgz#a4bfb29014887bb66ce528b90bd0cda262cc8f8d"
 
 snapdragon-node@^2.0.1:
   version "2.1.1"

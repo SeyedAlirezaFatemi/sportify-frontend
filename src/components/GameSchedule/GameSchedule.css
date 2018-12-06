@@ -1,0 +1,10 @@
+.ant-card-head-title {
+    padding: 0 0 !important;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    -ms-flex: 1;
+    flex: 1 1;
+    display: inline-block;
+}
