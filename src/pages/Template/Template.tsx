@@ -1,6 +1,7 @@
 import { withStyles } from '@material-ui/core/styles';
 import { Layout, Menu } from 'antd';
 import * as React from 'react';
+import { Link, Route } from "react-router-dom";
 import './Template.css';
 
 const { Header, Content, Footer } = Layout;
@@ -22,12 +23,11 @@ class Template extends React.Component<any, any> {
           <Menu
             theme="dark"
             mode="horizontal"
-            defaultSelectedKeys={['2']}
             style={{ lineHeight: '64px' }}
           >
-            <Menu.Item key="1">Home</Menu.Item>
-            <Menu.Item key="2">News</Menu.Item>
-            <Menu.Item key="3">Leagues</Menu.Item>
+            <Menu.Item key="1"><Link to="/">Home</Link></Menu.Item>
+            <Menu.Item key="2"><Link to="/team">Team</Link></Menu.Item>
+            <Menu.Item key="3"><Link to="/league">League</Link></Menu.Item>
           </Menu>
         </Header>
         <Content style={{ padding: '0 50px', margin: '16px 0' }}>
