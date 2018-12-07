@@ -1,12 +1,10 @@
 import withStyles from "@material-ui/core/es/styles/withStyles";
-import { Table } from "antd";
+import {Table} from "antd";
 import * as React from "react";
-import { Component } from "react";
+import {Component} from "react";
 
 
 const styles = theme => ({});
-
-const title = 'Western Conference NBA';
 
 const columns = [{
   title: 'FC Team1',
