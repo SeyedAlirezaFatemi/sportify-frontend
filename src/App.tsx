@@ -1,10 +1,10 @@
 import * as React from 'react';
 import './App.css';
-import GamePage from "./pages/GamePage/GamePage";
+import TeamPage from "./pages/TeamPage/TeamPage";
 
 class App extends React.Component {
   public render() {
-    return (<GamePage/>);
+    return (<TeamPage />);
   }
 }
 
