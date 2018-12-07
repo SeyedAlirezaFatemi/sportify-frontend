@@ -1,12 +1,13 @@
 import { Tabs } from 'antd';
 import * as React from "react";
+import { Template } from "..";
 import { NewsList, PlayerHeader, PlayerStatistics } from "../../components";
 
 
 const TabPane = Tabs.TabPane;
 
 const PlayerPage: React.FunctionComponent = () => (
-  <div>
+  <Template>
     <PlayerHeader />
     <Tabs defaultActiveKey="1">
       <TabPane tab="Player Statistics" key="1">
@@ -21,8 +22,8 @@ const PlayerPage: React.FunctionComponent = () => (
       <TabPane tab="Player Videos" key="4">
         Content of Player Videos
       </TabPane>
-    </Tabs>,
-  </div>
+    </Tabs>
+  </Template>
 );
 
 export default PlayerPage;
