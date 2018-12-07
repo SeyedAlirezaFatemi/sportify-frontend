@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import './App.css';
-import { HomePage, LeaguesHome, PlayerPage, TeamPage } from "./pages";
+import { GamePage, HomePage, LeaguesHome, NewsPage, PlayerPage, TeamPage } from "./pages";
 
 class App extends React.Component {
   public render() {
@@ -12,6 +12,8 @@ class App extends React.Component {
           <Route path="/team" component={TeamPage} />
           <Route path="/league" component={LeaguesHome} />
           <Route path="/player" component={PlayerPage} />
+          <Route path="/news" component={NewsPage} />
+          <Route path="/game" component={GamePage} />
         </div>
       </Router>
     );

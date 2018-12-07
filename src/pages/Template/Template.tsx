@@ -29,6 +29,8 @@ class Template extends React.Component<any, any> {
             <Menu.Item key="2"><Link to="/team">Team</Link></Menu.Item>
             <Menu.Item key="3"><Link to="/league">League</Link></Menu.Item>
             <Menu.Item key="4"><Link to="/player">Player</Link></Menu.Item>
+            <Menu.Item key="5"><Link to="/news">News</Link></Menu.Item>
+            <Menu.Item key="6"><Link to="/game">Game</Link></Menu.Item>
           </Menu>
         </Header>
         <Content style={{ padding: '0 50px', margin: '16px 0' }}>
