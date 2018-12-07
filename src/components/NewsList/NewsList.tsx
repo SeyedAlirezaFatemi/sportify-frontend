@@ -1,5 +1,5 @@
 import Paper from '@material-ui/core/Paper';
-import { Avatar, Icon, List, Tabs } from 'antd';
+import { Avatar, Button, Icon, List, Tabs } from 'antd';
 import * as React from 'react';
 
 const listData: any[] = [];
@@ -39,8 +39,7 @@ const NewsList: React.FunctionComponent = () => (
           renderItem={item => (
             <List.Item
               key={item.title}
-              actions={[<IconText type="star-o" text="156" />, <IconText type="like-o" text="156" />,
-                <IconText type="message" text="2" />]}
+              actions={[<IconText type="message" text="2" />, <Button htmlType="button">More</Button>]}
               extra={<img width={272} alt="logo"
                           src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" />}
             >
