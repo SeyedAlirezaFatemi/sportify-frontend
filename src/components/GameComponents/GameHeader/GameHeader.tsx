@@ -24,7 +24,7 @@ class GameHeader extends Component<any, any> {
           <Typography align="center" color="primary" variant="h1">
               1 - 2
           </Typography>
-          <Typography align="center" color="primary" variant="h3">
+          <Typography align="center" color="primary" variant="h5">
             00 : 23
           </Typography>
         </Grid>

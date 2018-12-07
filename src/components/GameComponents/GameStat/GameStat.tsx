@@ -72,7 +72,7 @@ class GameStat extends Component<any, any> {
     const {classes} = this.props;
     return (
       // @ts-ignore
-      <Table dataSource={data} columns={columns}
+      <Table pagination={false} dataSource={data} columns={columns}
              rowClassName={(record, index) => (index % 2 ? 'even' : 'odd')}/>
     )
   }

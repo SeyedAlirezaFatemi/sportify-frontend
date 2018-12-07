@@ -1,10 +1,12 @@
 import Grid from "@material-ui/core/Grid/Grid";
 import withStyles from "@material-ui/core/styles/withStyles";
-import { Tabs } from "antd";
+import {Tabs} from "antd";
 import * as React from "react";
-import { Component } from "react";
-import { GameHeader, GameStat, GameTimeLine, NewsList } from "../../components";
-import { Template } from "../index";
+import {Component} from "react";
+import {GameHeader, GameStat, GameTimeLine, NewsList} from "../../components";
+import {Template} from "../index";
+import Carousel from "antd/lib/carousel";
+import Card from "antd/es/card";
 
 const TabPane = Tabs.TabPane;
 
@@ -36,6 +38,20 @@ class GamePage extends Component<any, any> {
                 </TabPane>
                 <TabPane tab="Game Photos" key="3">
                   Content of Game Photos
+                  <Carousel autoplay>
+                    <div><h3>
+                      <Card/> 1
+                    </h3></div>
+                    <div><h3>
+                      <Card/> 2
+                    </h3></div>
+                    <div><h3>
+                      <Card/> 3
+                    </h3></div>
+                    <div><h3>
+                      <Card/> 4
+                    </h3></div>
+                  </Carousel>,
                 </TabPane>
                 <TabPane tab="Game Videos" key="4">
                   Content of Game Videos
