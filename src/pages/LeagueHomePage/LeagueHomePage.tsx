@@ -1,5 +1,5 @@
-import { Card, Input, Tabs } from "antd";
 import { Grid } from "@material-ui/core";
+import { Card, Input, Tabs } from "antd";
 import * as React from "react";
 import { Component } from "react";
 import { Template } from "../";
@@ -15,7 +15,7 @@ class LeagueHomePage extends Component {
       <Template>
         <Grid container justify="center">
           <Search
-            placeholder="search league"
+            placeholder="Search Leagues"
             onSearch={this.handleSearch}
             style={{ width: 200 }}
           />
