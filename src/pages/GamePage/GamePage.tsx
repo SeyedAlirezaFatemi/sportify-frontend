@@ -6,6 +6,7 @@ import {Component} from "react";
 import {GameHeader, GameStat, GameTimeLine, NewsList} from "../../components";
 import {Template} from "../index";
 import Carousel from "antd/lib/carousel";
+import GamePlayersStat from "../../components/GameComponents/GamePlayersStat/GamePlayersStat";
 
 const TabPane = Tabs.TabPane;
 
@@ -18,7 +19,7 @@ const styles = theme => ({
   }
 });
 
-const data : string[] = [
+const imageSrcs : string[] = [
   "https://sport360.com/wp-content/uploads/2017/12/Messi-RealMadrid-Bernabeu.jpg",
   "https://www.hindustantimes.com/rf/image_size_960x540/HT/p2/2017/12/23/Pictures/barcelona-liga-santander-real-madrid-vs-fc_544bbc3e-e7e9-11e7-b094-c21f82b60b0b.jpg",
   "https://static.independent.co.uk/s3fs-public/thumbnails/image/2017/04/09/13/ronaldo-neymar.jpg?w968h681",
@@ -42,32 +43,35 @@ class GamePage extends Component<any, any> {
                 <TabPane tab="Game News" key="2">
                   <NewsList/>
                 </TabPane>
-                <TabPane tab="Game Photos" key="3">
+                <TabPane tab="Game Players Stat" key="3">
+                  <GamePlayersStat/>
+                </TabPane>
+                <TabPane tab="Game Photos" key="4">
                   <Carousel autoplay>
                     <div>
                       <h3>
-                        <img src={data[0]}/>
+                        <img src={imageSrcs[0]}/>
                       </h3>
                     </div>
                     <div>
                       <h3>
-                        <img src={data[1]}/>
+                        <img src={imageSrcs[1]}/>
                       </h3>
                     </div>
                     <div>
                       <h3>
-                        <img src={data[2]}/>
+                        <img src={imageSrcs[2]}/>
                       </h3>
                     </div>
                     <div>
                       <h3>
-                        <img src={data[3]}/>
+                        <img src={imageSrcs[3]}/>
                       </h3>
                     </div>
-                  </Carousel>,
+                  </Carousel>
                 </TabPane>
-                <TabPane tab="Game Videos" key="4">
-                  Content of Game Videos
+                <TabPane tab="Game Videos" key="5">
+                  content of Game video
                 </TabPane>
               </Tabs>
             </Grid>
