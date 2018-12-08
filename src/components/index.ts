@@ -10,7 +10,7 @@ import TagList from './TagList/TagList'
 
 export * from './PlayerComponents';
 export * from './Team';
-export * from './GameComponents';
+export * from './Game';
 
 export {
   NewsList,

@@ -1,7 +1,7 @@
 import GamePage from './GamePage/GamePage';
 import HomePage from './HomePage/HomePage';
+import LeagueHomePage from './LeagueHomePage/LeagueHomePage';
 import LeaguePage from './LeaguePage/LeaguePage';
-import LeaguesHome from './LeaguesHome/LeaguesHome';
 import NewsPage from './NewsPage/NewsPage';
 import NotFoundPage from './NotFoundPage/NotFoundPage';
 import PlayerPage from './PlayerPage/PlayerPage';
@@ -14,7 +14,7 @@ export {
   TeamPage,
   NewsPage,
   LeaguePage,
-  LeaguesHome,
+  LeagueHomePage,
   PlayerPage,
   GamePage,
   NotFoundPage,

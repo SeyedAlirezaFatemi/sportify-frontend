@@ -3,13 +3,13 @@ import { Grid } from "@material-ui/core";
 import * as React from "react";
 import { Component } from "react";
 import { Template } from "../";
-import './LeaugesHome.css';
+import './LeaugeHomePage.css';
 
 
 const Search = Input.Search;
 const TabPane = Tabs.TabPane;
 
-class LeaguesHome extends Component {
+class LeagueHomePage extends Component {
   public render(): React.ReactNode {
     return (
       <Template>
@@ -61,4 +61,4 @@ class LeaguesHome extends Component {
   }
 }
 
-export default LeaguesHome;
+export default LeagueHomePage;
