@@ -6,7 +6,6 @@ import {Component} from "react";
 import {GameHeader, GameStat, GameTimeLine, NewsList} from "../../components";
 import {Template} from "../index";
 import Carousel from "antd/lib/carousel";
-import Card from "antd/es/card";
 
 const TabPane = Tabs.TabPane;
 
@@ -14,43 +13,57 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
   },
-  game_timeline: {
-    paddingTop: "20px",
+  tabsStyles: {
+    marginTop: "20px",
   }
 });
 
+const data : string[] = [
+  "https://sport360.com/wp-content/uploads/2017/12/Messi-RealMadrid-Bernabeu.jpg",
+  "https://www.hindustantimes.com/rf/image_size_960x540/HT/p2/2017/12/23/Pictures/barcelona-liga-santander-real-madrid-vs-fc_544bbc3e-e7e9-11e7-b094-c21f82b60b0b.jpg",
+  "https://static.independent.co.uk/s3fs-public/thumbnails/image/2017/04/09/13/ronaldo-neymar.jpg?w968h681",
+  "https://static.independent.co.uk/s3fs-public/thumbnails/image/2017/04/23/21/navas.jpg?width=1000&height=614&fit=bounds&format=pjpg&auto=webp&quality=70&crop=16:9,offset-y0.5",
+  ];
+
 class GamePage extends Component<any, any> {
   public render(): React.ReactNode {
-    const { classes } = this.props;
+    const {classes} = this.props;
 
     return (
       <Template>
-        <GameHeader />
+        <GameHeader/>
         <Grid container direction="row" className={classes.root}>
-          <Grid item container>
+          <Grid item container className={classes.tabsStyles}>
             <Grid item xs={8}>
               <Tabs defaultActiveKey="1">
                 <TabPane tab="Game Statistics" key="1">
-                  <GameStat />
+                  <GameStat/>
                 </TabPane>
                 <TabPane tab="Game News" key="2">
-                  <NewsList />
+                  <NewsList/>
                 </TabPane>
                 <TabPane tab="Game Photos" key="3">
-                  Content of Game Photos
                   <Carousel autoplay>
-                    <div><h3>
-                      <Card/> 1
-                    </h3></div>
-                    <div><h3>
-                      <Card/> 2
-                    </h3></div>
-                    <div><h3>
-                      <Card/> 3
-                    </h3></div>
-                    <div><h3>
-                      <Card/> 4
-                    </h3></div>
+                    <div>
+                      <h3>
+                        <img src={data[0]}/>
+                      </h3>
+                    </div>
+                    <div>
+                      <h3>
+                        <img src={data[1]}/>
+                      </h3>
+                    </div>
+                    <div>
+                      <h3>
+                        <img src={data[2]}/>
+                      </h3>
+                    </div>
+                    <div>
+                      <h3>
+                        <img src={data[3]}/>
+                      </h3>
+                    </div>
                   </Carousel>,
                 </TabPane>
                 <TabPane tab="Game Videos" key="4">
@@ -59,7 +72,7 @@ class GamePage extends Component<any, any> {
               </Tabs>
             </Grid>
             <Grid item xs={4}>
-              <GameTimeLine />
+              <GameTimeLine/>
             </Grid>
           </Grid>
         </Grid>

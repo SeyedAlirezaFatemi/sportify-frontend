@@ -1,7 +1,7 @@
 import withStyles from "@material-ui/core/es/styles/withStyles";
-import { Table } from "antd";
+import {Table} from "antd";
 import * as React from "react";
-import { Component } from "react";
+import {Component} from "react";
 
 
 const styles = theme => ({});
@@ -72,7 +72,7 @@ class GameStat extends Component<any, any> {
     const { classes } = this.props;
     return (
       // @ts-ignore
-      <Table dataSource={data} columns={columns}
+      <Table dataSource={data} columns={columns} pagination={false}
              rowClassName={(record, index) => (index % 2 ? 'even' : 'odd')} />
     )
   }

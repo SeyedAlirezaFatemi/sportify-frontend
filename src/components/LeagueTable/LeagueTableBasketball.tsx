@@ -1,9 +1,9 @@
 import * as React from "react";
-import { Component } from "react";
+import {Component} from "react";
 import './LeagueTable.css';
 
 
-import { Table } from 'antd';
+import {Table} from 'antd';
 
 const title = 'Western Conference NBA';
 
@@ -57,12 +57,12 @@ const data = [{
 class LeagueTableBasketball extends Component {
   public render(): React.ReactNode {
     return (
-      <Table dataSource={data} columns={columns} title={this.renderHeader}
+      <Table dataSource={data} columns={columns} title={LeagueTableBasketball.renderHeader}
              rowClassName={(record, index) => (index % 2 ? 'even' : 'odd')} />
     )
   }
 
-  private renderHeader() {
+  private static renderHeader() {
     return <h1 className="foot-title">{title}</h1>
   }
 }
