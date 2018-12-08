@@ -3,6 +3,7 @@ import HomePage from './HomePage/HomePage';
 import LeaguePage from './LeaguePage/LeaguePage';
 import LeaguesHome from './LeaguesHome/LeaguesHome';
 import NewsPage from './NewsPage/NewsPage';
+import NotFoundPage from './NotFoundPage/NotFoundPage';
 import PlayerPage from './PlayerPage/PlayerPage';
 import TeamPage from './TeamPage/TeamPage';
 import Template from './Template/Template';
@@ -16,4 +17,5 @@ export {
   LeaguesHome,
   PlayerPage,
   GamePage,
+  NotFoundPage,
 }
