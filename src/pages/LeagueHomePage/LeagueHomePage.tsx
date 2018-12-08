@@ -1,21 +1,21 @@
-import { Card, Input, Tabs } from "antd";
 import { Grid } from "@material-ui/core";
+import { Card, Input, Tabs } from "antd";
 import * as React from "react";
 import { Component } from "react";
 import { Template } from "../";
-import './LeaugesHome.css';
+import './LeaugeHomePage.css';
 
 
 const Search = Input.Search;
 const TabPane = Tabs.TabPane;
 
-class LeaguesHome extends Component {
+class LeagueHomePage extends Component {
   public render(): React.ReactNode {
     return (
       <Template>
         <Grid container justify="center">
           <Search
-            placeholder="search league"
+            placeholder="Search Leagues"
             onSearch={this.handleSearch}
             style={{ width: 200 }}
           />
@@ -61,4 +61,4 @@ class LeaguesHome extends Component {
   }
 }
 
-export default LeaguesHome;
+export default LeagueHomePage;

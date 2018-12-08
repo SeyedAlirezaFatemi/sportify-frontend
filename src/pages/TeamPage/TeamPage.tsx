@@ -14,6 +14,8 @@ const styles = theme => ({
 class TeamPage extends React.Component<any, any> {
   public render(): React.ReactNode {
     const { classes } = this.props;
+    const { params } = this.props.match;
+    console.log(params.id);
     return (
       <Template>
         <TeamHeader />
