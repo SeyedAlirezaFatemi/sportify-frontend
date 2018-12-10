@@ -44,7 +44,7 @@ class GamesList extends React.Component<any, any> {
     const { mode } = this.state;
     const { classes } = this.props;
     const results: JSX.Element[] = [];
-    _.times(20, () => results.push(this.renderGame()));
+    _.times(5, () => results.push(this.renderGame()));
     return (
       <div style={{ padding: '8px' }}>
         <Grid item justify="center" container>

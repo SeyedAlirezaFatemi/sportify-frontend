@@ -1,7 +1,7 @@
 import { withStyles } from '@material-ui/core/styles';
 import { Layout, Menu } from 'antd';
 import * as React from 'react';
-import { Link, Route } from "react-router-dom";
+import { Link, Route } from 'react-router-dom';
 import './Template.css';
 
 const { Header, Content, Footer } = Layout;
