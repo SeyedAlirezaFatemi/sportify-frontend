@@ -1,5 +1,5 @@
-import * as React from "react";
-import { Component } from "react";
+import * as React from 'react';
+import { Component } from 'react';
 import './LeagueTable.css';
 
 
@@ -55,15 +55,15 @@ const data = [{
 }];
 
 class LeagueTableBasketball extends Component {
+
+  private static renderHeader() {
+    return <h1 className="foot-title">{title}</h1>
+  }
   public render(): React.ReactNode {
     return (
-      <Table dataSource={data} columns={columns} title={this.renderHeader}
+      <Table dataSource={data} columns={columns} title={LeagueTableBasketball.renderHeader}
              rowClassName={(record, index) => (index % 2 ? 'even' : 'odd')} />
     )
-  }
-
-  private renderHeader() {
-    return <h1 className="foot-title">{title}</h1>
   }
 }
 

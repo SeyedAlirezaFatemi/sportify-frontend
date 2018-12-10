@@ -1,6 +1,7 @@
 import { withStyles } from '@material-ui/core/styles';
 import { Layout, Menu } from 'antd';
 import * as React from 'react';
+import { Link, Route } from 'react-router-dom';
 import './Template.css';
 
 const { Header, Content, Footer } = Layout;
@@ -11,7 +12,7 @@ const styles = theme => ({
   },
 });
 
-class HomePage extends React.Component<any, any> {
+class Template extends React.Component<any, any> {
 
   public render(): React.ReactNode {
     const { classes } = this.props;
@@ -22,12 +23,14 @@ class HomePage extends React.Component<any, any> {
           <Menu
             theme="dark"
             mode="horizontal"
-            defaultSelectedKeys={['2']}
             style={{ lineHeight: '64px' }}
           >
-            <Menu.Item key="1">Home</Menu.Item>
-            <Menu.Item key="2">News</Menu.Item>
-            <Menu.Item key="3">Leagues</Menu.Item>
+            <Menu.Item key="1"><Link to="/">Home</Link></Menu.Item>
+            <Menu.Item key="2"><Link to="/team">Team</Link></Menu.Item>
+            <Menu.Item key="3"><Link to="/league">League</Link></Menu.Item>
+            <Menu.Item key="4"><Link to="/player">Player</Link></Menu.Item>
+            <Menu.Item key="5"><Link to="/news">News</Link></Menu.Item>
+            <Menu.Item key="6"><Link to="/game">Game</Link></Menu.Item>
           </Menu>
         </Header>
         <Content style={{ padding: '0 50px', margin: '16px 0' }}>
@@ -36,11 +39,11 @@ class HomePage extends React.Component<any, any> {
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>
-          Ahmad Zowghi Production ©2018 Created by Some Bitches
+          ©2018
         </Footer>
       </Layout>
     )
   }
 }
 
-export default withStyles(styles)(HomePage);
+export default withStyles(styles)(Template);

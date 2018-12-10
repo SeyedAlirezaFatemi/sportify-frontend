@@ -1,6 +1,7 @@
-import { Button, Icon, Input, Table } from 'antd';
+import { Button, Icon, Input, Table, } from 'antd';
 import * as React from "react";
 import { Component, createRef } from "react";
+import { Link, Route } from "react-router-dom";
 import './TeamPlayersList.css';
 
 
@@ -34,6 +35,7 @@ class TeamPlayersList extends Component {
   public state = {
     searchText: '',
   };
+
   private searchInput = createRef<HTMLInputElement>();
 
   public render(): React.ReactNode {
@@ -68,13 +70,13 @@ class TeamPlayersList extends Component {
       render: (text) => {
         const { searchText } = this.state;
         return searchText ? (
-          <span>
+          <Link to={`/player/${text}`}>
             {text.split(new RegExp(`(?<=${searchText})|(?=${searchText})`, 'i')).map((fragment, i) => (
               fragment.toLowerCase() === searchText.toLowerCase()
                 ? <span key={i} className="highlight">{fragment}</span> : fragment // eslint-disable-line
             ))}
-          </span>
-        ) : text;
+          </Link>
+        ) : <Link to={`/player/${text}`}>{text}</Link>;
       },
     }, {
       title: 'Age',

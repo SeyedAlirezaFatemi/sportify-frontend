@@ -1,12 +1,10 @@
-import withStyles from "@material-ui/core/es/styles/withStyles";
-import { Table } from "antd";
-import * as React from "react";
-import { Component } from "react";
+import withStyles from '@material-ui/core/es/styles/withStyles';
+import { Table } from 'antd';
+import * as React from 'react';
+import { Component } from 'react';
 
 
 const styles = theme => ({});
-
-const title = 'Western Conference NBA';
 
 const columns = [{
   title: 'FC Team1',
@@ -71,11 +69,11 @@ const data = [{
 
 class GameStat extends Component<any, any> {
   public render(): React.ReactNode {
-    const {classes} = this.props;
+    const { classes } = this.props;
     return (
       // @ts-ignore
-      <Table dataSource={data} columns={columns}
-             rowClassName={(record, index) => (index % 2 ? 'even' : 'odd')}/>
+      <Table dataSource={data} columns={columns} pagination={false}
+             rowClassName={(record, index) => (index % 2 ? 'even' : 'odd')} />
     )
   }
 

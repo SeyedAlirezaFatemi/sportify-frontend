@@ -1,17 +1,14 @@
+import { Typography } from '@material-ui/core'
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
-import { Avatar } from "antd";
-import * as React from "react";
-import { Component } from "react";
-import "./GameHeader.css";
+import { Avatar } from 'antd';
+import * as React from 'react';
+import { Component } from 'react';
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
   },
-  game_result: {
-    alignContent: "center",
-  }
 });
 
 class GameHeader extends Component<any, any> {
@@ -20,17 +17,18 @@ class GameHeader extends Component<any, any> {
     return (
       <Grid container direction="row" className={classes.root} alignItems="center" justify="space-around">
         <Grid item>
-          <Avatar size={300} icon={"user"} />
+          <Avatar size={300} icon={'user'} />
         </Grid>
-        <Grid item>
-          <text className={classes.game_result}>
+        <Grid item alignContent="center">
+          <Typography align="center" color="primary" variant="h1">
             1 - 2
-            <br />
+          </Typography>
+          <Typography align="center" color="primary" variant="h5">
             00 : 23
-          </text>
+          </Typography>
         </Grid>
         <Grid item>
-          <Avatar size={300} icon={"user"} />
+          <Avatar size={300} icon={'user'} />
         </Grid>
       </Grid>
     );

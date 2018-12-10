@@ -1,5 +1,4 @@
-import Paper from '@material-ui/core/Paper';
-import { Avatar, Icon, List, Tabs } from 'antd';
+import { Avatar, Button, Icon, List, Tabs } from 'antd';
 import * as React from 'react';
 
 const listData: any[] = [];
@@ -23,7 +22,7 @@ const IconText = ({ type, text }) => (
 const TabPane = Tabs.TabPane;
 
 const NewsList: React.FunctionComponent = () => (
-  <Paper style={{ padding: '8px' }}>
+  <div style={{ padding: '8px' }}>
     <Tabs defaultActiveKey="1">
       <TabPane tab="All" key="1">
         <List
@@ -39,8 +38,7 @@ const NewsList: React.FunctionComponent = () => (
           renderItem={item => (
             <List.Item
               key={item.title}
-              actions={[<IconText type="star-o" text="156" />, <IconText type="like-o" text="156" />,
-                <IconText type="message" text="2" />]}
+              actions={[<IconText type="message" text="2" />, <Button htmlType="button">More</Button>]}
               extra={<img width={272} alt="logo"
                           src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" />}
             >
@@ -58,7 +56,7 @@ const NewsList: React.FunctionComponent = () => (
         {/*If user is logged in*/}
       </TabPane>
     </Tabs>
-  </Paper>
+  </div>
 );
 
 export default NewsList;
