@@ -6,7 +6,7 @@ import {Component} from "react";
 import {GameHeader, GameStat, GameTimeLine, NewsList} from "../../components";
 import {Template} from "../index";
 import Carousel from "antd/lib/carousel";
-import GamePlayersStat from "../../components/GameComponents/GamePlayersStat/GamePlayersStat";
+import GamePlayersStat from "../../components/Game/GamePlayersStat/GamePlayersStat";
 
 const TabPane = Tabs.TabPane;
 
