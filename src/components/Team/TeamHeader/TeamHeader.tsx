@@ -1,5 +1,4 @@
 import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import { withStyles } from '@material-ui/core/styles';
@@ -41,7 +40,7 @@ function TeamHeader(props) {
   const { classes, theme } = props;
 
   return (
-    <Card className={classes.card}>
+    <div className={classes.card}>
       <CardMedia
         className={classes.cover}
         image="https://cdn.vox-cdn.com/thumbor/4kmxDWeZ5S60eW8PdfI0jvVS3hg=/0x106:2040x1254/1200x675/filters:format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/62400111/akrales_181129_3105_0023_collage_nw.1543248007.jpg"
@@ -62,7 +61,7 @@ function TeamHeader(props) {
           </Button>
         </div>
       </div>
-    </Card>
+    </div>
   );
 }
 

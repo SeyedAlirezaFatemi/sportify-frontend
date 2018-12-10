@@ -1,4 +1,3 @@
-import MaterialCard from '@material-ui/core/Card';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import ArrowBack from '@material-ui/icons/ArrowBack';
@@ -18,7 +17,7 @@ const styles = theme => ({
     flexGrow: 1,
     marginTop: '8px',
     marginBottom: '8px',
-    padding: '48px',
+    padding: '42px',
     maxWidth: '750px',
   },
   card: {
@@ -112,11 +111,11 @@ class GameSchedule extends Component<any, any> {
       ]
     };
     return (
-      <MaterialCard className={classes.container}>
+      <div className={classes.container}>
         <Slider {...settings}>
           {data.map(this.renderItem)}
         </Slider>
-      </MaterialCard>
+      </div>
     )
   }
 

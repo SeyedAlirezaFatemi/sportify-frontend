@@ -3,7 +3,6 @@ import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListSubheader from '@material-ui/core/ListSubheader';
-import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 import { Radio, Tabs } from 'antd';
 import classnames from 'classnames';
@@ -47,7 +46,7 @@ class GamesList extends React.Component<any, any> {
     const results: JSX.Element[] = [];
     _.times(20, () => results.push(this.renderGame()));
     return (
-      <Paper style={{ padding: '8px' }}>
+      <div style={{ padding: '8px' }}>
         <Grid item justify="center" container>
           <Radio.Group onChange={this.handleModeChange} value={mode} style={{ marginBottom: 8 }}>
             <Radio.Button value="soccer">Soccer</Radio.Button>
@@ -78,7 +77,7 @@ class GamesList extends React.Component<any, any> {
           </TabPane>
           <TabPane tab="Subscribed" key="2">Content of tab 2</TabPane>
         </Tabs>
-      </Paper>
+      </div>
     );
   }
 
