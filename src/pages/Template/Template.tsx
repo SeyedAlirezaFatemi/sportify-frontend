@@ -39,7 +39,7 @@ class Template extends React.Component<any, any> {
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>
-          Ahmad Zowghi Production ©2018 Created by Some Bitches
+          ©2018
         </Footer>
       </Layout>
     )
