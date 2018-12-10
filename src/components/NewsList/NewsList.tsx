@@ -1,4 +1,3 @@
-import Paper from '@material-ui/core/Paper';
 import { Avatar, Button, Icon, List, Tabs } from 'antd';
 import * as React from 'react';
 
@@ -23,7 +22,7 @@ const IconText = ({ type, text }) => (
 const TabPane = Tabs.TabPane;
 
 const NewsList: React.FunctionComponent = () => (
-  <Paper style={{ padding: '8px' }}>
+  <div style={{ padding: '8px' }}>
     <Tabs defaultActiveKey="1">
       <TabPane tab="All" key="1">
         <List
@@ -57,7 +56,7 @@ const NewsList: React.FunctionComponent = () => (
         {/*If user is logged in*/}
       </TabPane>
     </Tabs>
-  </Paper>
+  </div>
 );
 
 export default NewsList;

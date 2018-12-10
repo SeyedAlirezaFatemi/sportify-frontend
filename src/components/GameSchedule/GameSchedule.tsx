@@ -1,6 +1,7 @@
-import MaterialCard from '@material-ui/core/Card';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import ArrowBack from '@material-ui/icons/ArrowBack';
+import ArrowForward from '@material-ui/icons/ArrowForward';
 import { Card } from 'antd';
 import * as React from "react";
 import { Component } from "react";
@@ -16,9 +17,8 @@ const styles = theme => ({
     flexGrow: 1,
     marginTop: '8px',
     marginBottom: '8px',
-    padding: '48px',
+    padding: '42px',
     maxWidth: '750px',
-    backgroundColor: Colors.DEEP_BLUE,
   },
   card: {
     maxWidth: '125px',
@@ -76,6 +76,8 @@ class GameSchedule extends Component<any, any> {
       slidesToShow: 5,
       slidesToScroll: 4,
       initialSlide: 0,
+      nextArrow: <this.NextArrow />,
+      prevArrow: <this.PrevArrow />,
       responsive: [
         {
           breakpoint: 1280,
@@ -109,11 +111,11 @@ class GameSchedule extends Component<any, any> {
       ]
     };
     return (
-      <MaterialCard className={classes.container}>
+      <div className={classes.container}>
         <Slider {...settings}>
           {data.map(this.renderItem)}
         </Slider>
-      </MaterialCard>
+      </div>
     )
   }
 
@@ -133,7 +135,6 @@ class GameSchedule extends Component<any, any> {
         >
           <Grid container direction="column">
             <Grid container>
-              {this.renderResult()}
               {this.renderResult()}
               {this.renderResult()}
             </Grid>
@@ -158,6 +159,21 @@ class GameSchedule extends Component<any, any> {
         </Grid>
       </Grid>
     )
+  }
+
+  private PrevArrow(props) {
+    const { className, style, onClick } = props;
+    console.log(props)
+    return (
+      <ArrowBack onClick={onClick} style={{ cursor: 'pointer', left: '-25px', position: 'absolute', top: '50%' }} />
+    );
+  }
+
+  private NextArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <ArrowForward onClick={onClick} style={{ cursor: 'pointer', right: '-25px', position: 'absolute', top: '50%' }} />
+    );
   }
 }
 
