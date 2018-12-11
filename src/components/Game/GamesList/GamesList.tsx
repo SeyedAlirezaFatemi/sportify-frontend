@@ -96,6 +96,11 @@ class GamesList extends React.Component<any, any> {
     )
   }
 
+  private handleModeChange = (e) => {
+    const mode = e.target.value;
+    this.setState({ mode });
+  };
+
   private renderGame() {
     return (
       <React.Fragment>
