@@ -1,5 +1,5 @@
-import * as React from "react";
-import { Component } from "react";
+import * as React from 'react';
+import { Component } from 'react';
 import './NewsContent.css';
 
 class NewsContent extends Component<any, any> {

@@ -1,7 +1,7 @@
-import * as React from "react";
-import { Component } from "react";
-import { GameSchedule, LeagueTableFootball } from "../../components";
-import Template from "../Template/Template";
+import * as React from 'react';
+import { Component } from 'react';
+import { GameSchedule, LeagueTableFootball } from '../../components';
+import Template from '../Template/Template';
 
 
 class LeaguePage extends Component {

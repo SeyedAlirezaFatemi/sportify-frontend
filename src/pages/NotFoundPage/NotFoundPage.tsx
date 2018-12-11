@@ -1,6 +1,6 @@
 import { Alert } from 'antd';
 import * as React from 'react';
-import { Template } from "..";
+import { Template } from '..';
 
 const NotFoundPage = () => (
   <Template>

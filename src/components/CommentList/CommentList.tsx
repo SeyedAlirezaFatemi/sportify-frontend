@@ -3,7 +3,6 @@ import * as moment from 'moment';
 import * as React from 'react';
 
 class CommentList extends React.Component<any, any> {
-
   public render() {
     return (
       <List

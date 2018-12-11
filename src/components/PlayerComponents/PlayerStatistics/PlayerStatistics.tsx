@@ -1,7 +1,7 @@
 import { Table } from 'antd';
-import * as React from "react";
-import { Component } from "react";
-import "./PlayerStatistics.css";
+import * as React from 'react';
+import { Component } from 'react';
+import './PlayerStatistics.css';
 
 
 // TODO using icon instead of string for player card
@@ -31,28 +31,28 @@ const data = [{
   team: 'Arsenal',
   goals: 5,
   goal_pass: 3,
-  cards: "red",
+  cards: 'red',
 }, {
   key: '1',
   year: '2011',
   team: 'Arsenal',
   goals: 5,
   goal_pass: 3,
-  cards: "red",
+  cards: 'red',
 }, {
   key: '1',
   year: '2011',
   team: 'Arsenal',
   goals: 5,
   goal_pass: 3,
-  cards: "red",
+  cards: 'red',
 }, {
   key: '1',
   year: '2011',
   team: 'Arsenal',
   goals: 5,
   goal_pass: 3,
-  cards: "red",
+  cards: 'red',
 },];
 
 class PlayerStatistics extends Component {
