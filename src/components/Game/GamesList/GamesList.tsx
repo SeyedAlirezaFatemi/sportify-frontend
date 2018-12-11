@@ -3,8 +3,8 @@ import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListSubheader from '@material-ui/core/ListSubheader';
-import { withStyles } from '@material-ui/core/styles';
-import { Radio, Tabs } from 'antd';
+import {withStyles} from '@material-ui/core/styles';
+import {Radio, Tabs} from 'antd';
 import classnames from 'classnames';
 import * as _ from 'lodash';
 import * as React from 'react';
@@ -41,14 +41,14 @@ class GamesList extends React.Component<any, any> {
 
 
   public render(): React.ReactNode {
-    const { mode } = this.state;
-    const { classes } = this.props;
+    const {mode} = this.state;
+    const {classes} = this.props;
     const results: JSX.Element[] = [];
     _.times(5, () => results.push(this.renderGame()));
     return (
-      <div style={{ padding: '8px' }}>
+      <div style={{padding: '8px'}}>
         <Grid item justify="center" container>
-          <Radio.Group onChange={this.handleModeChange} value={mode} style={{ marginBottom: 8 }}>
+          <Radio.Group onChange={this.handleModeChange} value={mode} style={{marginBottom: 8}}>
             <Radio.Button value="soccer">Soccer</Radio.Button>
             <Radio.Button value="basketball">Basketball</Radio.Button>
           </Radio.Group>
@@ -83,22 +83,22 @@ class GamesList extends React.Component<any, any> {
 
   private handleModeChange = (e) => {
     const mode = e.target.value;
-    this.setState({ mode });
+    this.setState({mode});
   };
 
   private renderGame() {
     return (
       <React.Fragment>
-        <Divider />
-        <ListItem style={{ justifyContent: 'center' }} dense button>
+        <Divider/>
+        <ListItem style={{justifyContent: 'center'}} dense button>
           <tr style={{}}>
-            <td style={{ textAlign: "left" }}>
+            <td style={{textAlign: "left"}}>
               <a href="/team/کلوب-بروژ" target="_blank">کلوب بروژ</a>
             </td>
-            <td style={{ textAlign: "center", whiteSpace: "nowrap", padding: "0 6px" }}>
+            <td style={{textAlign: "center", whiteSpace: "nowrap", padding: "0 6px"}}>
               0 - 1
             </td>
-            <td style={{ textAlign: "right" }}>
+            <td style={{textAlign: "right"}}>
               <a href="/team/دورتموند" target="_blank">دورتموند</a>
             </td>
           </tr>

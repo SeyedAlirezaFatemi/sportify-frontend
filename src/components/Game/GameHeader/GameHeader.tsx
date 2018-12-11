@@ -1,9 +1,9 @@
-import { Typography } from '@material-ui/core'
+import {Typography} from '@material-ui/core'
 import Grid from '@material-ui/core/Grid';
-import { withStyles } from '@material-ui/core/styles';
-import { Avatar } from 'antd';
+import {withStyles} from '@material-ui/core/styles';
+import {Avatar} from 'antd';
 import * as React from 'react';
-import { Component } from 'react';
+import {Component} from 'react';
 
 const styles = theme => ({
   root: {
@@ -13,11 +13,11 @@ const styles = theme => ({
 
 class GameHeader extends Component<any, any> {
   public render(): React.ReactNode {
-    const { classes } = this.props;
+    const {classes} = this.props;
     return (
       <Grid container direction="row" className={classes.root} alignItems="center" justify="space-around">
         <Grid item>
-          <Avatar size={300} icon={'user'} />
+          <Avatar size={300} icon={'user'}/>
         </Grid>
         <Grid item alignContent="center">
           <Typography align="center" color="primary" variant="h1">
@@ -28,7 +28,7 @@ class GameHeader extends Component<any, any> {
           </Typography>
         </Grid>
         <Grid item>
-          <Avatar size={300} icon={'user'} />
+          <Avatar size={300} icon={'user'}/>
         </Grid>
       </Grid>
     );

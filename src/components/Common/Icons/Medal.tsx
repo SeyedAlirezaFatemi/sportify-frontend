@@ -3,7 +3,7 @@ import * as React from 'react';
 import {Component} from 'react';
 
 
-const logo = require('../../../assets/svgs/red-card.svg') as string;
+const logo = require('../../../assets/svgs/medal.svg') as string;
 
 const styles = theme => ({
   imageStyle: {
@@ -12,13 +12,13 @@ const styles = theme => ({
   },
 });
 
-class RedCard extends Component<any, any> {
+class Medal extends Component<any, any> {
   public render(): React.ReactNode {
     const {classes} = this.props;
     return (
-      <img className={classes.imageStyle} src={logo} alt="red-card"/>
+      <img className={classes.imageStyle} src={logo} alt="glove"/>
     )
   }
 }
 
-export default withStyles(styles)(RedCard);
+export default withStyles(styles)(Medal);
