@@ -3,7 +3,7 @@ import { Component } from 'react';
 import './LeagueTable.css';
 
 
-import { Table } from 'antd';
+import {Button, Table} from 'antd';
 
 const title = 'Premier League';
 
@@ -125,13 +125,38 @@ const soccerData = [{
 }];
 
 class LeagueTable extends Component {
+
   public render(): React.ReactNode {
     return (
-      <Table dataSource={soccerData} columns={soccerColumns} title={this.renderHeader}
-             rowClassName={(record, index) => (index % 2 ? 'even' : 'odd')}
-             pagination={false} />
-    )
+      <div>
+        <Button onClick={this.sortByScore}>sort by score</Button>
+        <Button onClick={this.sortByName}>sort by name</Button>
+        <Table dataSource={soccerData} columns={soccerColumns} title={this.renderHeader}
+              rowClassName={(record, index) => (index % 2 ? 'even' : 'odd')}
+              pagination={false} />
+      </div>
+    );
   }
+
+  private sortByScore = () => {
+    this.state = {sort: 'sortByScore'};
+    basketballData.sort((a, b) => a.percentage - b.percentage);
+    soccerData.sort((a, b) => a.points - b.points);
+  };
+
+  private sortByName = () => {
+    this.state = {sort: 'sortByName'};
+    basketballData.sort((a, b) => {
+      if(a.team < b.team) { return -1; }
+      if(a.team > b.team) { return 1; }
+      return 0;
+    });
+    soccerData.sort((a, b) => {
+      if(a.team < b.team) { return -1; }
+      if(a.team > b.team) { return 1; }
+      return 0;
+    });
+  };
 
   private renderHeader() {
     return <h1 className="foot-title">{title}</h1>

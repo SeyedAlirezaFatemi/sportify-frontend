@@ -151,7 +151,9 @@ class LeagueHomePage extends Component {
   };
 
   private handleSearch = (searchText: string) => {
-
+    return leagues.filter((league) => {
+      return league.league.includes(searchText)
+    });
   }
 }
 
