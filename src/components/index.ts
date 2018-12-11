@@ -7,7 +7,7 @@ import NewsContent from './NewsContent/NewsContent'
 import NewsList from './NewsList/NewsList'
 import TagList from './TagList/TagList'
 
-export * from './PlayerComponents';
+export * from './Player';
 export * from './Team';
 export * from './Game';
 

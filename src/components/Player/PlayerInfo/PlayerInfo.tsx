@@ -15,7 +15,17 @@ const PlayerInfo: React.FunctionComponent = () => (
         <Typography variant="subtitle2" gutterBottom>
           <Icon type="medicine-box" style={{ marginRight: '8px' }} />
           Age:
+        </Typography>
+      </Row>
+      <Row>
+        <Typography variant="subtitle2" gutterBottom>
+          <Icon type="medicine-box" style={{ marginRight: '8px' }} />
           Height:
+        </Typography>
+      </Row>
+      <Row>
+        <Typography variant="subtitle2" gutterBottom>
+          <Icon type="medicine-box" style={{ marginRight: '8px' }} />
           Weight:
         </Typography>
       </Row>
