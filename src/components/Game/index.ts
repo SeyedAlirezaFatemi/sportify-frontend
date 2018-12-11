@@ -1,4 +1,5 @@
 import GameHeader from './GameHeader/GameHeader';
+import GameSchedule from './GameSchedule/GameSchedule';
 import GamesList from './GamesList/GamesList';
 import GameStat from './GameStat/GameStat';
 import GameTimeLine from './GameTimeLine/GameTimeLine';
@@ -8,4 +9,5 @@ export {
   GameHeader,
   GamesList,
   GameStat,
+  GameSchedule,
 }

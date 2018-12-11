@@ -9,7 +9,7 @@ import Slider from 'react-slick';
 import './GameSchedule.css';
 
 import { Grid } from '@material-ui/core';
-import { Colors } from '../../utils';
+import { Colors } from '../../../utils';
 
 
 const styles = theme => ({
@@ -165,14 +165,14 @@ class GameSchedule extends Component<any, any> {
     const { className, style, onClick } = props;
     console.log(props)
     return (
-      <ArrowBack onClick={onClick} style={{ cursor: 'pointer', left: '-25px', position: 'absolute', top: '50%' }} />
+      <ArrowBack onClick={onClick} style={{ cursor: 'pointer', left: '-25px', position: 'absolute', top: '40%' }} />
     );
   }
 
   private NextArrow(props) {
     const { className, style, onClick } = props;
     return (
-      <ArrowForward onClick={onClick} style={{ cursor: 'pointer', right: '-25px', position: 'absolute', top: '50%' }} />
+      <ArrowForward onClick={onClick} style={{ cursor: 'pointer', right: '-25px', position: 'absolute', top: '40%' }} />
     );
   }
 }

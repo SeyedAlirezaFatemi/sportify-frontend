@@ -1,6 +1,5 @@
 import CommentList from './CommentList/CommentList'
 import EventTimeline from './EventTimeline/EventTimeline'
-import GameSchedule from './GameSchedule/GameSchedule'
 import Headline from './Headline/Headline'
 import LeagueTable from './LeagueTable/LeagueTable'
 import NewsContent from './NewsContent/NewsContent'
@@ -19,5 +18,4 @@ export {
   Headline,
   TagList,
   NewsContent,
-  GameSchedule,
 }
