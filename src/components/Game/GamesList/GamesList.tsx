@@ -43,9 +43,6 @@ class GamesList extends React.Component<any, any> {
 
   public render(): React.ReactNode {
     const { mode } = this.state;
-    const { classes } = this.props;
-    const results: JSX.Element[] = [];
-    _.times(5, () => results.push(this.renderGame()));
     return (
       <div style={{ padding: '8px' }}>
         <Grid item justify="center" container>
@@ -59,24 +56,11 @@ class GamesList extends React.Component<any, any> {
           tabPosition="left"
         >
           <TabPane tab="All" key="1">
-            <List
-              subheader={<ListSubheader
-                component="div"
-                className={classnames(classes.subheader, classes.today)}
-              >Today</ListSubheader>}
-            >
-              {results}
-            </List>
-            <List
-              subheader={<ListSubheader
-                component="div"
-                className={classnames(classes.subheader, classes.yesterday)}
-              >Yesterday</ListSubheader>}
-            >
-              {results}
-            </List>
+            {this.renderResults()}
           </TabPane>
-          <TabPane tab="Subscribed" key="2">Content of tab 2</TabPane>
+          <TabPane tab="Subscribed" key="2">
+            {this.renderResults()}
+          </TabPane>
         </Tabs>
       </div>
     );
@@ -86,6 +70,32 @@ class GamesList extends React.Component<any, any> {
     const mode = e.target.value;
     this.setState({ mode });
   };
+
+  private renderResults() {
+    const { classes } = this.props;
+    const results: JSX.Element[] = [];
+    _.times(5, () => results.push(this.renderGame()));
+    return (
+      <React.Fragment>
+        <List
+          subheader={<ListSubheader
+            component="div"
+            className={classnames(classes.subheader, classes.today)}
+          >Today</ListSubheader>}
+        >
+          {results}
+        </List>
+        <List
+          subheader={<ListSubheader
+            component="div"
+            className={classnames(classes.subheader, classes.yesterday)}
+          >Yesterday</ListSubheader>}
+        >
+          {results}
+        </List>
+      </React.Fragment>
+    )
+  }
 
   private renderGame() {
     return (

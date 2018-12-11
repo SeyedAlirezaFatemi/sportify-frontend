@@ -7,7 +7,55 @@ import { Table } from 'antd';
 
 const title = 'Premier League';
 
-const columns = [{
+const basketballColumns = [{
+  title: 'Rank',
+  dataIndex: 'rank',
+}, {
+  title: 'Team',
+  dataIndex: 'team',
+  render: text => <a href="javascript:">{text}</a>,
+}, {
+  title: 'Games',
+  dataIndex: 'games',
+}, {
+  title: 'Win',
+  dataIndex: 'win',
+}, {
+  title: 'Percentage',
+  dataIndex: 'percentage',
+}];
+
+const basketballData = [{
+  key: '1',
+  rank: '1',
+  team: 'Los Angeles Lakers',
+  games: 52,
+  win: 32,
+  percentage: 0.8,
+}, {
+  key: '2',
+  rank: '2',
+  team: 'Toronto Raptors',
+  games: 52,
+  win: 32,
+  percentage: 0.8,
+}, {
+  key: '3',
+  rank: '3',
+  team: 'Milwaukee Bucks',
+  games: 52,
+  win: 32,
+  percentage: 0.8,
+}, {
+  key: '4',
+  rank: '4',
+  team: 'Phoenix Suns',
+  games: 52,
+  win: 32,
+  percentage: 0.8,
+}];
+
+const soccerColumns = [{
   title: 'Rank',
   dataIndex: 'rank',
 }, {
@@ -33,7 +81,8 @@ const columns = [{
   title: 'Points ',
   dataIndex: 'points',
 }];
-const data = [{
+
+const soccerData = [{
   key: '1',
   rank: '1',
   team: 'Arsenal',
@@ -75,11 +124,12 @@ const data = [{
   points: 18,
 }];
 
-class LeagueTableFootball extends Component {
+class LeagueTable extends Component {
   public render(): React.ReactNode {
     return (
-      <Table dataSource={data} columns={columns} title={this.renderHeader}
-             rowClassName={(record, index) => (index % 2 ? 'even' : 'odd')} />
+      <Table dataSource={soccerData} columns={soccerColumns} title={this.renderHeader}
+             rowClassName={(record, index) => (index % 2 ? 'even' : 'odd')}
+             pagination={false} />
     )
   }
 
@@ -88,4 +138,4 @@ class LeagueTableFootball extends Component {
   }
 }
 
-export default LeagueTableFootball
+export default LeagueTable
