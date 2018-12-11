@@ -8,6 +8,7 @@ import { Radio, Tabs } from 'antd';
 import classnames from 'classnames';
 import * as _ from 'lodash';
 import * as React from 'react';
+import { Link, Route } from 'react-router-dom';
 
 const TabPane = Tabs.TabPane;
 
@@ -19,15 +20,15 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper,
   },
   subheader: {
-    color: "#fff",
-    textAlign: "center",
+    color: '#fff',
+    textAlign: 'center',
   },
   today: {
-    background: "green",
+    background: 'green',
   },
   yesterday: {
-    background: "#666"
-  }
+    background: '#666',
+  },
 });
 
 class GamesList extends React.Component<any, any> {
@@ -55,7 +56,7 @@ class GamesList extends React.Component<any, any> {
         </Grid>
         <Tabs
           defaultActiveKey="1"
-          tabPosition='left'
+          tabPosition="left"
         >
           <TabPane tab="All" key="1">
             <List
@@ -92,14 +93,14 @@ class GamesList extends React.Component<any, any> {
         <Divider />
         <ListItem style={{ justifyContent: 'center' }} dense button>
           <tr style={{}}>
-            <td style={{ textAlign: "left" }}>
-              <a href="/team/کلوب-بروژ" target="_blank">کلوب بروژ</a>
+            <td style={{ textAlign: 'left' }}>
+              <Link to="/team/1">دورتموند</Link>
             </td>
-            <td style={{ textAlign: "center", whiteSpace: "nowrap", padding: "0 6px" }}>
+            <td style={{ textAlign: 'center', whiteSpace: 'nowrap', padding: '0 6px' }}>
               0 - 1
             </td>
-            <td style={{ textAlign: "right" }}>
-              <a href="/team/دورتموند" target="_blank">دورتموند</a>
+            <td style={{ textAlign: 'right' }}>
+              <Link to="/team/1">دورتموند</Link>
             </td>
           </tr>
         </ListItem>

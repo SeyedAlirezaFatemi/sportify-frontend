@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import './App.css';
-import { GamePage, HomePage, LeagueHomePage, NewsPage, NotFoundPage, PlayerPage, TeamPage } from './pages';
-import LeaguePage from "./pages/LeaguePage/LeaguePage";
+import { GamePage, HomePage, LeagueHomePage, LeaguePage, NewsPage, NotFoundPage, PlayerPage, TeamPage } from './pages';
 
 class App extends React.Component {
   public render() {
