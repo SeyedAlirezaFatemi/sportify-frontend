@@ -1,10 +1,11 @@
 import Grid from '@material-ui/core/Grid/Grid';
 import withStyles from '@material-ui/core/styles/withStyles';
+import { Icon } from 'antd';
 import Table from 'antd/es/table/Table';
 import * as React from 'react';
 import { Component } from 'react';
-import Icon from 'semantic-ui-react/dist/commonjs/elements/Icon/Icon';
 import Gloves from '../../Common/Icons/Gloves';
+import Medal from '../../Common/Icons/Medal';
 import RedCard from '../../Common/Icons/RedCard';
 import TShirt from '../../Common/Icons/TShirt';
 import YellowCard from '../../Common/Icons/YellowCard';
@@ -13,8 +14,10 @@ const styles = theme => ({
   gamePlayersStatTable: {
     width: '100%',
   },
+  substitutePlayer: {
+    backgroundColor: '#F9F3DC',
+  },
 });
-
 
 const teamTableColumns = [{
   dataIndex: 'tShirt',
@@ -39,7 +42,7 @@ const team1TableData = [{
   key: '2',
   tShirt: (<TShirt />),
   teamPlayers: 'Player 2',
-  description: (<Icon name="arrow up" color="green" />),
+  description: (<Icon type="arrow-down" style={{ color: 'red' }} />),
 
 }, {
   key: '3',
@@ -51,7 +54,7 @@ const team1TableData = [{
   key: '4',
   tShirt: (<TShirt />),
   teamPlayers: 'Player 4',
-  description: (<Icon name="arrow down" color="red" />),
+  description: null,
 
 }, {
   key: '5',
@@ -69,13 +72,13 @@ const team1TableData = [{
   key: '7',
   tShirt: (<TShirt />),
   teamPlayers: 'Player 7',
-  description: (<Icon name="arrow down" color="red" />),
+  description: (<Icon type="arrow-down" style={{ color: 'red' }} />),
 
 }, {
   key: '8',
   tShirt: (<TShirt />),
   teamPlayers: 'Player 8',
-  description: (<Icon name="arrow up" color="green" />),
+  description: (<Icon type="arrow-down" style={{ color: 'red' }} />),
 
 }, {
   key: '9',
@@ -87,13 +90,31 @@ const team1TableData = [{
   key: '10',
   tShirt: (<TShirt />),
   teamPlayers: 'Player 10',
-  description: null,
+  description: <Medal />,
 
 }, {
   key: '11',
   tShirt: (<TShirt />),
   teamPlayers: 'Player 11',
   description: null,
+
+}, {
+  key: '12',
+  tShirt: (<TShirt />),
+  teamPlayers: 'Player 12',
+  description: (<Icon type="arrow-up" style={{ color: 'green' }} />),
+
+}, , {
+  key: '13',
+  tShirt: (<TShirt />),
+  teamPlayers: 'Player 13',
+  description: (<Icon type="arrow-up" style={{ color: 'green' }} />),
+
+}, , {
+  key: '14',
+  tShirt: (<TShirt />),
+  teamPlayers: 'Player 14',
+  description: (<Icon type="arrow-up" style={{ color: 'green' }} />),
 
 },];
 
@@ -104,13 +125,31 @@ class GamePlayersStat extends Component<any, any> {
     return (
       <Grid container direction="row">
         <Grid container item xs={4} justify={'flex-start'}>
-          <Table className={classes.gamePlayersStatTable} dataSource={team1TableData} showHeader={false}
-                 columns={teamTableColumns} pagination={false} />
+          <Table className={classes.gamePlayersStatTable}
+                 rowClassName={(record, index) => {
+                   if (index > 10) {
+                     return classes.substitutePlayer
+                   }
+                 }}
+                 dataSource={team1TableData}
+                 columns={teamTableColumns}
+                 showHeader={false}
+                 pagination={false}
+          />
         </Grid>
         <Grid container item xs={4} />
         <Grid container item xs={4} justify={'flex-end'}>
-          <Table className={classes.gamePlayersStatTable} dataSource={team1TableData} showHeader={false}
-                 columns={teamTableColumns} pagination={false} />
+          <Table className={classes.gamePlayersStatTable}
+                 rowClassName={(record, index) => {
+                   if (index > 10) {
+                     return classes.substitutePlayer
+                   }
+                 }}
+                 dataSource={team1TableData}
+                 columns={teamTableColumns}
+                 showHeader={false}
+                 pagination={false}
+          />
         </Grid>
       </Grid>
     );

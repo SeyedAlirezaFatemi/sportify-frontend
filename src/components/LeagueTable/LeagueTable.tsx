@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './LeagueTable.css';
 
 
@@ -13,7 +14,7 @@ const basketballColumns = [{
 }, {
   title: 'Team',
   dataIndex: 'team',
-  render: text => <a href="javascript:">{text}</a>,
+  render: text => <Link to={'/team/1'}>{text}</Link>,
 }, {
   title: 'Games',
   dataIndex: 'games',
@@ -61,7 +62,7 @@ const soccerColumns = [{
 }, {
   title: 'Team',
   dataIndex: 'team',
-  render: text => <a href="javascript:">{text}</a>,
+  render: text => <Link to={'/team/1'}>{text}</Link>,
 }, {
   title: 'Games',
   dataIndex: 'games',
