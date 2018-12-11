@@ -87,7 +87,7 @@ const columns = [{
   title: 'League',
   dataIndex: 'league',
   key: 'league',
-  render: (text, id) => <a href="/team/1">{text}</a>,
+  render: (text, id) => <a href="/league/1">{text}</a>,
 }, {
   title: 'Year',
   dataIndex: 'year',
