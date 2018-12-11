@@ -2,7 +2,7 @@ import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import * as React from 'react';
 import { Template } from '..';
-import { GamesList, NewsList } from "../../components";
+import { GamesList, NewsList } from '../../components';
 
 
 const styles = theme => ({
@@ -18,10 +18,10 @@ class HomePage extends React.Component<any, any> {
     return (
       <Template>
         <Grid container className={classes.root} direction="row" spacing={24}>
-          <Grid item xs={4}>
+          <Grid item xl={4} lg={4} md={4} sm={12} xs={12}>
             <GamesList />
           </Grid>
-          <Grid item xs={8}>
+          <Grid item xl={8} lg={8} md={8} sm={12} xs={12}>
             <NewsList />
           </Grid>
         </Grid>
