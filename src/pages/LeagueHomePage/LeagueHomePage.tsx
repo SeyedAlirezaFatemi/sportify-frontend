@@ -1,8 +1,8 @@
-import { Grid } from "@material-ui/core";
-import { Card, Input, Tabs } from "antd";
-import * as React from "react";
-import { Component } from "react";
-import { Template } from "../";
+import { Grid } from '@material-ui/core';
+import { Card, Input, Tabs } from 'antd';
+import * as React from 'react';
+import { Component } from 'react';
+import { Template } from '../';
 import './LeaugeHomePage.css';
 
 

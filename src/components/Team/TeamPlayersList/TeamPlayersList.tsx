@@ -1,7 +1,7 @@
 import { Button, Icon, Input, Table, } from 'antd';
-import * as React from "react";
-import { Component, createRef } from "react";
-import { Link, Route } from "react-router-dom";
+import * as React from 'react';
+import { Component, createRef } from 'react';
+import { Link, Route } from 'react-router-dom';
 import './TeamPlayersList.css';
 
 

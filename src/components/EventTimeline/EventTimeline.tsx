@@ -1,5 +1,5 @@
 import { Icon, Timeline } from 'antd';
-import * as React from "react";
+import * as React from 'react';
 
 const EventTimeline: React.FunctionComponent = () => (
   <Timeline mode="alternate">

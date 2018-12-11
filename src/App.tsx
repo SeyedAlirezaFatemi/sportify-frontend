@@ -12,7 +12,7 @@ class App extends React.Component {
           <Route path="/team/:id" component={TeamPage} />
           <Route path="/league" component={LeagueHomePage} />
           <Route path="/player" component={PlayerPage} />
-          <Route path="/news" component={NewsPage} />
+          <Route path="/news/:id" component={NewsPage} />
           <Route path="/game" component={GamePage} />
           <Route component={NotFoundPage} />
         </Switch>

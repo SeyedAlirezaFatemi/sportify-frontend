@@ -3,13 +3,13 @@ import Typography from '@material-ui/core/Typography';
 import ArrowBack from '@material-ui/icons/ArrowBack';
 import ArrowForward from '@material-ui/icons/ArrowForward';
 import { Card } from 'antd';
-import * as React from "react";
-import { Component } from "react";
-import Slider from "react-slick";
+import * as React from 'react';
+import { Component } from 'react';
+import Slider from 'react-slick';
 import './GameSchedule.css';
 
-import { Grid } from "@material-ui/core";
-import { Colors } from "../../utils";
+import { Grid } from '@material-ui/core';
+import { Colors } from '../../utils';
 
 
 const styles = theme => ({
@@ -33,11 +33,11 @@ const styles = theme => ({
     backgroundColor: Colors.WIN,
   },
   lose: {
-    backgroundColor: Colors.LOSE
+    backgroundColor: Colors.LOSE,
   },
   draw: {
-    backgroundColor: Colors.DRAW
-  }
+    backgroundColor: Colors.DRAW,
+  },
 });
 
 const data = [
@@ -84,31 +84,31 @@ class GameSchedule extends Component<any, any> {
           settings: {
             slidesToShow: 4,
             slidesToScroll: 3,
-          }
+          },
         },
         {
           breakpoint: 960,
           settings: {
             slidesToShow: 3,
             slidesToScroll: 3,
-          }
+          },
         },
         {
           breakpoint: 600,
           settings: {
             slidesToShow: 2,
             slidesToScroll: 2,
-            initialSlide: 2
-          }
+            initialSlide: 2,
+          },
         },
         {
           breakpoint: 480,
           settings: {
             slidesToShow: 1,
-            slidesToScroll: 1
-          }
-        }
-      ]
+            slidesToScroll: 1,
+          },
+        },
+      ],
     };
     return (
       <div className={classes.container}>

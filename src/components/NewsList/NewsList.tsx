@@ -1,5 +1,6 @@
 import { Avatar, Button, Icon, List, Tabs } from 'antd';
 import * as React from 'react';
+import { withRouter } from 'react-router-dom'
 
 const listData: any[] = [];
 for (let i = 0; i < 23; i++) {
@@ -21,7 +22,8 @@ const IconText = ({ type, text }) => (
 
 const TabPane = Tabs.TabPane;
 
-const NewsList: React.FunctionComponent = () => (
+// @ts-ignore
+const NewsList: React.FunctionComponent = ({ history }) => (
   <div style={{ padding: '8px' }}>
     <Tabs defaultActiveKey="1">
       <TabPane tab="All" key="1">
@@ -38,7 +40,8 @@ const NewsList: React.FunctionComponent = () => (
           renderItem={item => (
             <List.Item
               key={item.title}
-              actions={[<IconText type="message" text="2" />, <Button htmlType="button">More</Button>]}
+              actions={[<IconText type="message" text="2" />
+                , <Button htmlType="button" onClick={() => history.push('/news/1')}>More</Button>]}
               extra={<img width={272} alt="logo"
                           src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" />}
             >
@@ -59,4 +62,4 @@ const NewsList: React.FunctionComponent = () => (
   </div>
 );
 
-export default NewsList;
+export default withRouter(NewsList);
