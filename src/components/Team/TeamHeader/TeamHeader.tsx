@@ -46,6 +46,13 @@ const styles = theme => ({
     left: '50%',
     transform: 'translate(-50%, -50%)',
   },
+  back: {
+    height: '300px',
+    backgroundImage: 'url("https://static.farakav.com/files/pictures/01322975.jpg")',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: '50% 50%',
+  },
 });
 
 function TeamHeader(props) {
@@ -53,8 +60,7 @@ function TeamHeader(props) {
 
   return (
     <div className={classes.container}>
-      <img src="https://wallpapershome.com/images/pages/pic_h/19941.jpg" alt="Header"
-           style={{ width: '100%', height: 'auto', filter: 'blur(20px)' }} />
+      <div className={classes.back} />
       <div className={classes.centered}>
         <Card className={classes.card}>
           <CardMedia
