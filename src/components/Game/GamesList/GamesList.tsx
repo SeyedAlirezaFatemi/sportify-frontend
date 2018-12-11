@@ -1,10 +1,9 @@
 import Divider from '@material-ui/core/Divider';
-import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import { withStyles } from '@material-ui/core/styles';
-import { Radio, Tabs } from 'antd';
+import { Tabs } from 'antd';
 import classnames from 'classnames';
 import * as _ from 'lodash';
 import * as React from 'react';
@@ -45,12 +44,12 @@ class GamesList extends React.Component<any, any> {
     const { mode } = this.state;
     return (
       <div style={{ padding: '8px' }}>
-        <Grid item justify="center" container>
-          <Radio.Group onChange={this.handleModeChange} value={mode} style={{ marginBottom: 8 }}>
-            <Radio.Button value="soccer">Soccer</Radio.Button>
-            <Radio.Button value="basketball">Basketball</Radio.Button>
-          </Radio.Group>
-        </Grid>
+        {/*<Grid item justify="center" container>*/}
+          {/*<Radio.Group onChange={this.handleModeChange} value={mode} style={{ marginBottom: 8 }}>*/}
+            {/*<Radio.Button value="soccer">Soccer</Radio.Button>*/}
+            {/*<Radio.Button value="basketball">Basketball</Radio.Button>*/}
+          {/*</Radio.Group>*/}
+        {/*</Grid>*/}
         <Tabs
           defaultActiveKey="1"
           tabPosition="left"

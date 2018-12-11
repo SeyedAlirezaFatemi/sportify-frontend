@@ -19,6 +19,10 @@ class HomePage extends React.Component<any, any> {
     const { classes } = this.props;
     return (
       <Template>
+        <Grid>
+          <img src="https://wallpapershome.com/images/pages/pic_h/19941.jpg" alt="Sport"
+               style={{ width: '100%', height: 'auto' }} />
+        </Grid>
         <Tabs defaultActiveKey="1" tabBarStyle={{ textAlign: 'center' }}>
           <TabPane tab="Soccer" key="1">
             {this.renderContent()}
