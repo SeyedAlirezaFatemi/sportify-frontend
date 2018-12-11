@@ -31,7 +31,7 @@ const teamTableColumns = [{
 
 const team1TableData = [{
   key: '1',
-  tShirt: (<Gloves/>),
+  tShirt: (<Gloves />),
   teamPlayers: 'Player 1 Goalkeeper',
   description: null,
 
