@@ -1,5 +1,5 @@
 import { withStyles } from '@material-ui/core/styles';
-import { Layout, Menu } from 'antd';
+import { BackTop, Layout, Menu } from 'antd';
 import * as React from 'react';
 import { Link, Route } from 'react-router-dom';
 import './Template.css';
@@ -41,6 +41,7 @@ class Template extends React.Component<any, any> {
         <Footer style={{ textAlign: 'center' }}>
           ©2018
         </Footer>
+        <BackTop />
       </Layout>
     )
   }

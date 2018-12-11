@@ -88,7 +88,7 @@ const columns = [{
   title: 'League',
   dataIndex: 'league',
   key: 'league',
-  render: (text, id) =><Link to="/league/1">{text}</Link>,
+  render: (text, id) => <Link to="/league/1">{text}</Link>,
 }, {
   title: 'Year',
   dataIndex: 'year',
@@ -112,7 +112,7 @@ class LeagueHomePage extends Component {
             style={{ width: 200 }}
           />
         </Grid>
-        <Tabs defaultActiveKey="1">
+        <Tabs defaultActiveKey="1" tabBarStyle={{ textAlign: 'center' }}>
           <TabPane tab="Current Leagues" key="1">
             <Tabs
               tabPosition="left"
