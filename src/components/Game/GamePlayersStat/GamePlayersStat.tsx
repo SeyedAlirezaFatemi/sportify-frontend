@@ -4,6 +4,7 @@ import Table from 'antd/es/table/Table';
 import * as React from 'react';
 import { Component } from 'react';
 import Icon from 'semantic-ui-react/dist/commonjs/elements/Icon/Icon';
+import Gloves from '../../Common/Icons/Gloves';
 import RedCard from '../../Common/Icons/RedCard';
 import TShirt from '../../Common/Icons/TShirt';
 import YellowCard from '../../Common/Icons/YellowCard';
@@ -30,15 +31,15 @@ const teamTableColumns = [{
 
 const team1TableData = [{
   key: '1',
-  tShirt: (<TShirt />),
-  teamPlayers: 'Player 1',
-  description: (<Icon name="arrow up" color="green" />),
+  tShirt: (<Gloves/>),
+  teamPlayers: 'Player 1 Goalkeeper',
+  description: null,
 
 }, {
   key: '2',
   tShirt: (<TShirt />),
   teamPlayers: 'Player 2',
-  description: null,
+  description: (<Icon name="arrow up" color="green" />),
 
 }, {
   key: '3',
