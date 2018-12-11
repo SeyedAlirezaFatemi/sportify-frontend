@@ -1,7 +1,7 @@
 import { Tabs } from 'antd';
-import * as React from "react";
-import { Template } from "..";
-import { NewsList, PlayerHeader, PlayerStatistics } from "../../components";
+import * as React from 'react';
+import { Template } from '..';
+import { NewsList, PlayerHeader, PlayerStatistics } from '../../components';
 
 
 const TabPane = Tabs.TabPane;

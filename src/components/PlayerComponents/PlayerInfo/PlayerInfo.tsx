@@ -1,10 +1,10 @@
-import Typography from "@material-ui/core/Typography/Typography";
+import Typography from '@material-ui/core/Typography/Typography';
 import { Card, Icon, Row } from 'antd';
-import * as React from "react";
+import * as React from 'react';
 
 const PlayerInfo: React.FunctionComponent = () => (
   <div style={{ padding: '30px', height: '100%' }}>
-    <Card title={`Player Info`} bordered={false}>
+    <Card title={'Player Info'} bordered={false}>
       <Row>
         <Typography variant="subtitle2" gutterBottom>
           <Icon type="idcard" style={{ marginRight: '8px' }} />

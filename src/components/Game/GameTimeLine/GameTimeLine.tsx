@@ -1,13 +1,13 @@
-import withStyles from "@material-ui/core/es/styles/withStyles";
-import Timeline from "antd/es/timeline/Timeline";
-import * as React from "react";
-import { Component } from "react";
-import Icon from "semantic-ui-react/dist/commonjs/elements/Icon/Icon";
+import withStyles from '@material-ui/core/es/styles/withStyles';
+import Timeline from 'antd/es/timeline/Timeline';
+import * as React from 'react';
+import { Component } from 'react';
+import Icon from 'semantic-ui-react/dist/commonjs/elements/Icon/Icon';
 
 
 const styles = theme => ({
   root: {
-    marginTop: "50px",
+    marginTop: '50px',
   },
 });
 
@@ -19,7 +19,7 @@ class GameTimeLine extends Component<any, any> {
       <Timeline className={classes.root} mode="alternate">
         <Timeline.Item dot={<Icon name="circle notch" loading />}>
           Last data refresh
-          for {(new Date()).getHours() + ":" + (new Date()).getMinutes() + "'"}
+          for {(new Date()).getHours() + ':' + (new Date()).getMinutes() + "'"}
         </Timeline.Item>
         <Timeline.Item dot="85'">
           <Icon name="meanpath" color="red" /> cristiano ronaldo

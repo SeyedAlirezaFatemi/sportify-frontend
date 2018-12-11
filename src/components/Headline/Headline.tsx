@@ -1,6 +1,6 @@
 import { Divider } from 'antd';
-import * as React from "react";
-import { Component } from "react";
+import * as React from 'react';
+import { Component } from 'react';
 import './Headline.css';
 
 class Headline extends Component<any, any> {

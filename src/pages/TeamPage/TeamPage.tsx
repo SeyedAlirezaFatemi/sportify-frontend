@@ -1,9 +1,9 @@
-import { Grid } from "@material-ui/core";
+import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import { Divider } from "antd";
+import { Divider } from 'antd';
 import * as React from 'react';
 import { Template } from '..';
-import { GameSchedule, NewsList, TeamHeader, TeamPlayersList } from "../../components";
+import { GameSchedule, NewsList, TeamHeader, TeamPlayersList } from '../../components';
 
 const styles = theme => ({
   root: {
