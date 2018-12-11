@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './LeagueTable.css';
 
 
-import {Button, Table} from 'antd';
+import { Button, Table } from 'antd';
 
 const title = 'Premier League';
 
@@ -133,28 +133,36 @@ class LeagueTable extends Component {
         <Button onClick={this.sortByScore}>sort by score</Button>
         <Button onClick={this.sortByName}>sort by name</Button>
         <Table dataSource={soccerData} columns={soccerColumns} title={this.renderHeader}
-              rowClassName={(record, index) => (index % 2 ? 'even' : 'odd')}
-              pagination={false} />
+               rowClassName={(record, index) => (index % 2 ? 'even' : 'odd')}
+               pagination={false} />
       </div>
     );
   }
 
   private sortByScore = () => {
-    this.state = {sort: 'sortByScore'};
+    this.state = { sort: 'sortByScore' };
     basketballData.sort((a, b) => a.percentage - b.percentage);
     soccerData.sort((a, b) => a.points - b.points);
   };
 
   private sortByName = () => {
-    this.state = {sort: 'sortByName'};
+    this.state = { sort: 'sortByName' };
     basketballData.sort((a, b) => {
-      if(a.team < b.team) { return -1; }
-      if(a.team > b.team) { return 1; }
+      if (a.team < b.team) {
+        return -1;
+      }
+      if (a.team > b.team) {
+        return 1;
+      }
       return 0;
     });
     soccerData.sort((a, b) => {
-      if(a.team < b.team) { return -1; }
-      if(a.team > b.team) { return 1; }
+      if (a.team < b.team) {
+        return -1;
+      }
+      if (a.team > b.team) {
+        return 1;
+      }
       return 0;
     });
   };
