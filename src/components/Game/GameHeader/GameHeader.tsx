@@ -13,7 +13,7 @@ const styles = theme => ({
 
 class GameHeader extends Component<any, any> {
   public render(): React.ReactNode {
-    const {classes} = this.props;
+    const { classes } = this.props;
     return (
       <Grid container direction="row" className={classes.root} alignItems="center" justify="space-around">
         <Grid item>
