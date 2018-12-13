@@ -17,7 +17,10 @@ class GameHeader extends Component<any, any> {
     return (
       <Grid container direction="row" className={classes.root} alignItems="center" justify="space-around">
         <Grid item>
-          <Avatar size={300} icon={'user'}/>
+          <Avatar
+            size={300}
+            icon={'user'}
+          />
         </Grid>
         <Grid item alignContent="center">
           <Typography align="center" color="primary" variant="h1">
@@ -28,7 +31,10 @@ class GameHeader extends Component<any, any> {
           </Typography>
         </Grid>
         <Grid item>
-          <Avatar size={300} icon={'user'}/>
+          <Avatar
+            size={300}
+            icon={'user'}
+          />
         </Grid>
       </Grid>
     );
