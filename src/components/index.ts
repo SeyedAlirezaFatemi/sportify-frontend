@@ -1,10 +1,11 @@
-import CommentList from './CommentList/CommentList'
-import EventTimeline from './EventTimeline/EventTimeline'
-import Headline from './Headline/Headline'
-import LeagueTable from './LeagueTable/LeagueTable'
-import NewsContent from './NewsContent/NewsContent'
-import NewsList from './NewsList/NewsList'
-import TagList from './TagList/TagList'
+import CommentList from './CommentList/CommentList';
+import EventTimeline from './EventTimeline/EventTimeline';
+import Headline from './Headline/Headline';
+import ImageGrid from './ImageGrid/ImageGrid';
+import LeagueTable from './LeagueTable/LeagueTable';
+import NewsContent from './NewsContent/NewsContent';
+import NewsList from './NewsList/NewsList';
+import TagList from './TagList/TagList';
 
 export * from './Player';
 export * from './Team';
@@ -18,4 +19,5 @@ export {
   Headline,
   TagList,
   NewsContent,
-}
+  ImageGrid,
+};

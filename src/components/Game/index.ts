@@ -1,15 +1,15 @@
+import GameGrid from './GameGrid/GameGrid';
 import GameHeader from './GameHeader/GameHeader';
+import GameList from './GameList/GameList';
 import GamePlayersStat from './GamePlayersStat/GamePlayersStat';
-import GameSchedule from './GameSchedule/GameSchedule';
-import GamesList from './GamesList/GamesList';
 import GameStat from './GameStat/GameStat';
 import GameTimeLine from './GameTimeLine/GameTimeLine';
 
 export {
   GameTimeLine,
   GameHeader,
-  GamesList,
+  GameList,
   GameStat,
-  GameSchedule,
   GamePlayersStat,
-}
+  GameGrid,
+};
