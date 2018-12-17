@@ -3,7 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { Tabs } from 'antd';
 import * as React from 'react';
 import { Template } from '..';
-import { GamesList, NewsList } from '../../components';
+import { GameList, NewsList } from '../../components';
 
 const TabPane = Tabs.TabPane;
 
@@ -40,7 +40,7 @@ class HomePage extends React.Component<any, any> {
     return (
       <Grid container className={classes.root} direction="row" spacing={24}>
         <Grid item xl={4} lg={4} md={4} sm={12} xs={12}>
-          <GamesList />
+          <GameList />
         </Grid>
         <Grid item xl={8} lg={8} md={8} sm={12} xs={12}>
           <NewsList />

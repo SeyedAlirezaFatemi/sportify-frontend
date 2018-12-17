@@ -2,6 +2,7 @@ import { Tabs } from 'antd';
 import * as React from 'react';
 import { Template } from '..';
 import { NewsList, PlayerHeader, PlayerStatistics } from '../../components';
+import ImageGrid from '../../components/ImageGrid/ImageGrid';
 
 
 const TabPane = Tabs.TabPane;
@@ -17,7 +18,7 @@ const PlayerPage: React.FunctionComponent = () => (
         <NewsList />
       </TabPane>
       <TabPane tab="Player Photos" key="3">
-        Content of Player Photos
+        <ImageGrid />
       </TabPane>
       <TabPane tab="Player Videos" key="4">
         Content of Player Videos

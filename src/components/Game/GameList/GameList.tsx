@@ -30,7 +30,7 @@ const styles = theme => ({
   },
 });
 
-class GamesList extends React.Component<any, any> {
+class GameList extends React.Component<any, any> {
 
   constructor(props) {
     super(props);
@@ -119,4 +119,4 @@ class GamesList extends React.Component<any, any> {
 }
 
 // @ts-ignore
-export default withStyles(styles)(GamesList);
+export default withStyles(styles)(GameList);

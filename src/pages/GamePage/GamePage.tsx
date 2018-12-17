@@ -1,11 +1,9 @@
 import Grid from '@material-ui/core/Grid/Grid';
 import withStyles from '@material-ui/core/styles/withStyles';
 import { Tabs } from 'antd';
-import Carousel from 'antd/lib/carousel';
 import * as React from 'react';
 import { Component } from 'react';
-import { GameHeader, GameStat, GameTimeLine, NewsList } from '../../components';
-import GamePlayersStat from '../../components/Game/GamePlayersStat/GamePlayersStat';
+import { GameHeader, GamePlayersStat, GameStat, GameTimeLine, ImageGrid, NewsList } from '../../components';
 import { Template } from '../index';
 
 const TabPane = Tabs.TabPane;
@@ -19,13 +17,6 @@ const styles = theme => ({
   },
 });
 
-const imageSrcs: string[] = [
-  'https://sport360.com/wp-content/uploads/2017/12/Messi-RealMadrid-Bernabeu.jpg',
-  'https://www.hindustantimes.com/rf/image_size_960x540/HT/p2/2017/12/23/Pictures/barcelona-liga-santander-real-madrid-vs-fc_544bbc3e-e7e9-11e7-b094-c21f82b60b0b.jpg',
-  'https://static.independent.co.uk/s3fs-public/thumbnails/image/2017/04/09/13/ronaldo-neymar.jpg?w968h681',
-  'https://static.independent.co.uk/s3fs-public/thumbnails/image/2017/04/23/21/navas.jpg?width=1000&height=614&fit=bounds&format=pjpg&auto=webp&quality=70&crop=16:9,offset-y0.5',
-];
-
 class GamePage extends Component<any, any> {
   public render(): React.ReactNode {
     const { classes } = this.props;
@@ -35,7 +26,7 @@ class GamePage extends Component<any, any> {
         <GameHeader />
         <Grid container direction="row" className={classes.root}>
           <Grid item container className={classes.tabsStyles}>
-            <Grid item xs={8}>
+            <Grid item xl={8} lg={8} md={8} sm={12} xs={12}>
               <Tabs defaultActiveKey="1">
                 <TabPane tab="Game Statistics" key="1">
                   <GameStat />
@@ -47,35 +38,14 @@ class GamePage extends Component<any, any> {
                   <GamePlayersStat />
                 </TabPane>
                 <TabPane tab="Game Photos" key="4">
-                  <Carousel autoplay>
-                    <div>
-                      <h3>
-                        <img src={imageSrcs[0]} />
-                      </h3>
-                    </div>
-                    <div>
-                      <h3>
-                        <img src={imageSrcs[1]} />
-                      </h3>
-                    </div>
-                    <div>
-                      <h3>
-                        <img src={imageSrcs[2]} />
-                      </h3>
-                    </div>
-                    <div>
-                      <h3>
-                        <img src={imageSrcs[3]} />
-                      </h3>
-                    </div>
-                  </Carousel>
+                  <ImageGrid />
                 </TabPane>
                 <TabPane tab="Game Videos" key="5">
-                  content of Game video
+                  Game Videos
                 </TabPane>
               </Tabs>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xl={4} lg={4} md={4} sm={12} xs={12}>
               <GameTimeLine />
             </Grid>
           </Grid>
@@ -85,4 +55,5 @@ class GamePage extends Component<any, any> {
   }
 }
 
+// @ts-ignore
 export default withStyles(styles)(GamePage);
