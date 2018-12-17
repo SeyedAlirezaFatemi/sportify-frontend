@@ -27,7 +27,7 @@ class GamePage extends Component<any, any> {
         <GameHeader />
         <Grid container direction="row" className={classes.root}>
           <Grid item container className={classes.tabsStyles}>
-            <Grid item xs={8}>
+            <Grid item xl={8} lg={8} md={8} sm={12} xs={12}>
               <Tabs defaultActiveKey="1">
                 <TabPane tab="Game Statistics" key="1">
                   <GameStat />
@@ -46,7 +46,7 @@ class GamePage extends Component<any, any> {
                 </TabPane>
               </Tabs>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xl={4} lg={4} md={4} sm={12} xs={12}>
               <GameTimeLine />
             </Grid>
           </Grid>
