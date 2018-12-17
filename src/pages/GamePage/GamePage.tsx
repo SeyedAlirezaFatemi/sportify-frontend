@@ -3,9 +3,8 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import { Tabs } from 'antd';
 import * as React from 'react';
 import { Component } from 'react';
-import { GameHeader, GamePlayersStat, GameStat, GameTimeLine, NewsList } from '../../components';
+import { GameHeader, GamePlayersStat, GameStat, GameTimeLine, ImageGrid, NewsList } from '../../components';
 import { Template } from '../index';
-import ImageGrid from '../../components/ImageGrid/ImageGrid';
 
 const TabPane = Tabs.TabPane;
 
