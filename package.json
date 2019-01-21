@@ -5,7 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^3.9.0",
     "@material-ui/icons": "^3.0.2",
-    "antd": "^3.12.3",
+    "antd": "^3.12.4",
     "classnames": "^2.2.6",
     "lodash": "^4.17.11",
     "moment": "^2.22.2",
@@ -15,9 +15,10 @@
     "react-router-dom": "^4.3.1",
     "react-scripts-ts": "3.1.0",
     "redux": "^4.0.1",
-    "redux-saga": "^0.16.2",
+    "redux-saga": "^1.0.0",
     "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^0.84.0"
+    "semantic-ui-react": "^0.84.0",
+    "axios": "latest"
   },
   "scripts": {
     "start": "react-scripts-ts start",
@@ -28,7 +29,7 @@
   "devDependencies": {
     "@types/classnames": "^2.2.7",
     "@types/jest": "^23.3.12",
-    "@types/lodash": "^4.14.119",
+    "@types/lodash": "^4.14.120",
     "@types/node": "^10.12.18",
     "@types/react": "^16.7.18",
     "@types/react-dom": "^16.0.11",
