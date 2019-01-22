@@ -1,6 +1,8 @@
 import { Avatar, Button, Icon, List, Tabs } from 'antd';
 import * as React from 'react';
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
+import axios from '../../api';
+import { API } from '../../utils';
 
 const listData: any[] = [];
 for (let i = 0; i < 23; i++) {
@@ -8,7 +10,7 @@ for (let i = 0; i < 23; i++) {
     href: 'http://ant.design',
     title: `Fatemi S3 part ${i}`,
     avatar: 'https://d9np3dj86nsu2.cloudfront.net/thumb/0c771449acaecb388c58d8805d966f61/350_403',
-    description: 'A Team of strong cool guys',
+    description: 'A Team ofh strong cool guys',
     content: 'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
   });
 }
@@ -22,44 +24,58 @@ const IconText = ({ type, text }) => (
 
 const TabPane = Tabs.TabPane;
 
-// @ts-ignore
-const NewsList: React.FunctionComponent = ({ history }) => (
-  <div style={{ padding: '8px' }}>
-    <Tabs defaultActiveKey="1">
-      <TabPane tab="All" key="1">
-        <List
-          itemLayout="vertical"
-          size="large"
-          pagination={{
-            onChange: (page) => {
-              console.log(page);
-            },
-            pageSize: 3,
-          }}
-          dataSource={listData}
-          renderItem={item => (
-            <List.Item
-              key={item.title}
-              actions={[<IconText type="message" text="2" />
-                , <Button htmlType="button" onClick={() => history.push('/news/1')}>More</Button>]}
-              extra={<img width={272} alt="logo"
-                          src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" />}
-            >
-              <List.Item.Meta
-                avatar={<Avatar src={item.avatar} />}
-                title={<a href={item.href}>{item.title}</a>}
-                description={item.description}
-              />
-              {item.content}
-            </List.Item>
-          )}
-        />
-      </TabPane>
-      <TabPane tab="Subscribed" disabled key="2">
-        {/*If user is logged in*/}
-      </TabPane>
-    </Tabs>
-  </div>
-);
+class NewsList extends React.Component<any, any> {
+  state = {
+    data: [],
+  };
+
+  public componentDidMount(): void {
+    axios.get(API.LATEST_NEWS).then(response => {
+      console.log(response)
+    })
+  }
+
+  public render(): React.ReactNode {
+    const { history } = this.props;
+    return (
+      <div style={{ padding: '8px' }}>
+        <Tabs defaultActiveKey="1">
+          <TabPane tab="All" key="1">
+            <List
+              itemLayout="vertical"
+              size="large"
+              pagination={{
+                onChange: (page) => {
+                  console.log(page);
+                },
+                pageSize: 3,
+              }}
+              dataSource={listData}
+              renderItem={item => (
+                <List.Item
+                  key={item.title}
+                  actions={[<IconText type="message" text="2" />
+                    , <Button htmlType="button" onClick={() => history.push('/news/1')}>More</Button>]}
+                  extra={<img width={272} alt="logo"
+                              src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" />}
+                >
+                  <List.Item.Meta
+                    avatar={<Avatar src={item.avatar} />}
+                    title={<a href={item.href}>{item.title}</a>}
+                    description={item.description}
+                  />
+                  {item.content}
+                </List.Item>
+              )}
+            />
+          </TabPane>
+          <TabPane tab="Subscribed" disabled key="2">
+            {/*If user is logged in*/}
+          </TabPane>
+        </Tabs>
+      </div>
+    )
+  }
+}
 
 export default withRouter(NewsList);
