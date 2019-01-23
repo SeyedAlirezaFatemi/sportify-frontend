@@ -1,13 +1,10 @@
 import * as React from 'react';
 import { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import './LeagueTable.css';
-import {withRouter} from 'react-router-dom';
 
 
 import { Table } from 'antd';
-import axios from "../../api";
-import {API} from "../../utils";
 
 const title = 'Premier League';
 
@@ -71,11 +68,11 @@ class LeagueTable extends Component<any, any> {
 
   public render(): React.ReactNode {
     return (
-        <Table dataSource={this.props.tableData}
-               columns={this.props.sport === 'soccer' ? soccerColumns : basketballColumns}
-               title={this.renderHeader}
-               rowClassName={(record, index) => (index % 2 ? 'even' : 'odd')}
-               pagination={false} />
+      <Table dataSource={this.props.tableData}
+             columns={this.props.sport === 'soccer' ? soccerColumns : basketballColumns}
+             title={this.renderHeader}
+             rowClassName={(record, index) => (index % 2 ? 'even' : 'odd')}
+             pagination={false} />
     );
   }
 
@@ -84,4 +81,4 @@ class LeagueTable extends Component<any, any> {
   }
 }
 
-export default LeagueTable
+export default LeagueTable;
