@@ -2,7 +2,6 @@ import { Avatar, Button, Icon, List, Tabs } from 'antd';
 import * as React from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from '../../api';
-import { API } from '../../utils';
 
 const IconText = ({ type, text }) => (
   <span>
@@ -19,7 +18,8 @@ class NewsList extends React.Component<any, any> {
   };
 
   public componentDidMount(): void {
-    axios.get(API.LATEST_NEWS).then(response => {
+    const { url } = this.props;
+    axios.get(url).then(response => {
       this.setState({ news: response.data })
     })
   }

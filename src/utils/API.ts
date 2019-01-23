@@ -1,4 +1,10 @@
 export enum API {
   LATEST_NEWS = 'news/latest/',
-  NEWS_DETAILS = 'news/detail/'
+  LATEST_NEWS_BASKETBALL = 'news/latest/basketball/',
+  LATEST_NEWS_SOCCER = 'news/latest/soccer/',
+  RELATED_NEWS_SOCCER_GAME = 'game/soccer/related_news/',
+  RELATED_NEWS_BASKETBALL_GAME = 'game/basketball/related_news/',
+  RELATED_NEWS_SOCCER_TEAM = 'team/soccer/related_news/',
+  RELATED_NEWS_BASKETBALL_TEAM = 'team/basketball/related_news/',
+  NEWS_DETAILS = 'news/detail/',
 }
