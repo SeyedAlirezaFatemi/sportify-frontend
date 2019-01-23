@@ -4,6 +4,7 @@ import { LeagueTable } from '../../components';
 import Template from '../Template/Template';
 import axios from "../../api";
 import {API} from "../../utils";
+import {withRouter} from 'react-router-dom';
 
 
 class LeaguePage extends Component<any, any> {
@@ -12,7 +13,7 @@ class LeaguePage extends Component<any, any> {
   public componentDidMount() :void {
     const { params } = this.props.match;
     const { id } = params;
-    axios.get(`${API.LEAGUE_TABLE_INFO}${this.props.sport}${id}`).then(response => {
+    axios.get(`${API.LEAGUE_TABLE_INFO}${this.props.sport}/${id}`).then(response => {
       this.setState({ data: response.data })
     });
   }

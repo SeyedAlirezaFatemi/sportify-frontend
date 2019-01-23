@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './LeagueTable.css';
+import {withRouter} from 'react-router-dom';
 
 
 import { Table } from 'antd';
@@ -65,47 +66,6 @@ const soccerColumns = [{
   sorter: (a, b) => a.score - b.score,
 }];
 
-const soccerData = [{
-  key: '1',
-  rank: '1',
-  team: 'Arsenal',
-  games: 52,
-  win: 32,
-  draw: 10,
-  lose: 10,
-  goalsDifference: 46,
-  score: 18,
-}, {
-  key: '2',
-  rank: '2',
-  team: 'Manchester Utd',
-  games: 32,
-  win: 12,
-  draw: 10,
-  lose: 10,
-  goalsDifference: -36,
-  score: 28,
-}, {
-  key: '3',
-  rank: '3',
-  team: 'Manchester City',
-  games: 82,
-  win: 32,
-  draw: 20,
-  lose: 30,
-  goalsDifference: +96,
-  score: 38,
-}, {
-  key: '4',
-  rank: '4',
-  team: 'Chelsea',
-  games: 52,
-  win: 32,
-  draw: 10,
-  lose: 10,
-  goalsDifference: 46,
-  score: 18,
-}];
 
 class LeagueTable extends Component<any, any> {
 
