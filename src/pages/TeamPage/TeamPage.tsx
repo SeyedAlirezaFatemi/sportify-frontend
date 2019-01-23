@@ -16,7 +16,7 @@ const styles = theme => ({
 const TabPane = Tabs.TabPane;
 
 class TeamPage extends React.Component<any, any> {
-  public state: any = {players: [], info: {name: ''}};
+  public state: any = {players: [], info: {name: ''}, images: []};
 
   public componentDidMount(): void {
     const {params} = this.props.match;
@@ -28,6 +28,9 @@ class TeamPage extends React.Component<any, any> {
     });
     axios.get(`${API.TEAM_INFO}${sport}/${id}`).then(response => {
       this.setState({info: response.data})
+    });
+    axios.get(`${API.TEAM_PHOTO}${sport}/${id}`).then(response => {
+      this.setState({images: response.data})
     });
   }
 
@@ -49,7 +52,7 @@ class TeamPage extends React.Component<any, any> {
             <NewsList/>
           </TabPane>
           <TabPane tab="Team Photos" key="4">
-            <ImageGrid/>
+            <ImageGrid images={this.state.images}/>
           </TabPane>
         </Tabs>
       </Template>

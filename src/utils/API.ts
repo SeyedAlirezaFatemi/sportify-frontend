@@ -20,6 +20,7 @@ export enum API {
   RELATED_NEWS_BASKETBALL_TEAM = 'sport/team/basketball/related_news/',
   TEAM_PLAYERS = 'sport/team/players/',
   TEAM_INFO = 'sport/team/info/',
+  TEAM_PHOTO = 'sport/team/images/',
 
 }
 
