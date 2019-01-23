@@ -5,16 +5,20 @@ import './LeagueTable.css';
 
 
 import { Table } from 'antd';
+import axios from "../../api";
+import {API} from "../../utils";
 
 const title = 'Premier League';
 
 const basketballColumns = [{
   title: 'Rank',
   dataIndex: 'rank',
+  sorter: (a, b) => a.rank - b.rank,
 }, {
   title: 'Team',
   dataIndex: 'team',
   render: text => <Link to={'/team/1'}>{text}</Link>,
+  sorter: (a, b) => a.team.length - b.team.length,
 }, {
   title: 'Games',
   dataIndex: 'games',
@@ -22,39 +26,14 @@ const basketballColumns = [{
   title: 'Win',
   dataIndex: 'win',
 }, {
-  title: 'Percentage',
+  title: 'Lose',
+  dataIndex: 'lose',
+}, {
+  title: 'Percentage ',
   dataIndex: 'percentage',
+  sorter: (a, b) => a.percentage - b.percentage,
 }];
 
-const basketballData = [{
-  key: '1',
-  rank: '1',
-  team: 'Los Angeles Lakers',
-  games: 52,
-  win: 32,
-  percentage: 0.8,
-}, {
-  key: '2',
-  rank: '2',
-  team: 'Toronto Raptors',
-  games: 52,
-  win: 32,
-  percentage: 0.8,
-}, {
-  key: '3',
-  rank: '3',
-  team: 'Milwaukee Bucks',
-  games: 52,
-  win: 32,
-  percentage: 0.8,
-}, {
-  key: '4',
-  rank: '4',
-  team: 'Phoenix Suns',
-  games: 52,
-  win: 32,
-  percentage: 0.8,
-}];
 
 const soccerColumns = [{
   title: 'Rank',
@@ -128,12 +107,15 @@ const soccerData = [{
   score: 18,
 }];
 
-class LeagueTable extends Component {
+class LeagueTable extends Component<any, any> {
+
   public render(): React.ReactNode {
     return (
-      <Table dataSource={soccerData} columns={soccerColumns} title={this.renderHeader}
-             rowClassName={(record, index) => (index % 2 ? 'even' : 'odd')}
-             pagination={false} />
+        <Table dataSource={this.props.tableData}
+               columns={this.props.sport === 'soccer' ? soccerColumns : basketballColumns}
+               title={this.renderHeader}
+               rowClassName={(record, index) => (index % 2 ? 'even' : 'odd')}
+               pagination={false} />
     );
   }
 

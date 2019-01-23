@@ -8,6 +8,9 @@ export enum API {
 
   RELATED_NEWS_SOCCER_GAME = 'game/soccer/related_news/',
   RELATED_NEWS_BASKETBALL_GAME = 'game/basketball/related_news/',
+  ALL_LEAGUES = 'sport/leagues/',
+  LEAGUE_TABLE_INFO = 'sport/league/stats/',
+
 
   SOCCER_GAME_STATISTICS = '/sport/game/soccer/statistics/',
 
