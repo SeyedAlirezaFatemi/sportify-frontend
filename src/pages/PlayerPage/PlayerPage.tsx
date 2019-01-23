@@ -2,11 +2,22 @@ import { Tabs } from 'antd';
 import * as React from 'react';
 import { Template } from '..';
 import { ImageGrid, NewsList, PlayerHeader, PlayerStatistics } from '../../components';
-import { PlayerInfoAPI, PlayerNewsAPI } from '../../utils'
+import {API, PlayerInfoAPI, PlayerNewsAPI} from '../../utils'
+import axios from "../../api";
 
 const TabPane = Tabs.TabPane;
 
 class PlayerPage extends React.Component<any, any> {
+  public state: any = { images: [] };
+
+  public componentDidMount(): void {
+    const { sport } = this.props;
+    const  { params } = this.props.match;
+    const { id } = params;
+    axios.get(`${API.PLAYER_PHOTO}${sport}/${id}`).then(response => {
+      this.setState({ images: response.data })
+    });
+  }
   public render(): React.ReactNode {
     const { match, sport } = this.props;
     const { params } = match;
@@ -24,7 +35,7 @@ class PlayerPage extends React.Component<any, any> {
             <NewsList url={newsUrl} />
           </TabPane>
           <TabPane tab="Player Photos" key="3">
-            <ImageGrid />
+            <ImageGrid images={this.state.images}/>
           </TabPane>
           <TabPane tab="Player Videos" key="4">
             Content of Player Videos
