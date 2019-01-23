@@ -29,6 +29,8 @@ export const PlayerInfoAPI = (sport: string, id: number) => `sport/player/${spor
 
 export const PlayerNewsAPI = (id: number) => `${API.RELATED_NEWS_PLAYER}${id}/`;
 
+export const PlayerPhotosAPI = (sport: string, id: number) => `${API.PLAYER_PHOTO}${sport}/${id}`;
+
 export const TeamPlayersAPI = (sport: string, id: number) => `${API.TEAM_PLAYERS}${sport}/${id}`;
 
 export const TeamInfoAPI = (sport: string, id: number) => `${API.TEAM_INFO}${sport}/${id}`;
