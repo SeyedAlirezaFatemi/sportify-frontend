@@ -64,7 +64,7 @@ class TeamPlayersList extends Component<any, any> {
       sorter: (a, b) => a.age - b.age,
     }, {
       title: 'Role',
-      dataIndex: 'role',
+      dataIndex: 'position',
       filters: [{
         text: 'Goalkeeper',
         value: 'Goalkeeper',

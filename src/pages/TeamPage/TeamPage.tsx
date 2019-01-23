@@ -1,9 +1,9 @@
 import Grid from '@material-ui/core/Grid';
-import { withStyles } from '@material-ui/core/styles';
-import { Tabs } from 'antd';
+import {withStyles} from '@material-ui/core/styles';
+import {Tabs} from 'antd';
 import * as React from 'react';
-import { Template } from '..';
-import { GameGrid, ImageGrid, NewsList, TeamHeader, TeamPlayersList } from '../../components';
+import {Template} from '..';
+import {GameGrid, ImageGrid, NewsList, TeamHeader, TeamPlayersList} from '../../components';
 import axios from "../../api";
 import {API} from "../../utils";
 
@@ -16,33 +16,40 @@ const styles = theme => ({
 const TabPane = Tabs.TabPane;
 
 class TeamPage extends React.Component<any, any> {
-  public state: any = { players: [] };
+  public state: any = {players: [], info: {name: ''}};
+
+  public componentDidMount(): void {
+    const {params} = this.props.match;
+    const {sport} = this.props;
+    const {id} = params;
+    axios.get(`${API.TEAM_PLAYERS}${sport}/${id}`).then(response => {
+      console.log(response.data)
+      this.setState({players: response.data})
+    });
+    axios.get(`${API.TEAM_INFO}${sport}/${id}`).then(response => {
+      this.setState({info: response.data})
+    });
+  }
 
   public render(): React.ReactNode {
-    const { classes } = this.props;
-    const { params } = this.props.match;
-    const { sport } = this.props;
-    const { id } = params;
-    axios.get(`${API.TEAM_PLAYERS}${sport}/${id}`).then(response => {
-      this.setState({ players: response.data })
-    });
+    const {classes} = this.props;
     return (
       <Template>
-        <TeamHeader />
+        <TeamHeader name={this.state.info.name}/>
         <Tabs defaultActiveKey="1">
           <TabPane tab="Team Game Schedule" key="1">
             <Grid container justify="center">
-              <GameGrid />
+              <GameGrid/>
             </Grid>
           </TabPane>
           <TabPane tab="Team Players" key="2">
-            <TeamPlayersList players={this.state.players} />
+            <TeamPlayersList players={this.state.players}/>
           </TabPane>
           <TabPane tab="Team News" key="3">
-            <NewsList />
+            <NewsList/>
           </TabPane>
           <TabPane tab="Team Photos" key="4">
-            <ImageGrid />
+            <ImageGrid/>
           </TabPane>
         </Tabs>
       </Template>
