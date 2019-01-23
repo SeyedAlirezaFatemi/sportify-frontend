@@ -9,10 +9,11 @@ class App extends React.Component {
       <Router>
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route path="/team/:id/" component={TeamPage} />
+          <Route path="/team/:id" component={TeamPage} />
           <Route exact path="/league" component={LeagueHomePage} />
           <Route path="/league/:id" component={LeaguePage} />
-          <Route path="/player" component={PlayerPage} />
+          <Route path="/player/soccer/:id" render={(props) => <PlayerPage {...props} sport="soccer" />} />
+          <Route path="/player/basketball/:id" render={(props) => <PlayerPage {...props} sport="basketball" />} />
           <Route path="/news/:id" component={NewsPage} />
           <Route path="/game" component={GamePage} />
           <Route component={NotFoundPage} />

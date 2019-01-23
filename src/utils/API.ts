@@ -8,3 +8,5 @@ export enum API {
   RELATED_NEWS_BASKETBALL_TEAM = 'team/basketball/related_news/',
   NEWS_DETAILS = 'news/detail/',
 }
+
+export const PlayerInfoAPI = (sport: string, id: number) => `sport/player/${sport}/info/${id}/`;
