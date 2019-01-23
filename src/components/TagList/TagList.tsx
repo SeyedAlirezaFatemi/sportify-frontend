@@ -5,15 +5,15 @@ import { Component } from 'react';
 
 class TagList extends Component<any, any> {
   public render(): React.ReactNode {
-    console.log(this.props.tags);
+    const { tags } = this.props;
     let color = 'green';
     if (this.props.sport === ('Basketball' || 'basketball')) {
       color = 'orange';
-    } else if (this.props.sport === ('Football' || 'football')) {
+    } else if (this.props.sport === ('Soccer' || 'soccer')) {
       color = 'blue';
     }
     return (
-      this.props.tags.map((tag) => <Tag key={tag} color={color}>{tag}</Tag>)
+      tags ? tags.map((tag) => <Tag key={tag.id} color={color}>{tag.title}</Tag>) : null
     )
   }
 }
