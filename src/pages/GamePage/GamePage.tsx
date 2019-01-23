@@ -18,8 +18,12 @@ const styles = theme => ({
 });
 
 class GamePage extends Component<any, any> {
+
   public render(): React.ReactNode {
     const { classes } = this.props;
+
+    const {params} = this.props.match;
+    const {id} = params;
 
     return (
       <Template>
@@ -29,7 +33,7 @@ class GamePage extends Component<any, any> {
             <Grid item xl={8} lg={8} md={8} sm={12} xs={12}>
               <Tabs defaultActiveKey="1">
                 <TabPane tab="Game Statistics" key="1">
-                  <GameStat />
+                  <GameStat GameId={id}/>
                 </TabPane>
                 <TabPane tab="Game News" key="2">
                   <NewsList />

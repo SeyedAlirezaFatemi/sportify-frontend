@@ -7,6 +7,8 @@ export enum API {
   RELATED_NEWS_SOCCER_TEAM = 'team/soccer/related_news/',
   RELATED_NEWS_BASKETBALL_TEAM = 'team/basketball/related_news/',
   NEWS_DETAILS = 'news/detail/',
+  NEWS_DETAILS = 'news/detail/',
+  SOCCER_GAME_STATISTICS = '/sport/game/soccer/statistics/',
 }
 
 export const PlayerInfoAPI = (sport: string, id: number) => `sport/player/${sport}/info/${id}/`;

@@ -15,7 +15,7 @@ class App extends React.Component {
           <Route path="/player/soccer/:id" render={(props) => <PlayerPage {...props} sport="soccer" />} />
           <Route path="/player/basketball/:id" render={(props) => <PlayerPage {...props} sport="basketball" />} />
           <Route path="/news/:id" component={NewsPage} />
-          <Route path="/game" component={GamePage} />
+          <Route path="/game/:id" component={GamePage} />
           <Route component={NotFoundPage} />
         </Switch>
       </Router>
