@@ -14,28 +14,52 @@ const styles = theme => ({
 });
 
 
+// TODO: find icon for 'AT' and 'PY'
+let iconesDictanary = [
+  { 'Red Card': <Icon name="meanpath" color="red" /> },
+  { 'Yellow Card': <Icon name="meanpath" color="yellow" /> },
+  { 'Substitution in': <Icon name="arrow up" color="green" /> },
+  { 'Substitution out': <Icon name="arrow down" color="red" /> },
+  { 'Goal': <Icon name="soccer" /> },
+  { 'Assist': '' },
+  { 'Penalty': '' },
+];
+
+function compare(a, b) {
+  if (a.eventTime < b.eventTime)
+    return -1;
+  if (a.eventTime > b.eventTime)
+    return 1;
+  return 0;
+}
+
 class GameTimeLine extends Component<any, any> {
   public states = {
     events: [],
   };
 
-  // TODO: find icon for 'AT' and 'PY'
-  iconesDictanary = [
-    { 'RC': <Icon name="meanpath" color="red" /> },
-    { 'YC': <Icon name="meanpath" color="yellow" /> },
-    { 'SNI': <Icon name="arrow up" color="green" /> },
-    { 'SNO': <Icon name="arrow down" color="red" /> },
-    { 'GL': <Icon name="soccer" /> },
-    { 'AT': '' },
-    { 'PY': '' },
-  ];
 
   public componentDidMount(): void {
     const { GameId, GameType } = this.props;
 
     if (GameType === 'soccer') {
       axios.get(`${API.SOCCER_GAME_EVENTS}${GameId}`).then(response => {
-        this.setState({ events: response.data });
+        this.setState(prevState => {
+          let eventList: any = [];
+          for (let i = 0; i < response.data.length; i++) {
+            eventList.push({
+              eventType: response.data[i].event_type,
+              eventTime: response.data[i].event_time,
+              eventIcon: iconesDictanary[response.data[i].event_type]
+            });
+          }
+          eventList.sort(compare);
+
+          return ({
+            events: eventList
+          });
+
+        });
       });
     } else if (GameType === 'basketball') {
       axios.get(`${API.BASKETBALL_GAME_EVENTS}${GameId}`).then(response => {
