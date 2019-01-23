@@ -98,7 +98,7 @@ class GameGrid extends React.Component<any, any> {
       <Grid item container direction="row">
         <Grid item container justify="flex-start" xs={6}>
           <Typography>
-            0
+            011
           </Typography>
         </Grid>
         <Grid item container justify="flex-end" xs={6}>
