@@ -1,12 +1,10 @@
 import * as React from 'react';
 import { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import './LeagueTable.css';
 
 
 import { Table } from 'antd';
-import axios from "../../api";
-import {API} from "../../utils";
 
 const title = 'Premier League';
 
@@ -65,57 +63,16 @@ const soccerColumns = [{
   sorter: (a, b) => a.score - b.score,
 }];
 
-const soccerData = [{
-  key: '1',
-  rank: '1',
-  team: 'Arsenal',
-  games: 52,
-  win: 32,
-  draw: 10,
-  lose: 10,
-  goalsDifference: 46,
-  score: 18,
-}, {
-  key: '2',
-  rank: '2',
-  team: 'Manchester Utd',
-  games: 32,
-  win: 12,
-  draw: 10,
-  lose: 10,
-  goalsDifference: -36,
-  score: 28,
-}, {
-  key: '3',
-  rank: '3',
-  team: 'Manchester City',
-  games: 82,
-  win: 32,
-  draw: 20,
-  lose: 30,
-  goalsDifference: +96,
-  score: 38,
-}, {
-  key: '4',
-  rank: '4',
-  team: 'Chelsea',
-  games: 52,
-  win: 32,
-  draw: 10,
-  lose: 10,
-  goalsDifference: 46,
-  score: 18,
-}];
 
 class LeagueTable extends Component<any, any> {
 
   public render(): React.ReactNode {
     return (
-        <Table dataSource={this.props.tableData}
-               columns={this.props.sport === 'soccer' ? soccerColumns : basketballColumns}
-               title={this.renderHeader}
-               rowClassName={(record, index) => (index % 2 ? 'even' : 'odd')}
-               pagination={false} />
+      <Table dataSource={this.props.tableData}
+             columns={this.props.sport === 'soccer' ? soccerColumns : basketballColumns}
+             title={this.renderHeader}
+             rowClassName={(record, index) => (index % 2 ? 'even' : 'odd')}
+             pagination={false} />
     );
   }
 
@@ -124,4 +81,4 @@ class LeagueTable extends Component<any, any> {
   }
 }
 
-export default LeagueTable
+export default LeagueTable;

@@ -1,37 +1,15 @@
 import { Button, Icon, Input, Table, } from 'antd';
 import * as React from 'react';
 import { Component, createRef } from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Link, Route, withRouter } from 'react-router-dom';
 import './TeamPlayersList.css';
 
-
-const data = [{
-  key: '1',
-  name: 'John Brown',
-  age: 32,
-  role: 'Goalkeeper',
-}, {
-  key: '2',
-  name: 'Jim Green',
-  age: 42,
-  role: 'Midfielder',
-}, {
-  key: '3',
-  name: 'Joe Black',
-  age: 32,
-  role: 'Midfielder',
-}, {
-  key: '4',
-  name: 'Jim Red',
-  age: 32,
-  role: 'Midfielder',
-}];
 
 function onChange(pagination, filters, sorter) {
   console.log('params', pagination, filters, sorter);
 }
 
-class TeamPlayersList extends Component {
+class TeamPlayersList extends Component<any, any> {
   public state = {
     searchText: '',
   };
@@ -84,8 +62,8 @@ class TeamPlayersList extends Component {
       defaultSortOrder: 'descend',
       sorter: (a, b) => a.age - b.age,
     }, {
-      title: 'Role',
-      dataIndex: 'role',
+      title: 'Position',
+      dataIndex: 'position',
       filters: [{
         text: 'Goalkeeper',
         value: 'Goalkeeper',
@@ -98,13 +76,31 @@ class TeamPlayersList extends Component {
       }, {
         text: 'Forward',
         value: 'Forward',
+      }, {
+        text: 'Coach',
+        value: 'Coach',
+      }, {
+        text: 'Technical Personnel',
+        value: 'Technical Personnel',
+      }, {
+        text: 'Point Guard',
+        value: 'Point Guard',
+      }, {
+        text: 'Shooting Guard',
+        value: 'Shooting Guard',
+      }, {
+        text: 'Forward',
+        value: 'Forward',
+      }, {
+        text: 'Center',
+        value: 'Center',
       }],
-      onFilter: (value, record) => record.role.indexOf(value) === 0,
-      sorter: (a, b) => a.role.length - b.role.length,
+      onFilter: (value, record) => record.position.indexOf(value) === 0,
+      sorter: (a, b) => a.position.length - b.position.length,
     }];
     return (
       // @ts-ignore
-      <Table columns={columns} pagination={false} dataSource={data} onChange={onChange}
+      <Table columns={columns} pagination={false} dataSource={this.props.players} onChange={onChange}
              rowClassName={this.renderRowStyle} />
     )
   }

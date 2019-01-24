@@ -1,4 +1,6 @@
 export enum API {
+  AUTHENTICATION = 'authentication/api-token-auth/',
+
   NEWS_DETAILS = 'news/detail/',
 
   LATEST_NEWS = 'news/latest/',
@@ -18,6 +20,10 @@ export enum API {
 
   RELATED_NEWS_SOCCER_TEAM = 'sport/team/soccer/related_news/',
   RELATED_NEWS_BASKETBALL_TEAM = 'sport/team/basketball/related_news/',
+  TEAM_PLAYERS = 'sport/team/players/',
+  TEAM_INFO = 'sport/team/info/',
+  TEAM_PHOTO = 'sport/team/images/',
+  PLAYER_PHOTO = 'sport/player/images',
 
   SOCCER_GAME_EVENTS = 'sport/game/soccer/events/',
   BASKETBALL_GAME_EVENTS = 'sport/game/basketball/events/',
@@ -29,4 +35,10 @@ export const PlayerInfoAPI = (sport: string, id: number) => `sport/player/${spor
 
 export const PlayerNewsAPI = (id: number) => `${API.RELATED_NEWS_PLAYER}${id}/`;
 
+export const PlayerPhotosAPI = (sport: string, id: number) => `${API.PLAYER_PHOTO}${sport}/${id}`;
 
+export const TeamPlayersAPI = (sport: string, id: number) => `${API.TEAM_PLAYERS}${sport}/${id}`;
+
+export const TeamInfoAPI = (sport: string, id: number) => `${API.TEAM_INFO}${sport}/${id}`;
+
+export const TeamPhotosAPI = (sport: string, id: number) => `${API.TEAM_PHOTO}${sport}/${id}`;

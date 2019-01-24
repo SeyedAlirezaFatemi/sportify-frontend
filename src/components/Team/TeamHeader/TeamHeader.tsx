@@ -17,14 +17,13 @@ const styles = theme => ({
 
 function TeamHeader(props) {
   const { classes, theme } = props;
-
   return (
     <Grid container direction="row" justify="center" alignItems="center">
       <Grid item container justify="center" alignItems="center" xs={12} xl={6} sm={12} md={6} lg={6}>
         <Avatar size={250} icon="user" />
       </Grid>
       <Grid item xs={12} xl={6} sm={12} md={6} lg={6}>
-        <TeamInfo />
+        <TeamInfo name={props.name} />
       </Grid>
     </Grid>
   );
