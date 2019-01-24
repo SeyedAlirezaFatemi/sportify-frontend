@@ -1,4 +1,6 @@
 export enum API {
+  AUTHENTICATION = 'authentication/api-token-auth/',
+
   NEWS_DETAILS = 'news/detail/',
 
   LATEST_NEWS = 'news/latest/',
