@@ -15,7 +15,7 @@ const styles = theme => ({
 
 
 // TODO: find icon for 'AT' and 'PY'
-let iconesDictanary = [
+let iconsDictanary = [
   { 'Red Card': <Icon name="meanpath" color="red" /> },
   { 'Yellow Card': <Icon name="meanpath" color="yellow" /> },
   { 'Substitution in': <Icon name="arrow up" color="green" /> },
@@ -50,7 +50,7 @@ class GameTimeLine extends Component<any, any> {
             eventList.push({
               eventType: response.data[i].event_type,
               eventTime: response.data[i].event_time,
-              eventIcon: iconesDictanary[response.data[i].event_type]
+              eventIcon: iconsDictanary[response.data[i].event_type]
             });
           }
           eventList.sort(compare);
@@ -71,6 +71,7 @@ class GameTimeLine extends Component<any, any> {
 
   public render(): React.ReactNode {
     const { classes } = this.props;
+    const { events } = this.states;
     return (
       <Timeline className={classes.root} mode="alternate">
         <Timeline.Item dot={<Icon name="circle notch" loading />}>
