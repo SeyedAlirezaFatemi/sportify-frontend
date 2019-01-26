@@ -53,7 +53,7 @@ class Template extends React.Component<any, any> {
         </Footer>
         <BackTop />
         <Drawer
-          title="Login"
+          title="Authentication"
           placement="bottom"
           closable={true}
           onClose={this.onClose}

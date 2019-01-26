@@ -1,8 +1,23 @@
-import { Button, Form, Icon, Input, } from 'antd';
+import { Button, Form, Icon, Input, Modal } from 'antd';
+import { AxiosResponse } from 'axios';
 import * as React from 'react';
 import axios from '../../api';
 import { API } from '../../utils';
-import { AxiosResponse } from 'axios';
+
+
+function error() {
+  Modal.error({
+    title: 'Wrong credentials',
+    content: "The email and password don't match.",
+  });
+}
+
+function success() {
+  Modal.success({
+    title: 'Success',
+    content: 'You are now logged in.',
+  });
+}
 
 function hasErrors(fieldsError) {
   return Object.keys(fieldsError).some(field => fieldsError[field]);
@@ -16,19 +31,17 @@ class HorizontalLoginForm extends React.Component<any, any> {
 
   public handleSubmit = (e) => {
     e.preventDefault();
-    let token = null;
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
+        axios.post(API.AUTHENTICATION, {
+          username: values.userName,
+          password: values.password,
+        }).then((response: AxiosResponse) => {
+          const { token, email, userId } = response.data;
+          success();
+        }).catch(error)
       }
-      axios.post(API.AUTHENTICATION, {
-        username: values.userName,
-        password: values.password,
-      }).then((response: AxiosResponse) => {
-        token = response.data;
-      }).catch(reason => console.log(reason))
     });
-    // TODO: Set token.
   };
 
   public render() {
