@@ -3,7 +3,7 @@ import { BackTop, Drawer, Icon, Layout, Menu } from 'antd';
 import * as React from 'react';
 import { connect } from 'react-redux'
 import { Link, Route } from 'react-router-dom';
-import { LoginForm } from '../../components';
+import { SignInForm, SignUpForm } from '../../components';
 import './Template.css';
 
 const { Header, Content, Footer } = Layout;
@@ -21,11 +21,11 @@ const styles = theme => ({
 
 class Template extends React.Component<any, any> {
 
-  public state = { visible: false, };
+  public state = { visible: false, which: '' };
 
   public render(): React.ReactNode {
     const { classes, email } = this.props;
-    const { visible } = this.state;
+    const { visible, which } = this.state;
     return (
       <Layout className="layout">
         <Header>
@@ -48,10 +48,10 @@ class Template extends React.Component<any, any> {
               <SubMenu className={classes.auth}
                        title={<span className="submenu-title-wrapper"><Icon
                          type="login" />Authentication</span>}>
-                <Menu.Item key="7" onClick={this.showDrawer}>
+                <Menu.Item key="7" onClick={() => this.showDrawer('IN')}>
                   Sign In
                 </Menu.Item>
-                <Menu.Item key="8" onClick={this.showDrawer}>
+                <Menu.Item key="8" onClick={() => this.showDrawer('UP')}>
                   Sign Up
                 </Menu.Item>
               </SubMenu>}
@@ -73,15 +73,16 @@ class Template extends React.Component<any, any> {
           onClose={this.onClose}
           visible={visible && !email}
         >
-          <LoginForm />
+          {which === 'IN' ? <SignInForm /> : <SignUpForm />}
         </Drawer>
       </Layout>
     )
   }
 
-  private showDrawer = () => {
+  private showDrawer = (which: string) => {
     this.setState({
       visible: true,
+      which,
     });
   };
 

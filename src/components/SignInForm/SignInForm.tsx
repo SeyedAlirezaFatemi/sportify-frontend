@@ -3,7 +3,7 @@ import { AxiosResponse } from 'axios';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { setUserInfo } from '../../actions';
-import axios from '../../api';
+import api from '../../api';
 import { API } from '../../utils';
 
 function error() {
@@ -24,7 +24,7 @@ function hasErrors(fieldsError) {
   return Object.keys(fieldsError).some(field => fieldsError[field]);
 }
 
-class HorizontalLoginForm extends React.Component<any, any> {
+class HorizontalSignInForm extends React.Component<any, any> {
   public componentDidMount() {
     // To disabled submit button at the beginning.
     this.props.form.validateFields();
@@ -35,8 +35,8 @@ class HorizontalLoginForm extends React.Component<any, any> {
     const { form, onLoginSuccess } = this.props;
     form.validateFields((err, values) => {
       if (!err) {
-        axios.post(API.AUTHENTICATION, {
-          username: values.userName,
+        api.post(API.SIGN_IN, {
+          username: values.email,
           password: values.password,
         }).then((response: AxiosResponse) => {
           const { token, email, userId } = response.data;
@@ -53,18 +53,18 @@ class HorizontalLoginForm extends React.Component<any, any> {
     } = this.props.form;
 
     // Only show error after a field is touched.
-    const userNameError = isFieldTouched('userName') && getFieldError('userName');
+    const emailError = isFieldTouched('email') && getFieldError('email');
     const passwordError = isFieldTouched('password') && getFieldError('password');
     return (
-      <Form layout="inline" onSubmit={this.handleSubmit}>
+      <Form layout="vertical" onSubmit={this.handleSubmit}>
         <Form.Item
-          validateStatus={userNameError ? 'error' : ''}
-          help={userNameError || ''}
+          validateStatus={emailError ? 'error' : ''}
+          help={emailError || ''}
         >
-          {getFieldDecorator('userName', {
-            rules: [{ required: true, message: 'Please input your username!' }],
+          {getFieldDecorator('email', {
+            rules: [{ required: true, message: 'Please input your email!' }],
           })(
-            <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
+            <Input prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Email" />
           )}
         </Form.Item>
         <Form.Item
@@ -84,7 +84,7 @@ class HorizontalLoginForm extends React.Component<any, any> {
             htmlType="submit"
             disabled={hasErrors(getFieldsError())}
           >
-            Log in
+            Sign In
           </Button>
         </Form.Item>
       </Form>
@@ -93,7 +93,7 @@ class HorizontalLoginForm extends React.Component<any, any> {
 }
 
 // @ts-ignore
-const LoginForm = Form.create({ name: 'horizontal_login' })(HorizontalLoginForm);
+const SignInForm = Form.create({ name: 'sign_in' })(HorizontalSignInForm);
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -103,4 +103,4 @@ const mapDispatchToProps = dispatch => {
   }
 };
 
-export default connect(null, mapDispatchToProps)(LoginForm);
+export default connect(null, mapDispatchToProps)(SignInForm);

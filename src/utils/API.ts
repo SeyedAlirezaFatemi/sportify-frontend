@@ -1,5 +1,6 @@
 export enum API {
-  AUTHENTICATION = 'authentication/api-token-auth/',
+  SIGN_IN = 'authentication/api-token-auth/',
+  SIGN_UP = 'authentication/sign_up/',
 
   NEWS_DETAILS = 'news/detail/',
 
