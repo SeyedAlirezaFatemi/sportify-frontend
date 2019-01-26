@@ -1,11 +1,14 @@
 import { withStyles } from '@material-ui/core/styles';
-import { BackTop, Drawer, Layout, Menu, } from 'antd';
+import { BackTop, Drawer, Icon, Layout, Menu } from 'antd';
 import * as React from 'react';
+import { connect } from 'react-redux'
 import { Link, Route } from 'react-router-dom';
-import './Template.css';
 import { LoginForm } from '../../components';
+import './Template.css';
 
 const { Header, Content, Footer } = Layout;
+const SubMenu = Menu.SubMenu;
+
 
 const styles = theme => ({
   root: {
@@ -21,7 +24,7 @@ class Template extends React.Component<any, any> {
   public state = { visible: false, };
 
   public render(): React.ReactNode {
-    const { classes } = this.props;
+    const { classes, email } = this.props;
     const { visible } = this.state;
     return (
       <Layout className="layout">
@@ -38,9 +41,20 @@ class Template extends React.Component<any, any> {
             <Menu.Item key="4"><Link to="/player/soccer/1">Player</Link></Menu.Item>
             <Menu.Item key="5"><Link to="/news/1">News</Link></Menu.Item>
             <Menu.Item key="6"><Link to="/game">Game</Link></Menu.Item>
-            <Menu.Item className={classes.auth} key="7" onClick={() => this.showDrawer()}>
-              Sign In
-            </Menu.Item>
+            {email ?
+              <Menu.Item className={classes.auth} key="9">
+                Sign Out
+              </Menu.Item> :
+              <SubMenu className={classes.auth}
+                       title={<span className="submenu-title-wrapper"><Icon
+                         type="login" />Authentication</span>}>
+                <Menu.Item key="7" onClick={this.showDrawer}>
+                  Sign In
+                </Menu.Item>
+                <Menu.Item key="8" onClick={this.showDrawer}>
+                  Sign Up
+                </Menu.Item>
+              </SubMenu>}
           </Menu>
         </Header>
         <Content style={{ padding: '0 50px', margin: '16px 0' }}>
@@ -57,7 +71,7 @@ class Template extends React.Component<any, any> {
           placement="bottom"
           closable={true}
           onClose={this.onClose}
-          visible={visible}
+          visible={visible && !email}
         >
           <LoginForm />
         </Drawer>
@@ -78,5 +92,11 @@ class Template extends React.Component<any, any> {
   };
 }
 
+const mapStateToProps = state => {
+  return {
+    email: state.auth.email,
+  }
+};
+
 // @ts-ignore
-export default withStyles(styles)(Template);
+export default connect(mapStateToProps, null)(withStyles(styles)(Template));

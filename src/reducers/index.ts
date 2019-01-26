@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import AuthActions from '../actions/AuthActions';
+import { AuthActions } from '../actions';
 import AuthReducer from './AuthReducer';
 
 const appReducer = combineReducers({

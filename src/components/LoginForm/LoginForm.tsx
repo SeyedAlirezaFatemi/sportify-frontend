@@ -1,9 +1,10 @@
 import { Button, Form, Icon, Input, Modal } from 'antd';
 import { AxiosResponse } from 'axios';
 import * as React from 'react';
+import { connect } from 'react-redux';
+import { setUserInfo } from '../../actions';
 import axios from '../../api';
 import { API } from '../../utils';
-
 
 function error() {
   Modal.error({
@@ -31,13 +32,15 @@ class HorizontalLoginForm extends React.Component<any, any> {
 
   public handleSubmit = (e) => {
     e.preventDefault();
-    this.props.form.validateFields((err, values) => {
+    const { form, onLoginSuccess } = this.props;
+    form.validateFields((err, values) => {
       if (!err) {
         axios.post(API.AUTHENTICATION, {
           username: values.userName,
           password: values.password,
         }).then((response: AxiosResponse) => {
           const { token, email, userId } = response.data;
+          onLoginSuccess(token, email, userId);
           success();
         }).catch(error)
       }
@@ -92,4 +95,12 @@ class HorizontalLoginForm extends React.Component<any, any> {
 // @ts-ignore
 const LoginForm = Form.create({ name: 'horizontal_login' })(HorizontalLoginForm);
 
-export default LoginForm;
+const mapDispatchToProps = dispatch => {
+  return {
+    onLoginSuccess: (token, email, userId) => {
+      dispatch(setUserInfo(token, email, userId))
+    },
+  }
+};
+
+export default connect(null, mapDispatchToProps)(LoginForm);
