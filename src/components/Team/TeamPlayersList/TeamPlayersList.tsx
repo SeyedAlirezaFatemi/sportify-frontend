@@ -1,9 +1,8 @@
 import { Button, Icon, Input, Table, } from 'antd';
 import * as React from 'react';
 import { Component, createRef } from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Link, Route, withRouter } from 'react-router-dom';
 import './TeamPlayersList.css';
-import {withRouter} from 'react-router-dom';
 
 
 function onChange(pagination, filters, sorter) {
@@ -63,7 +62,7 @@ class TeamPlayersList extends Component<any, any> {
       defaultSortOrder: 'descend',
       sorter: (a, b) => a.age - b.age,
     }, {
-      title: 'Role',
+      title: 'Position',
       dataIndex: 'position',
       filters: [{
         text: 'Goalkeeper',
@@ -96,8 +95,8 @@ class TeamPlayersList extends Component<any, any> {
         text: 'Center',
         value: 'Center',
       }],
-      onFilter: (value, record) => record.role.indexOf(value) === 0,
-      sorter: (a, b) => a.role.length - b.role.length,
+      onFilter: (value, record) => record.position.indexOf(value) === 0,
+      sorter: (a, b) => a.position.length - b.position.length,
     }];
     return (
       // @ts-ignore

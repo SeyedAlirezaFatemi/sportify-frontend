@@ -18,15 +18,13 @@ const styles = theme => ({
 });
 
 
-function ImageGrid(props) {
-  const { classes } = props;
-
+function ImageGrid({ images, classes }) {
   return (
     <div className={classes.root}>
       <GridList cellHeight={250} className={classes.gridList} cols={3}>
-        {props.images.map(tile => (
+        {images.map(tile => (
           <GridListTile key={tile.img} cols={1}>
-            <img src={tile.img} alt='Image' />
+            <img src={tile.img} alt="Image" />
           </GridListTile>
         ))}
       </GridList>
