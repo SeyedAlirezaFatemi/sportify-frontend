@@ -16,14 +16,13 @@ const styles = theme => ({
 const TabPane = Tabs.TabPane;
 
 class TeamPage extends React.Component<any, any> {
-  public state: any = {players: [], info: {name: ''}, images: []};
+  public state: any = {players: [], info: {name: ''}, images: [], games: []};
 
   public componentDidMount(): void {
     const {params} = this.props.match;
     const {sport} = this.props;
     const {id} = params;
     axios.get(`${API.TEAM_PLAYERS}${sport}/${id}`).then(response => {
-      console.log(response.data)
       this.setState({players: response.data})
     });
     axios.get(`${API.TEAM_INFO}${sport}/${id}`).then(response => {
@@ -31,6 +30,9 @@ class TeamPage extends React.Component<any, any> {
     });
     axios.get(`${API.TEAM_PHOTO}${sport}/${id}`).then(response => {
       this.setState({images: response.data})
+    });
+    axios.get(`${API.TEAM_SCHEDULE}${sport}/${id}`).then(response => {
+      this.setState({games: response.data})
     });
   }
 
@@ -42,7 +44,7 @@ class TeamPage extends React.Component<any, any> {
         <Tabs defaultActiveKey="1">
           <TabPane tab="Team Game Schedule" key="1">
             <Grid container justify="center">
-              <GameGrid/>
+              <GameGrid games={this.state.games}/>
             </Grid>
           </TabPane>
           <TabPane tab="Team Players" key="2">

@@ -22,6 +22,7 @@ export enum API {
   TEAM_INFO = 'sport/team/info/',
   TEAM_PHOTO = 'sport/team/images/',
   PLAYER_PHOTO = 'sport/player/images',
+  TEAM_SCHEDULE = 'sport/team/schedule',
 
 }
 
