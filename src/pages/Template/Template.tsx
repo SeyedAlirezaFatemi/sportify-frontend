@@ -3,6 +3,7 @@ import { BackTop, Drawer, Icon, Layout, Menu } from 'antd';
 import * as React from 'react';
 import { connect } from 'react-redux'
 import { Link, Route } from 'react-router-dom';
+import { signOut } from '../../actions';
 import { SignInForm, SignUpForm } from '../../components';
 import './Template.css';
 
@@ -42,7 +43,7 @@ class Template extends React.Component<any, any> {
             <Menu.Item key="5"><Link to="/news/1">News</Link></Menu.Item>
             <Menu.Item key="6"><Link to="/game">Game</Link></Menu.Item>
             {email ?
-              <Menu.Item className={classes.auth} key="9">
+              <Menu.Item className={classes.auth} key="9" onClick={this.onSignOut}>
                 Sign Out
               </Menu.Item> :
               <SubMenu className={classes.auth}
@@ -86,6 +87,10 @@ class Template extends React.Component<any, any> {
     });
   };
 
+  private onSignOut = () => {
+    this.props.signOut()
+  };
+
   private onClose = () => {
     this.setState({
       visible: false,
@@ -99,5 +104,11 @@ const mapStateToProps = state => {
   }
 };
 
+const mapDispatchToProps = dispatch => {
+  return {
+    signOut: () => dispatch(signOut()),
+  }
+};
+
 // @ts-ignore
-export default connect(mapStateToProps, null)(withStyles(styles)(Template));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Template));
