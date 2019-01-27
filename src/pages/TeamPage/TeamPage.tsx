@@ -1,11 +1,11 @@
 import Grid from '@material-ui/core/Grid';
-import {withStyles} from '@material-ui/core/styles';
-import {Tabs} from 'antd';
+import { withStyles } from '@material-ui/core/styles';
+import { Tabs } from 'antd';
 import * as React from 'react';
-import {Template} from '..';
-import {GameGrid, ImageGrid, NewsList, TeamHeader, TeamPlayersList} from '../../components';
+import { Template } from '..';
+import { GameGrid, ImageGrid, NewsList, TeamHeader, TeamPlayersList } from '../../components';
 import axios from "../../api";
-import {API, TeamInfoAPI, TeamPhotosAPI, TeamPlayersAPI} from "../../utils";
+import { API, TeamInfoAPI, TeamPhotosAPI, TeamPlayersAPI } from "../../utils";
 
 const styles = theme => ({
   root: {
@@ -46,7 +46,6 @@ class TeamPage extends React.Component<any, any> {
           <TabPane tab="Team Game Schedule" key="1">
             <Grid container justify="center">
               <GameGrid games={this.state.games}/>
-              <GameGrid />
             </Grid>
           </TabPane>
           <TabPane tab="Team Players" key="2">
