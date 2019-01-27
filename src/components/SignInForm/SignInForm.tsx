@@ -86,6 +86,7 @@ class HorizontalSignInForm extends React.Component<any, any> {
           >
             Sign In
           </Button>
+          <a style={{float: 'right'}} href="http://localhost:8000/accounts/password_reset/">Forgot password</a>
         </Form.Item>
       </Form>
     );
