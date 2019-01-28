@@ -15,7 +15,7 @@ const styles = theme => ({
 
 
 // TODO: find icon for 'AT' and 'PY'
-let iconsDictanary = [
+let iconsDictionary = [
   { 'Red Card': <Icon name="meanpath" color="red" /> },
   { 'Yellow Card': <Icon name="meanpath" color="yellow" /> },
   { 'Substitution in': <Icon name="arrow up" color="green" /> },
@@ -50,7 +50,7 @@ class GameTimeLine extends Component<any, any> {
             eventList.push({
               eventType: response.data[i].event_type,
               eventTime: response.data[i].event_time,
-              eventIcon: iconsDictanary[response.data[i].event_type]
+              eventIcon: iconsDictionary[response.data[i].event_type]
             });
           }
           eventList.sort(compare);
