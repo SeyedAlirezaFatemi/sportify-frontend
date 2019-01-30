@@ -3,7 +3,6 @@ import * as React from 'react';
 import { Component } from 'react';
 import './PlayerStatistics.css';
 
-
 // TODO using icon instead of string for player card
 
 const columns = [{
@@ -55,8 +54,9 @@ const data = [{
   cards: 'red',
 },];
 
-class PlayerStatistics extends Component {
+class PlayerStatistics extends Component<any, any> {
   public render(): React.ReactNode {
+    const { sport, url } = this.props;
     return (
       <Table dataSource={data} columns={columns}
              rowClassName={(record, index) => (index % 2 ? 'even' : 'odd')} />
