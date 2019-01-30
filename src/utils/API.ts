@@ -1,3 +1,5 @@
+import { Sports } from './Sports';
+
 export enum API {
   SIGN_IN = 'authentication/api-token-auth/',
   SIGN_UP = 'authentication/sign_up/',
@@ -9,8 +11,10 @@ export enum API {
   LATEST_NEWS_BASKETBALL = 'news/latest/basketball/',
   LATEST_NEWS_SOCCER = 'news/latest/soccer/',
 
-  RELATED_NEWS_SOCCER_GAME = 'game/soccer/related_news/',
-  RELATED_NEWS_BASKETBALL_GAME = 'game/basketball/related_news/',
+  RELATED_NEWS_SOCCER_GAME = 'sport/game/soccer/related_news/',
+  RELATED_NEWS_BASKETBALL_GAME = 'sport/game/basketball/related_news/',
+
+
   ALL_LEAGUES = 'sport/leagues/',
   LEAGUE_TABLE_INFO = 'sport/league/stats/',
 
@@ -40,3 +44,9 @@ export const TeamPlayersAPI = (sport: string, id: number) => `${API.TEAM_PLAYERS
 export const TeamInfoAPI = (sport: string, id: number) => `${API.TEAM_INFO}${sport}/${id}`;
 
 export const TeamPhotosAPI = (sport: string, id: number) => `${API.TEAM_PHOTO}${sport}/${id}`;
+
+export const YesterdayGames = (sport: Sports) => `sport/game/${sport}/yesterday/`;
+
+export const TodayGames = (sport: Sports) => `sport/game/${sport}/today/`;
+
+export const TomorrowGames = (sport: Sports) => `sport/game/${sport}/tomorrow/`;

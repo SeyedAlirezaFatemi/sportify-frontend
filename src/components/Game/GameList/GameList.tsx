@@ -4,10 +4,13 @@ import ListItem from '@material-ui/core/ListItem';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import { withStyles } from '@material-ui/core/styles';
 import { Tabs } from 'antd';
+import { AxiosResponse } from 'axios';
 import classnames from 'classnames';
 import * as _ from 'lodash';
 import * as React from 'react';
 import { Link, Route } from 'react-router-dom';
+import api from '../../../api';
+import { TodayGames, TomorrowGames, YesterdayGames } from '../../../utils';
 
 const TabPane = Tabs.TabPane;
 
@@ -32,24 +35,28 @@ const styles = theme => ({
 
 class GameList extends React.Component<any, any> {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      mode: 'soccer',
-    };
+  public state = {
+    today: [],
+    yesterday: [],
+    tomorrow: [],
+  };
+
+  public componentDidMount(): void {
+    const { sport } = this.props;
+    api.get(TodayGames(sport)).then((response: AxiosResponse) => {
+      this.setState({ today: response.data });
+    });
+    api.get(YesterdayGames(sport)).then((response: AxiosResponse) => {
+      this.setState({ yesterday: response.data });
+    });
+    api.get(TomorrowGames(sport)).then((response: AxiosResponse) => {
+      this.setState({ tomorrow: response.data });
+    });
   }
 
-
   public render(): React.ReactNode {
-    const { mode } = this.state;
     return (
       <div style={{ padding: '8px' }}>
-        {/*<Grid item justify="center" container>*/}
-          {/*<Radio.Group onChange={this.handleModeChange} value={mode} style={{ marginBottom: 8 }}>*/}
-            {/*<Radio.Button value="soccer">Soccer</Radio.Button>*/}
-            {/*<Radio.Button value="basketball">Basketball</Radio.Button>*/}
-          {/*</Radio.Group>*/}
-        {/*</Grid>*/}
         <Tabs
           defaultActiveKey="1"
           tabPosition="left"
@@ -64,11 +71,6 @@ class GameList extends React.Component<any, any> {
       </div>
     );
   }
-
-  private handleModeChange = (e) => {
-    const mode = e.target.value;
-    this.setState({ mode });
-  };
 
   private renderResults() {
     const { classes } = this.props;
