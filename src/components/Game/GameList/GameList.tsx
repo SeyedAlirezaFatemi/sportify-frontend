@@ -105,7 +105,10 @@ class GameList extends React.Component<any, any> {
 
   private renderGame(game) {
     const { sport, history } = this.props;
-    const { home_score, away_score, home, away } = game;
+    let { home_score, away_score } = game;
+    const { home, away } = game;
+    home_score = home_score >= 0 ? home_score : '?';
+    away_score = away_score >= 0 ? away_score : '?';
     const homeId = home.id;
     const homeName = home.team.name;
     const awayId = away.id;
