@@ -28,8 +28,8 @@ export enum API {
   TEAM_PLAYERS = 'sport/team/players/',
   TEAM_INFO = 'sport/team/info/',
   TEAM_PHOTO = 'sport/team/images/',
-  PLAYER_PHOTO = 'sport/player/images',
-  TEAM_SCHEDULE = 'sport/team/schedule',
+  PLAYER_PHOTO = 'sport/player/images/',
+  TEAM_SCHEDULE = 'sport/team/schedule/',
 
 }
 
@@ -45,8 +45,11 @@ export const TeamInfoAPI = (sport: string, id: number) => `${API.TEAM_INFO}${spo
 
 export const TeamPhotosAPI = (sport: string, id: number) => `${API.TEAM_PHOTO}${sport}/${id}`;
 
-export const YesterdayGames = (sport: Sports) => `sport/game/${sport}/yesterday/`;
+export const YesterdayGamesAPI = (sport: Sports) => `sport/game/${sport}/yesterday/`;
 
-export const TodayGames = (sport: Sports) => `sport/game/${sport}/today/`;
+export const TodayGamesAPI = (sport: Sports) => `sport/game/${sport}/today/`;
 
-export const TomorrowGames = (sport: Sports) => `sport/game/${sport}/tomorrow/`;
+export const TomorrowGamesAPI = (sport: Sports) => `sport/game/${sport}/tomorrow/`;
+
+export const TeamScheduleAPI = (sport: string, id: number) => `${API.TEAM_SCHEDULE}${sport}/${id}`;
+

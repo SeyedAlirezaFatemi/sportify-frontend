@@ -6,11 +6,10 @@ import { withStyles } from '@material-ui/core/styles';
 import { Tabs } from 'antd';
 import { AxiosResponse } from 'axios';
 import classnames from 'classnames';
-import * as _ from 'lodash';
 import * as React from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Link, Route, withRouter } from 'react-router-dom';
 import api from '../../../api';
-import { TodayGames, TomorrowGames, YesterdayGames } from '../../../utils';
+import { TodayGamesAPI, TomorrowGamesAPI, YesterdayGamesAPI } from '../../../utils';
 
 const TabPane = Tabs.TabPane;
 
@@ -43,13 +42,13 @@ class GameList extends React.Component<any, any> {
 
   public componentDidMount(): void {
     const { sport } = this.props;
-    api.get(TodayGames(sport)).then((response: AxiosResponse) => {
+    api.get(TodayGamesAPI(sport)).then((response: AxiosResponse) => {
       this.setState({ today: response.data });
     });
-    api.get(YesterdayGames(sport)).then((response: AxiosResponse) => {
+    api.get(YesterdayGamesAPI(sport)).then((response: AxiosResponse) => {
       this.setState({ yesterday: response.data });
     });
-    api.get(TomorrowGames(sport)).then((response: AxiosResponse) => {
+    api.get(TomorrowGamesAPI(sport)).then((response: AxiosResponse) => {
       this.setState({ tomorrow: response.data });
     });
   }
@@ -74,44 +73,61 @@ class GameList extends React.Component<any, any> {
 
   private renderResults() {
     const { classes } = this.props;
-    const results: JSX.Element[] = [];
-    _.times(5, () => results.push(this.renderGame()));
     return (
       <React.Fragment>
-        <List
-          subheader={<ListSubheader
-            component="div"
-            className={classnames(classes.subheader, classes.today)}
-          >Today</ListSubheader>}
-        >
-          {results}
-        </List>
         <List
           subheader={<ListSubheader
             component="div"
             className={classnames(classes.subheader, classes.yesterday)}
           >Yesterday</ListSubheader>}
         >
-          {results}
+          {this.state.yesterday.map(game => this.renderGame(game))}
+        </List>
+        <List
+          subheader={<ListSubheader
+            component="div"
+            className={classnames(classes.subheader, classes.today)}
+          >Today</ListSubheader>}
+        >
+          {this.state.today.map(game => this.renderGame(game))}
+        </List>
+        <List
+          subheader={<ListSubheader
+            component="div"
+            className={classnames(classes.subheader, classes.yesterday)}
+          >Tomorrow</ListSubheader>}
+        >
+          {this.state.tomorrow.map(game => this.renderGame(game))}
         </List>
       </React.Fragment>
     )
   }
 
-  private renderGame() {
+  private renderGame(game) {
+    const { sport, history } = this.props;
+    const { home_score, away_score, home, away } = game;
+    const homeId = home.id;
+    const homeName = home.team.name;
+    const awayId = away.id;
+    const awayName = away.team.name;
     return (
       <React.Fragment>
         <Divider />
         <ListItem style={{ justifyContent: 'center' }} dense button>
-          <tr style={{}}>
+          <tr>
             <td style={{ textAlign: 'left' }}>
-              <Link to="/team/1">دورتموند</Link>
+              <Link to={`/team/${sport}/${homeId}`}>
+                {homeName}
+              </Link>
             </td>
-            <td style={{ textAlign: 'center', whiteSpace: 'nowrap', padding: '0 6px' }}>
-              0 - 1
+            <td style={{ textAlign: 'center', whiteSpace: 'nowrap', padding: '0 6px' }}
+                onClick={() => history.push(`/game/${game.id}`)}>
+              {home_score} - {away_score}
             </td>
             <td style={{ textAlign: 'right' }}>
-              <Link to="/team/1">دورتموند</Link>
+              <Link to={`/team/${sport}/${awayId}`}>
+                {awayName}
+              </Link>
             </td>
           </tr>
         </ListItem>
@@ -121,4 +137,4 @@ class GameList extends React.Component<any, any> {
 }
 
 // @ts-ignore
-export default withStyles(styles)(GameList);
+export default withRouter(withStyles(styles)(GameList));
