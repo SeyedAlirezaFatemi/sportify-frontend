@@ -1,28 +1,31 @@
 import * as React from 'react';
 import { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import api from '../../api';
 import { LeagueTable } from '../../components';
+import { API } from '../../utils';
 import Template from '../Template/Template';
-import axios from "../../api";
-import {API} from "../../utils";
-import {withRouter} from 'react-router-dom';
 
 
 class LeaguePage extends Component<any, any> {
   public state: any = { data: [] };
 
-  public componentDidMount() :void {
-    const { params } = this.props.match;
+  public componentDidMount(): void {
+    const { match, sport } = this.props;
+    const { params } = match;
     const { id } = params;
-    axios.get(`${API.LEAGUE_TABLE_INFO}${this.props.sport}/${id}`).then(response => {
+    api.get(`${API.LEAGUE_TABLE_INFO}${sport}/${id}`).then(response => {
+      console.log(response.data);
       this.setState({ data: response.data })
     });
   }
 
   public render(): React.ReactNode {
-
+    const { sport } = this.props;
+    const { data } = this.state;
     return (
       <Template>
-        <LeagueTable tableData ={this.state.data} sport={this.props.sport} />
+        <LeagueTable tableData={data} sport={sport} />
       </Template>
     )
   }
