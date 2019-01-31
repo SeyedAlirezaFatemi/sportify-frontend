@@ -25,13 +25,11 @@ const soccerColumns = [{
 }, {
   title: 'Yellows',
   dataIndex: 'yellows',
-},
-];
+},];
 
 const basketballColumns = [{
   title: 'Start',
   dataIndex: 'beginning',
-  // render: (text: string) => text.slice(0, 4),
 }, {
   title: 'End',
   dataIndex: 'end',
@@ -50,12 +48,10 @@ const basketballColumns = [{
 }, {
   title: 'Fouls',
   dataIndex: 'fouls',
-},
-];
+},];
 
 
 class PlayerStatistics extends Component<any, any> {
-
   public state = { data: [] };
 
   public componentDidMount(): void {
