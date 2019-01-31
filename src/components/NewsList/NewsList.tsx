@@ -62,7 +62,7 @@ class NewsList extends React.Component<any, any> {
             actions={[<IconText type="message" text={item.comments.length} />
               , <Button htmlType="button" onClick={() => history.push(`/news/${item.id}`)}>More</Button>]}
             extra={<img width={272} alt="logo"
-                        src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" />}
+                        src={item.image_address} />}
           >
             <List.Item.Meta
               avatar={<Avatar src={item.avatar} />}
