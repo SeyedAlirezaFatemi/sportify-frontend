@@ -28,7 +28,7 @@ class App extends React.Component {
                    render={(props) => <PlayerPage {...props} sport={Sports.BASKETBALL} />} />
             <Route path="/news/:id" component={NewsPage} />
             <Route path="/game/:id" component={GamePage} />
-            {/*<Route path="/confirm_account/:id/:code" component={ConfirmPage}/>*/}
+            <Route path="/confirm_account/:id/:code" component={ConfirmPage}/>
             <Route component={NotFoundPage} />
           </Switch>
         </Router>
