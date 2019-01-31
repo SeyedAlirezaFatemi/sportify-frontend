@@ -26,17 +26,19 @@ export enum API {
   TEAM_PLAYERS = 'sport/team/players/',
   TEAM_INFO = 'sport/team/info/',
   TEAM_PHOTO = 'sport/team/images/',
+
+  PLAYER_INFO = 'sport/player/info/',
   PLAYER_PHOTOS = 'sport/player/images/',
   PLAYER_STATISTICS = 'sport/player/statistics/',
   TEAM_SCHEDULE = 'sport/team/schedule/',
 
 }
 
-export const PlayerInfoAPI = (sport: string, id: number) => `sport/player/${sport}/info/${id}/`;
+export const PlayerInfoAPI = (sport: string, id: number) => `${API.PLAYER_INFO}${sport}/${id}/`;
 
 export const PlayerNewsAPI = (id: number) => `${API.RELATED_NEWS_PLAYER}${id}/`;
 
-export const PlayerStatisticsAPI = (sport:string,id: number) => `${API.PLAYER_STATISTICS}${sport}/${id}/`;
+export const PlayerStatisticsAPI = (sport: string, id: number) => `${API.PLAYER_STATISTICS}${sport}/${id}/`;
 
 export const PlayerPhotosAPI = (sport: string, id: number) => `${API.PLAYER_PHOTOS}${sport}/${id}/`;
 
