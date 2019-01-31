@@ -59,7 +59,7 @@ class NewsList extends React.Component<any, any> {
         renderItem={item => (
           <List.Item
             key={item.id}
-            actions={[<IconText type="message" text="2" />
+            actions={[<IconText type="message" text={item.comments.length} />
               , <Button htmlType="button" onClick={() => history.push(`/news/${item.id}`)}>More</Button>]}
             extra={<img width={272} alt="logo"
                         src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" />}
