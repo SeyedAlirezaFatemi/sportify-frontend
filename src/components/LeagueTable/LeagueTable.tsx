@@ -1,10 +1,9 @@
+import { Table } from 'antd';
 import * as React from 'react';
 import { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import { Sports } from '../../utils';
 import './LeagueTable.css';
-
-
-import { Table } from 'antd';
 
 const title = 'Premier League';
 
@@ -15,8 +14,8 @@ const basketballColumns = [{
 }, {
   title: 'Team',
   dataIndex: 'team',
-  render: text => <Link to={'/team/1'}>{text}</Link>,
-  sorter: (a, b) => a.team.length - b.team.length,
+  render: team => <Link to={`/team/basketball/${team.id}`}>{team.name}</Link>,
+  sorter: (a, b) => a.team.name.length - b.team.name.length,
 }, {
   title: 'Games',
   dataIndex: 'games',
@@ -40,8 +39,8 @@ const soccerColumns = [{
 }, {
   title: 'Team',
   dataIndex: 'team',
-  render: text => <Link to={'/team/1'}>{text}</Link>,
-  sorter: (a, b) => a.team.length - b.team.length,
+  render: team => <Link to={`/team/soccer/${team.id}`}>{team.name}</Link>,
+  sorter: (a, b) => a.team.name.length - b.team.name.length,
 }, {
   title: 'Games',
   dataIndex: 'games',
@@ -55,8 +54,8 @@ const soccerColumns = [{
   title: 'Lose',
   dataIndex: 'lose',
 }, {
-  title: 'Goals Difference',
-  dataIndex: 'goals_difference',
+  title: 'Goal Difference',
+  dataIndex: 'goal_difference',
 }, {
   title: 'Score ',
   dataIndex: 'score',
@@ -67,9 +66,10 @@ const soccerColumns = [{
 class LeagueTable extends Component<any, any> {
 
   public render(): React.ReactNode {
+    const { tableData, sport } = this.props;
     return (
-      <Table dataSource={this.props.tableData}
-             columns={this.props.sport === 'soccer' ? soccerColumns : basketballColumns}
+      <Table dataSource={tableData}
+             columns={sport === Sports.SOCCER ? soccerColumns : basketballColumns}
              title={this.renderHeader}
              rowClassName={(record, index) => (index % 2 ? 'even' : 'odd')}
              pagination={false} />

@@ -1,11 +1,15 @@
 import { withStyles } from '@material-ui/core/styles';
-import { BackTop, Drawer, Layout, Menu, } from 'antd';
+import { BackTop, Drawer, Icon, Layout, Menu } from 'antd';
 import * as React from 'react';
+import { connect } from 'react-redux'
 import { Link, Route } from 'react-router-dom';
+import { signOut } from '../../actions';
+import { SignInForm, SignUpForm } from '../../components';
 import './Template.css';
-import { LoginForm } from '../../components';
 
 const { Header, Content, Footer } = Layout;
+const SubMenu = Menu.SubMenu;
+
 
 const styles = theme => ({
   root: {
@@ -18,11 +22,11 @@ const styles = theme => ({
 
 class Template extends React.Component<any, any> {
 
-  public state = { visible: false, };
+  public state = { visible: false, which: '' };
 
   public render(): React.ReactNode {
-    const { classes } = this.props;
-    const { visible } = this.state;
+    const { classes, email } = this.props;
+    const { visible, which } = this.state;
     return (
       <Layout className="layout">
         <Header>
@@ -38,9 +42,20 @@ class Template extends React.Component<any, any> {
             <Menu.Item key="4"><Link to="/player/soccer/1">Player</Link></Menu.Item>
             <Menu.Item key="5"><Link to="/news/1">News</Link></Menu.Item>
             <Menu.Item key="6"><Link to="/game">Game</Link></Menu.Item>
-            <Menu.Item className={classes.auth} key="7" onClick={() => this.showDrawer()}>
-              Sign In
-            </Menu.Item>
+            {email ?
+              <Menu.Item className={classes.auth} key="9" onClick={this.onSignOut}>
+                Sign Out
+              </Menu.Item> :
+              <SubMenu className={classes.auth}
+                       title={<span className="submenu-title-wrapper"><Icon
+                         type="login" />Authentication</span>}>
+                <Menu.Item key="7" onClick={() => this.showDrawer('IN')}>
+                  Sign In
+                </Menu.Item>
+                <Menu.Item key="8" onClick={() => this.showDrawer('UP')}>
+                  Sign Up
+                </Menu.Item>
+              </SubMenu>}
           </Menu>
         </Header>
         <Content style={{ padding: '0 50px', margin: '16px 0' }}>
@@ -53,22 +68,27 @@ class Template extends React.Component<any, any> {
         </Footer>
         <BackTop />
         <Drawer
-          title="Login"
+          title="Authentication"
           placement="bottom"
           closable={true}
           onClose={this.onClose}
-          visible={visible}
+          visible={visible && !email}
         >
-          <LoginForm />
+          {which === 'IN' ? <SignInForm /> : <SignUpForm />}
         </Drawer>
       </Layout>
     )
   }
 
-  private showDrawer = () => {
+  private showDrawer = (which: string) => {
     this.setState({
       visible: true,
+      which,
     });
+  };
+
+  private onSignOut = () => {
+    this.props.signOut()
   };
 
   private onClose = () => {
@@ -78,5 +98,17 @@ class Template extends React.Component<any, any> {
   };
 }
 
+const mapStateToProps = state => {
+  return {
+    email: state.auth.email,
+  }
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    signOut: () => dispatch(signOut()),
+  }
+};
+
 // @ts-ignore
-export default withStyles(styles)(Template);
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Template));

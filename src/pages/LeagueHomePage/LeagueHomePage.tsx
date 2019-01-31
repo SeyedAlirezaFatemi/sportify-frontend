@@ -4,9 +4,9 @@ import * as React from 'react';
 import { Component } from 'react';
 import { Link, Route } from 'react-router-dom';
 import { Template } from '../';
+import api from '../../api';
+import { API } from '../../utils';
 import './LeaugeHomePage.css';
-import axios from '../../api';
-import {API} from "../../utils";
 
 
 const Search = Input.Search;
@@ -17,7 +17,7 @@ const columns = [{
   title: 'League',
   dataIndex: 'name',
   key: 'league',
-  render: (text, id) => (<Link to={`league/${id}`}>{text}</Link>),
+  render: (text, item) => (<Link to={`league/${item.sport}/${item.id}`}>{text}</Link>),
 }, {
   title: 'Year',
   dataIndex: 'beginning_year',
@@ -30,11 +30,12 @@ const columns = [{
 ];
 
 class LeagueHomePage extends Component {
-  public state: any = { leagues: [] };
+  public state: any = { allLeagues: [], leagues: [] };
 
   public componentDidMount(): void {
-    axios.get(`${API.ALL_LEAGUES}`).then(response => {
-      this.setState({ leagues: response.data });
+    api.get(`${API.ALL_LEAGUES}`).then(response => {
+      const allLeagues = response.data;
+      this.setState({ allLeagues, leagues: allLeagues });
     });
   }
 
@@ -55,7 +56,7 @@ class LeagueHomePage extends Component {
               defaultActiveKey="1"
             >
               <TabPane tab="Soccer" key="1">
-                <Table columns={columns} dataSource={this.leagueFilter(true, 'Football')} pagination={false} />
+                <Table columns={columns} dataSource={this.leagueFilter(true, 'Soccer')} pagination={false} />
               </TabPane>
               <TabPane tab="Basketball" key="2">
                 <Table columns={columns} dataSource={this.leagueFilter(true, 'Basketball')} pagination={false} />
@@ -68,7 +69,7 @@ class LeagueHomePage extends Component {
               defaultActiveKey="1"
             >
               <TabPane tab="Soccer" key="1">
-                <Table columns={columns} dataSource={this.leagueFilter(false, 'Football')} pagination={false} />
+                <Table columns={columns} dataSource={this.leagueFilter(false, 'Soccer')} pagination={false} />
               </TabPane>
               <TabPane tab="Basketball" key="2">
                 <Table columns={columns} dataSource={this.leagueFilter(false, 'Basketball')} pagination={false} />
@@ -80,16 +81,16 @@ class LeagueHomePage extends Component {
     )
   }
 
-  private leagueFilter = (status, sport) => {
+  private leagueFilter = (current: boolean, sport: string) => {
     return this.state.leagues.filter((league) => {
-      return league.sport === sport && league.status === status;
+      return league.sport === sport && league.status === current;
     });
   };
 
   private handleSearch = (searchText: string) => {
-    return this.state.leagues.filter((league) => {
-      return league.name.includes(searchText)
-    });
+    this.setState((prevState: any) => (
+      { leagues: prevState.allLeagues.filter(league => league.name.toLowerCase().includes(searchText.toLowerCase())) }
+    ))
   }
 }
 
