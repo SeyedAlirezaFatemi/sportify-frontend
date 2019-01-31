@@ -27,11 +27,11 @@ class GameGrid extends React.Component<any, any> {
     const { games } = this.props;
     return games.map(game => {
       return <Card
-        title={game.date}
+        title={game.play_date}
         // extra={<a href="#">More</a>}
         style={{ width: 100, margin: 20 }}
       >
-        <p>{game.home.team.name}</p>
+        <p style={{backgroundColor: 'red'}}>{game.home.team.name}</p>
         <p>Vs.</p>
         <p>{game.away.team.name}</p>
       </Card>

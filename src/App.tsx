@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import { createStore } from 'redux';
 import './App.css';
-import { GamePage, HomePage, LeagueHomePage, LeaguePage, NewsPage, NotFoundPage, PlayerPage, TeamPage } from './pages';
+import { GamePage, HomePage, LeagueHomePage, LeaguePage, NewsPage, NotFoundPage, PlayerPage, TeamPage, ConfirmPage } from './pages';
 import rootReducer from './reducers';
 import { Sports } from './utils';
 
@@ -28,6 +28,7 @@ class App extends React.Component {
                    render={(props) => <PlayerPage {...props} sport={Sports.BASKETBALL} />} />
             <Route path="/news/:id" component={NewsPage} />
             <Route path="/game/:id" component={GamePage} />
+            {/*<Route path="/confirm_account/:id/:code" component={ConfirmPage}/>*/}
             <Route component={NotFoundPage} />
           </Switch>
         </Router>

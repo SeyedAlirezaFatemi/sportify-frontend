@@ -5,6 +5,7 @@ import LeaguePage from './LeaguePage/LeaguePage';
 import NewsPage from './NewsPage/NewsPage';
 import NotFoundPage from './NotFoundPage/NotFoundPage';
 import PlayerPage from './PlayerPage/PlayerPage';
+import ConfirmPage from './ConfirmAccount/ConfirmAccount';
 import TeamPage from './TeamPage/TeamPage';
 import Template from './Template/Template';
 
@@ -17,5 +18,6 @@ export {
   LeagueHomePage,
   PlayerPage,
   GamePage,
+  ConfirmPage,
   NotFoundPage,
 }

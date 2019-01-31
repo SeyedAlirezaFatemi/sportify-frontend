@@ -32,6 +32,8 @@ export enum API {
   PLAYER_STATISTICS = 'sport/player/statistics/',
   TEAM_SCHEDULE = 'sport/team/schedule/',
 
+  CONFIRM_ACCOUNT = 'authentication/confirm_account/',
+
 }
 
 export const PlayerInfoAPI = (sport: string, id: number) => `${API.PLAYER_INFO}${sport}/${id}/`;
@@ -55,4 +57,6 @@ export const TodayGamesAPI = (sport: Sports) => `sport/game/${sport}/today/`;
 export const TomorrowGamesAPI = (sport: Sports) => `sport/game/${sport}/tomorrow/`;
 
 export const TeamScheduleAPI = (sport: string, id: number) => `${API.TEAM_SCHEDULE}${sport}/${id}/`;
+
+export const ConfirmedAccount = (id: number, code:string) => `${API.CONFIRM_ACCOUNT}${id}/${code}/`;
 
