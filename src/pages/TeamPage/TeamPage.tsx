@@ -8,20 +8,24 @@ import { GameGrid, ImageGrid, NewsList, TeamHeader, TeamPlayersList } from '../.
 import { PlayerNewsAPI, TeamInfoAPI, TeamPhotosAPI, TeamPlayersAPI, TeamScheduleAPI } from '../../utils';
 
 const gamess = [
-  {date: 1,
-  home:{
-    team: 'barca'
-  },
-  away:{
-    team: 'real'
-  }},
-  {date: 2,
-    home:{
-      team: 'barcak'
+  {
+    date: 1,
+    home: {
+      team: 'barca',
     },
-    away:{
-      team: 'realk'
-    }},
+    away: {
+      team: 'real',
+    },
+  },
+  {
+    date: 2,
+    home: {
+      team: 'barcak',
+    },
+    away: {
+      team: 'realk',
+    },
+  },
 ];
 
 const styles = theme => ({

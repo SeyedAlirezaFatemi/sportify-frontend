@@ -1,8 +1,6 @@
 import { withStyles } from '@material-ui/core/styles';
 import { Card } from 'antd';
 import * as React from 'react';
-import { Colors } from '../../../utils';
-import Divider from "@material-ui/core/es/Divider/Divider";
 
 const styles = theme => ({
   root: {
@@ -27,18 +25,17 @@ const styles = theme => ({
 class GameGrid extends React.Component<any, any> {
   public render(): React.ReactNode {
     const { games } = this.props;
-    return games ?
-      (games.map(game => {
-        return <Card
-          title={game.date}
-          // extra={<a href="#">More</a>}
-          style={{ width: 100, margin: 20 }}
-        >
-          <p>{game.home.team}</p>
-          <p>Vs.</p>
-          <p>{game.away.team}</p>
-        </Card>
-      })) : null
+    return games.map(game => {
+      return <Card
+        title={game.date}
+        // extra={<a href="#">More</a>}
+        style={{ width: 100, margin: 20 }}
+      >
+        <p>{game.home.team.name}</p>
+        <p>Vs.</p>
+        <p>{game.away.team.name}</p>
+      </Card>
+    })
   }
 }
 
