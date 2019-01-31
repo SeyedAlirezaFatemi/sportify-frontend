@@ -9,7 +9,6 @@ import './PlayerStatistics.css';
 const soccerColumns = [{
   title: 'Start',
   dataIndex: 'beginning',
-  // render: (text: string) => text.slice(0, 4),
 }, {
   title: 'End',
   dataIndex: 'end',
