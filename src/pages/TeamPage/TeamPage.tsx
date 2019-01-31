@@ -7,6 +7,23 @@ import {GameGrid, ImageGrid, NewsList, TeamHeader, TeamPlayersList} from '../../
 import axios from "../../api";
 import {API, TeamInfoAPI, TeamPhotosAPI, TeamPlayersAPI} from "../../utils";
 
+const gamess = [
+  {date: 1,
+  home:{
+    team: 'barca'
+  },
+  away:{
+    team: 'real'
+  }},
+  {date: 2,
+    home:{
+      team: 'barcak'
+    },
+    away:{
+      team: 'realk'
+    }},
+];
+
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -38,15 +55,14 @@ class TeamPage extends React.Component<any, any> {
 
   public render(): React.ReactNode {
     const { classes } = this.props;
-    const { info, players, images } = this.state;
+    const { info, players, images, games } = this.state;
     return (
       <Template>
         <TeamHeader name={info.name} />
         <Tabs defaultActiveKey="1">
           <TabPane tab="Team Game Schedule" key="1">
             <Grid container justify="center">
-              <GameGrid games={this.state.games}/>
-              <GameGrid />
+              <GameGrid games={games}/>
             </Grid>
           </TabPane>
           <TabPane tab="Team Players" key="2">

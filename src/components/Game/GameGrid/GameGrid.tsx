@@ -4,6 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import { Card } from 'antd';
 import * as React from 'react';
 import { Colors } from '../../../utils';
+import Divider from "@material-ui/core/es/Divider/Divider";
 
 const styles = theme => ({
   root: {
@@ -63,11 +64,11 @@ class GameGrid extends React.Component<any, any> {
         return <Card
           title={game.date}
           // extra={<a href="#">More</a>}
-          style={{ width: 300 }}
+          style={{ width: 100, margin: 20 }}
         >
-          <p>Card content</p>
-          <p>Card content</p>
-          <p>Card content</p>
+          <p>{game.home.team}</p>
+          <p>VS.</p>
+          <p>{game.away.team}</p>
         </Card>
       })
     );
