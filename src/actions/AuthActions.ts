@@ -8,3 +8,7 @@ export const setUserInfo = (token, email, userId) => ({
   token, email, userId,
 });
 
+export const signOut = () => ({
+  type: AuthActions.SIGN_OUT,
+});
+

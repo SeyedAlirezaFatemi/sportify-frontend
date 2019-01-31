@@ -4,10 +4,12 @@ import ListItem from '@material-ui/core/ListItem';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import { withStyles } from '@material-ui/core/styles';
 import { Tabs } from 'antd';
+import { AxiosResponse } from 'axios';
 import classnames from 'classnames';
-import * as _ from 'lodash';
 import * as React from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Link, Route, withRouter } from 'react-router-dom';
+import api from '../../../api';
+import { TodayGamesAPI, TomorrowGamesAPI, YesterdayGamesAPI } from '../../../utils';
 
 const TabPane = Tabs.TabPane;
 
@@ -32,24 +34,28 @@ const styles = theme => ({
 
 class GameList extends React.Component<any, any> {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      mode: 'soccer',
-    };
+  public state = {
+    today: [],
+    yesterday: [],
+    tomorrow: [],
+  };
+
+  public componentDidMount(): void {
+    const { sport } = this.props;
+    api.get(TodayGamesAPI(sport)).then((response: AxiosResponse) => {
+      this.setState({ today: response.data });
+    });
+    api.get(YesterdayGamesAPI(sport)).then((response: AxiosResponse) => {
+      this.setState({ yesterday: response.data });
+    });
+    api.get(TomorrowGamesAPI(sport)).then((response: AxiosResponse) => {
+      this.setState({ tomorrow: response.data });
+    });
   }
 
-
   public render(): React.ReactNode {
-    const { mode } = this.state;
     return (
       <div style={{ padding: '8px' }}>
-        {/*<Grid item justify="center" container>*/}
-          {/*<Radio.Group onChange={this.handleModeChange} value={mode} style={{ marginBottom: 8 }}>*/}
-            {/*<Radio.Button value="soccer">Soccer</Radio.Button>*/}
-            {/*<Radio.Button value="basketball">Basketball</Radio.Button>*/}
-          {/*</Radio.Group>*/}
-        {/*</Grid>*/}
         <Tabs
           defaultActiveKey="1"
           tabPosition="left"
@@ -65,51 +71,66 @@ class GameList extends React.Component<any, any> {
     );
   }
 
-  private handleModeChange = (e) => {
-    const mode = e.target.value;
-    this.setState({ mode });
-  };
-
   private renderResults() {
     const { classes } = this.props;
-    const results: JSX.Element[] = [];
-    _.times(5, () => results.push(this.renderGame()));
     return (
       <React.Fragment>
-        <List
-          subheader={<ListSubheader
-            component="div"
-            className={classnames(classes.subheader, classes.today)}
-          >Today</ListSubheader>}
-        >
-          {results}
-        </List>
         <List
           subheader={<ListSubheader
             component="div"
             className={classnames(classes.subheader, classes.yesterday)}
           >Yesterday</ListSubheader>}
         >
-          {results}
+          {this.state.yesterday.map(game => this.renderGame(game))}
+        </List>
+        <List
+          subheader={<ListSubheader
+            component="div"
+            className={classnames(classes.subheader, classes.today)}
+          >Today</ListSubheader>}
+        >
+          {this.state.today.map(game => this.renderGame(game))}
+        </List>
+        <List
+          subheader={<ListSubheader
+            component="div"
+            className={classnames(classes.subheader, classes.yesterday)}
+          >Tomorrow</ListSubheader>}
+        >
+          {this.state.tomorrow.map(game => this.renderGame(game))}
         </List>
       </React.Fragment>
     )
   }
 
-  private renderGame() {
+  private renderGame(game) {
+    const { sport, history } = this.props;
+    let { home_score, away_score } = game;
+    const { home, away } = game;
+    home_score = home_score >= 0 ? home_score : '?';
+    away_score = away_score >= 0 ? away_score : '?';
+    const homeId = home.id;
+    const homeName = home.team.name;
+    const awayId = away.id;
+    const awayName = away.team.name;
     return (
       <React.Fragment>
         <Divider />
         <ListItem style={{ justifyContent: 'center' }} dense button>
-          <tr style={{}}>
+          <tr>
             <td style={{ textAlign: 'left' }}>
-              <Link to="/team/1">دورتموند</Link>
+              <Link to={`/team/${sport}/${homeId}`}>
+                {homeName}
+              </Link>
             </td>
-            <td style={{ textAlign: 'center', whiteSpace: 'nowrap', padding: '0 6px' }}>
-              0 - 1
+            <td style={{ textAlign: 'center', whiteSpace: 'nowrap', padding: '0 6px' }}
+                onClick={() => history.push(`/game/${game.id}`)}>
+              {home_score} - {away_score}
             </td>
             <td style={{ textAlign: 'right' }}>
-              <Link to="/team/1">دورتموند</Link>
+              <Link to={`/team/${sport}/${awayId}`}>
+                {awayName}
+              </Link>
             </td>
           </tr>
         </ListItem>
@@ -119,4 +140,4 @@ class GameList extends React.Component<any, any> {
 }
 
 // @ts-ignore
-export default withStyles(styles)(GameList);
+export default withRouter(withStyles(styles)(GameList));
