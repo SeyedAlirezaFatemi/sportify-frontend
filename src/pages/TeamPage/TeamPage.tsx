@@ -16,7 +16,7 @@ const styles = theme => ({
 const TabPane = Tabs.TabPane;
 
 class TeamPage extends React.Component<any, any> {
-  public state: any = { players: [], info: { name: '' }, images: [], games: [] };
+  public state: any = { players: [], info: { name: '', logo: { address: '' } }, images: [], games: [] };
 
   public componentDidMount(): void {
     const { sport, match } = this.props;
@@ -42,7 +42,7 @@ class TeamPage extends React.Component<any, any> {
     const photosUrl = TeamPhotosAPI(sport, id);
     return (
       <Template>
-        <TeamHeader name={info.name} />
+        <TeamHeader info={info} />
         <Tabs defaultActiveKey="1">
           <TabPane tab="Team Game Schedule" key="1">
             <Grid container justify="center">

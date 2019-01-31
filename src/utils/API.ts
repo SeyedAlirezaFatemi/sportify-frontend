@@ -54,5 +54,5 @@ export const TodayGamesAPI = (sport: Sports) => `sport/game/${sport}/today/`;
 
 export const TomorrowGamesAPI = (sport: Sports) => `sport/game/${sport}/tomorrow/`;
 
-export const TeamScheduleAPI = (sport: string, id: number) => `${API.TEAM_SCHEDULE}${sport}/${id}`;
+export const TeamScheduleAPI = (sport: string, id: number) => `${API.TEAM_SCHEDULE}${sport}/${id}/`;
 
