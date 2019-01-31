@@ -35,7 +35,7 @@ class GameGrid extends React.Component<any, any> {
           style={{ width: 100, margin: 20 }}
         >
           <p>{game.home.team}</p>
-          <p>VS.</p>
+          <p>Vs.</p>
           <p>{game.away.team}</p>
         </Card>
       })) : null
