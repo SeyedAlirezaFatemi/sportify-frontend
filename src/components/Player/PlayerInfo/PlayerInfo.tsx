@@ -36,18 +36,6 @@ class PlayerInfo extends React.Component<any, any> {
                   Age: {info.age}
                 </Typography>
               </Row>
-              {/*<Row>*/}
-              {/*<Typography variant="subtitle2" gutterBottom>*/}
-              {/*<Icon type="medicine-box" style={{ marginRight: '8px' }} />*/}
-              {/*Height:*/}
-              {/*</Typography>*/}
-              {/*</Row>*/}
-              {/*<Row>*/}
-              {/*<Typography variant="subtitle2" gutterBottom>*/}
-              {/*<Icon type="medicine-box" style={{ marginRight: '8px' }} />*/}
-              {/*Weight:*/}
-              {/*</Typography>*/}
-              {/*</Row>*/}
               <Row>
                 <Typography variant="subtitle2" gutterBottom>
                   <Icon type="team" style={{ marginRight: '8px' }} />

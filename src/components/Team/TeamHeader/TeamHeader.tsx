@@ -1,19 +1,7 @@
 import Grid from '@material-ui/core/Grid';
-import { withStyles } from '@material-ui/core/styles';
 import { Avatar } from 'antd';
 import * as React from 'react';
 import { TeamInfo } from '../index';
-
-const styles = theme => ({
-  container: {
-    // padding: '12px',
-    // backgroundImage: 'url("https://static.farakav.com/files/pictures/01322975.jpg")',
-    // backgroundSize: 'cover',
-    // backgroundRepeat: 'no-repeat',
-    // backgroundPosition: '50% 50%',
-  },
-});
-
 
 function TeamHeader({ info }) {
   const { name, logo } = info;
@@ -30,4 +18,4 @@ function TeamHeader({ info }) {
 }
 
 // @ts-ignore
-export default withStyles(styles, { withTheme: true })(TeamHeader);
+export default TeamHeader;
