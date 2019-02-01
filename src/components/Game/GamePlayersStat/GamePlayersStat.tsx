@@ -16,20 +16,6 @@ const styles = theme => ({
   },
 });
 
-function GetPlayers(sport: string, teamId: number) {
-  const players: any = [];
-  axios.get(TeamPlayersAPI(sport, teamId)).then(response => {
-    for (let i = 0; i < response.data.length; i++) {
-      players.push({
-        key: i,
-        tShirt: (<TShirt />),
-        teamPlayers: response.data[i].name,
-        description: '',
-      })
-    }
-  });
-  return players;
-}
 
 class GamePlayersStat extends Component<any, any> {
   public state = {
@@ -52,19 +38,16 @@ class GamePlayersStat extends Component<any, any> {
   public componentDidMount(): void {
     const { sport, gameId } = this.props;
     const statisticsUrl = GameStatisticsAPI(sport, gameId);
-    console.log(statisticsUrl);
     if (sport === Sports.SOCCER) {
       axios.get(statisticsUrl).then(statResponse => {
         const homeTeamId = statResponse.data.home.id;
         const awayTeamId = statResponse.data.away.id;
 
-        const homePlayersData = GetPlayers(sport, homeTeamId);
-        const awayPlayersData = GetPlayers(sport, awayTeamId);
+        this.injectPlayersIntoState(sport, homeTeamId, 'homePlayersData');
+        this.injectPlayersIntoState(sport, awayTeamId, 'awayPlayersData');
 
         this.setState(prevState => {
           return ({
-            homePlayersData,
-            awayPlayersData,
             columns: [
               {
                 dataIndex: 'tShirt',
@@ -122,6 +105,21 @@ class GamePlayersStat extends Component<any, any> {
         </Grid>
       </Grid>
     );
+  }
+
+  private injectPlayersIntoState(sport: string, teamId: number, field: string) {
+    const players: any = [];
+    axios.get(TeamPlayersAPI(sport, teamId)).then(response => {
+      for (let i = 0; i < response.data.length; i++) {
+        players.push({
+          key: i,
+          tShirt: (<TShirt />),
+          teamPlayers: response.data[i].name,
+          description: '',
+        })
+      }
+      this.setState({ [field]: players })
+    });
   }
 }
 
