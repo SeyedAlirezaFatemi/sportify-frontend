@@ -18,7 +18,8 @@
     "redux-saga": "^1.0.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.84.0",
-    "axios": "latest"
+    "axios": "latest",
+    "react-youtube": "latest"
   },
   "scripts": {
     "start": "react-scripts-ts start",

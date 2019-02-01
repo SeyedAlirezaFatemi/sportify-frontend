@@ -26,6 +26,7 @@ export enum API {
   TEAM_PLAYERS = 'sport/team/players/',
   TEAM_INFO = 'sport/team/info/',
   TEAM_PHOTO = 'sport/team/images/',
+  TEAM_VIDEO = 'sport/team/videos/',
 
   PLAYER_INFO = 'sport/player/info/',
   PLAYER_PHOTOS = 'sport/player/images/',
@@ -62,4 +63,6 @@ export const TeamScheduleAPI = (sport: string, id: number) => `${API.TEAM_SCHEDU
 export const ConfirmedAccount = (id: number, code: string) => `${API.CONFIRM_ACCOUNT}${id}/${code}/`;
 
 export const TeamSubscribed = (id: number, sport: string) => `${API.TEAM_SUBSCRIBED}${sport}/${id}/`;
+
+export const TeamVideos = (id: number, sport: string) => `${API.TEAM_VIDEO}${sport}/${id}/`;
 

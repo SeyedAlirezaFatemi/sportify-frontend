@@ -4,29 +4,9 @@ import { Tabs } from 'antd';
 import * as React from 'react';
 import { Template } from '..';
 import api from '../../api';
-import { GameGrid, ImageGrid, NewsList, TeamHeader, TeamPlayersList } from '../../components';
-import { PlayerNewsAPI, TeamInfoAPI, TeamPhotosAPI, TeamPlayersAPI, TeamScheduleAPI } from '../../utils';
+import { GameGrid, ImageGrid, NewsList, TeamHeader, TeamPlayersList, VideoList } from '../../components';
+import { PlayerNewsAPI, TeamInfoAPI, TeamPhotosAPI, TeamPlayersAPI, TeamScheduleAPI, TeamVideos } from '../../utils';
 
-const gamess = [
-  {
-    date: 1,
-    home: {
-      team: 'barca',
-    },
-    away: {
-      team: 'real',
-    },
-  },
-  {
-    date: 2,
-    home: {
-      team: 'barcak',
-    },
-    away: {
-      team: 'realk',
-    },
-  },
-];
 
 const styles = theme => ({
   root: {
@@ -37,7 +17,7 @@ const styles = theme => ({
 const TabPane = Tabs.TabPane;
 
 class TeamPage extends React.Component<any, any> {
-  public state: any = { players: [], info: { name: '', logo: { address: '' } }, images: [], games: [] };
+  public state: any = { players: [], info: { name: '', logo: { address: '' } }, images: [], games: [], videos: [] };
 
   public componentDidMount(): void {
     const { sport, match } = this.props;
@@ -52,13 +32,16 @@ class TeamPage extends React.Component<any, any> {
     api.get(TeamScheduleAPI(sport, id)).then(response => {
       this.setState({ games: response.data })
     });
+    api.get(TeamVideos(id, sport)).then(response => {
+      this.setState({ videos: response.data })
+    });
   }
 
   public render(): React.ReactNode {
     const { sport, match } = this.props;
     const { params } = match;
     const { id } = params;
-    const { info, players, games } = this.state;
+    const { info, players, games, videos } = this.state;
     const newsUrl = PlayerNewsAPI(id);
     const photosUrl = TeamPhotosAPI(sport, id);
     const subscribed = TeamScheduleAPI(id, sport);
@@ -79,6 +62,9 @@ class TeamPage extends React.Component<any, any> {
           </TabPane>
           <TabPane tab="Team Photos" key="4">
             <ImageGrid url={photosUrl} />
+          </TabPane>
+          <TabPane tab="Team Videos" key="4">
+            <VideoList videosId={videos} />
           </TabPane>
         </Tabs>
       </Template>
