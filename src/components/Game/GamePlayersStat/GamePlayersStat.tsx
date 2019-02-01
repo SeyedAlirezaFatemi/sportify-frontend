@@ -52,6 +52,7 @@ class GamePlayersStat extends Component<any, any> {
   public componentDidMount(): void {
     const { sport, gameId } = this.props;
     const statisticsUrl = GameStatisticsAPI(sport, gameId);
+    console.log(statisticsUrl);
     if (sport === Sports.SOCCER) {
       axios.get(statisticsUrl).then(statResponse => {
         const homeTeamId = statResponse.data.home.id;
@@ -90,7 +91,6 @@ class GamePlayersStat extends Component<any, any> {
     const { classes } = this.props;
     const { homePlayersData, awayPlayersData, columns } = this.state;
     console.log('state', this.state);
-
     return (
       <Grid container direction="row">
         <Grid container item xs={4} justify={'flex-start'}>
@@ -100,7 +100,6 @@ class GamePlayersStat extends Component<any, any> {
                      return classes.substitutePlayer
                    }
                  }}
-
                  dataSource={homePlayersData}
                  columns={columns}
                  showHeader={false}
