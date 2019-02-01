@@ -7,27 +7,6 @@ import api from '../../api';
 import { GameGrid, ImageGrid, NewsList, TeamHeader, TeamPlayersList } from '../../components';
 import { PlayerNewsAPI, TeamInfoAPI, TeamPhotosAPI, TeamPlayersAPI, TeamScheduleAPI } from '../../utils';
 
-const gamess = [
-  {
-    date: 1,
-    home: {
-      team: 'barca',
-    },
-    away: {
-      team: 'real',
-    },
-  },
-  {
-    date: 2,
-    home: {
-      team: 'barcak',
-    },
-    away: {
-      team: 'realk',
-    },
-  },
-];
-
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -72,7 +51,7 @@ class TeamPage extends React.Component<any, any> {
             </Grid>
           </TabPane>
           <TabPane tab="Team Players" key="2">
-            <TeamPlayersList players={players} />
+            <TeamPlayersList players={players} sport={sport} />
           </TabPane>
           <TabPane tab="Team News" key="3">
             <NewsList url={newsUrl} />
