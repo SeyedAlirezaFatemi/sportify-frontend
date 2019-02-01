@@ -4,8 +4,8 @@ import { Tabs } from 'antd';
 import * as React from 'react';
 import { Component } from 'react';
 import { GameHeader, GamePlayersStat, GameStat, GameTimeLine, ImageGrid, NewsList } from '../../components';
-import { Template } from '../index';
 import { GamePhotosAPI } from '../../utils';
+import { Template } from '../index';
 
 const TabPane = Tabs.TabPane;
 
