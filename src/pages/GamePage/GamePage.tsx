@@ -23,7 +23,6 @@ class GamePage extends Component<any, any> {
     const { classes, match, sport } = this.props;
     const { params } = match;
     const { id } = params;
-
     return (
       <Template>
         <GameHeader />
@@ -32,7 +31,7 @@ class GamePage extends Component<any, any> {
             <Grid item xl={8} lg={8} md={8} sm={12} xs={12}>
               <Tabs defaultActiveKey="1">
                 <TabPane tab="Game Statistics" key="1">
-                  <GameStat GameId={id} />
+                  <GameStat gameId={id} sport={sport} />
                 </TabPane>
                 <TabPane tab="Game News" key="2">
                   <NewsList />

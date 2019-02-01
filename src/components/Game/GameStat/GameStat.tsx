@@ -3,7 +3,7 @@ import { Table } from 'antd';
 import * as React from 'react';
 import { Component } from 'react';
 import axios from '../../../api';
-import { API } from '../../../utils';
+import { GameStatisticsAPI } from '../../../utils';
 
 const styles = theme => ({});
 
@@ -24,13 +24,12 @@ class GameStat extends Component<any, any> {
       align: 'center',
     }],
     statisticsData: [],
-
   };
 
   public componentDidMount(): void {
-    const { GameId } = this.props;
+    const { gameId, sport } = this.props;
 
-    axios.get(`${API.GAME_STATISTICS}${GameId}/`).then(response => {
+    axios.get(GameStatisticsAPI(sport, gameId)).then(response => {
 
       this.setState(prevState => {
         const new_columns = prevState.columns;
@@ -73,7 +72,6 @@ class GameStat extends Component<any, any> {
     const { classes } = this.props;
     const { columns } = this.state;
     const { statisticsData } = this.state;
-
     return (
       // @ts-ignore
       <Table dataSource={statisticsData} columns={columns} pagination={false}

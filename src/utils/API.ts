@@ -68,4 +68,4 @@ export const ConfirmedAccount = (id: number, code: string) => `${API.CONFIRM_ACC
 
 export const TeamSubscribed = (id: number, sport: string) => `${API.TEAM_SUBSCRIBED}${sport}/${id}/`;
 
-export const GameStatisticsAPI = (sport:string,id:number) => `${API.GAME_STATISTICS}${sport}/${id}/`
+export const GameStatisticsAPI = (sport: string, id: number) => `${API.GAME_STATISTICS}${sport}/${id}/`;
