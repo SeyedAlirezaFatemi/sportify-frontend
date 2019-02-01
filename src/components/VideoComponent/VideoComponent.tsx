@@ -2,7 +2,7 @@ import * as React from 'react';
 import YouTube from 'react-youtube';
 
 class VideoComponent extends React.Component<any, any> {
-  // videoId = 'Xbu65rbtNgU';
+  videoIdTest = 'Xbu65rbtNgU';
   public render() {
     const opts = {
       height: '390',
@@ -14,7 +14,7 @@ class VideoComponent extends React.Component<any, any> {
 
     return (
       <YouTube
-        videoId={this.props.videoId}
+        videoId={this.videoIdTest}
         opts={opts}
         onReady={this._onReady}
       />
