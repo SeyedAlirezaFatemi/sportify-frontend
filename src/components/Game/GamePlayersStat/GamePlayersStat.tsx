@@ -1,14 +1,11 @@
 import Grid from '@material-ui/core/Grid/Grid';
 import withStyles from '@material-ui/core/styles/withStyles';
-import { Icon } from 'antd';
 import Table from 'antd/es/table/Table';
 import * as React from 'react';
 import { Component } from 'react';
-import Gloves from '../../Common/Icons/Gloves';
-import Medal from '../../Common/Icons/Medal';
-import RedCard from '../../Common/Icons/RedCard';
 import TShirt from '../../Common/Icons/TShirt';
-import YellowCard from '../../Common/Icons/YellowCard';
+import axios from '../../../api';
+import { API } from '../../../utils';
 
 const styles = theme => ({
   gamePlayersStatTable: {
@@ -19,109 +16,81 @@ const styles = theme => ({
   },
 });
 
-const teamTableColumns = [{
-  dataIndex: 'tShirt',
-  align: 'left' as 'left',
-  width: 'auto',
-}, {
-  dataIndex: 'teamPlayers',
-  align: 'left' as 'left',
-}, {
-  dataIndex: 'description',
-  align: 'right' as 'right',
-  width: 'auto',
-}];
+function GetPlayers(gameType: string, teamId: string) {
+  let players: any = [];
 
-const team1TableData = [{
-  key: '1',
-  tShirt: (<Gloves />),
-  teamPlayers: 'Player 1 Goalkeeper',
-  description: null,
-
-}, {
-  key: '2',
-  tShirt: (<TShirt />),
-  teamPlayers: 'Player 2',
-  description: (<Icon type="arrow-down" style={{ color: 'red' }} />),
-
-}, {
-  key: '3',
-  tShirt: (<TShirt />),
-  teamPlayers: 'Player 3',
-  description: (<YellowCard />),
-
-}, {
-  key: '4',
-  tShirt: (<TShirt />),
-  teamPlayers: 'Player 4',
-  description: null,
-
-}, {
-  key: '5',
-  tShirt: (<TShirt />),
-  teamPlayers: 'Player 5',
-  description: null,
-
-}, {
-  key: '6',
-  tShirt: (<TShirt />),
-  teamPlayers: 'Player 6',
-  description: (<RedCard />),
-
-}, {
-  key: '7',
-  tShirt: (<TShirt />),
-  teamPlayers: 'Player 7',
-  description: (<Icon type="arrow-down" style={{ color: 'red' }} />),
-
-}, {
-  key: '8',
-  tShirt: (<TShirt />),
-  teamPlayers: 'Player 8',
-  description: (<Icon type="arrow-down" style={{ color: 'red' }} />),
-
-}, {
-  key: '9',
-  tShirt: (<TShirt />),
-  teamPlayers: 'Player 9',
-  description: null,
-
-}, {
-  key: '10',
-  tShirt: (<TShirt />),
-  teamPlayers: 'Player 10',
-  description: <Medal />,
-
-}, {
-  key: '11',
-  tShirt: (<TShirt />),
-  teamPlayers: 'Player 11',
-  description: null,
-
-}, {
-  key: '12',
-  tShirt: (<TShirt />),
-  teamPlayers: 'Player 12',
-  description: (<Icon type="arrow-up" style={{ color: 'green' }} />),
-
-}, , {
-  key: '13',
-  tShirt: (<TShirt />),
-  teamPlayers: 'Player 13',
-  description: (<Icon type="arrow-up" style={{ color: 'green' }} />),
-
-}, , {
-  key: '14',
-  tShirt: (<TShirt />),
-  teamPlayers: 'Player 14',
-  description: (<Icon type="arrow-up" style={{ color: 'green' }} />),
-
-},];
-
+  axios.get(`${API.TEAM_PLAYERS}${gameType}/${teamId}/`).then(response => {
+    for (let i = 0; i < response.data.length; i++) {
+      players.push({
+        key: i,
+        tShirt: (<TShirt />),
+        teamPlayers: response.data[i].name,
+        description: '',
+      })
+    }
+  });
+  return players;
+}
 
 class GamePlayersStat extends Component<any, any> {
+  public state = {
+    homePlayersData: [],
+    awayPlayersData: [],
+    columns: [{
+      dataIndex: 'tShirt',
+      align: 'left' as 'left',
+      width: 'auto',
+    }, {
+      dataIndex: 'teamPlayers',
+      align: 'left' as 'left',
+    }, {
+      dataIndex: 'description',
+      align: 'right' as 'right',
+      width: 'auto',
+    }]
+  };
+
+  componentDidMount(): void {
+    const { GameType, GameId } = this.props;
+    if (GameType === 'soccer') {
+      axios.get(`${API.SOCCER_GAME_STATISTICS}${GameId}/`).then(statResponse => {
+        const homeTeamId = statResponse.data.home.id;
+        const awayTeamId = statResponse.data.away.id;
+
+        let homePlayersData = GetPlayers(GameType, homeTeamId);
+        let awayPlayersData = GetPlayers(GameType, awayTeamId);
+
+        this.setState(prevState => {
+          return ({
+            homePlayersData: homePlayersData,
+            awayPlayersData: awayPlayersData,
+            columns: [
+              {
+                dataIndex: 'tShirt',
+                align: 'left' as 'left',
+                width: 'auto',
+              }, {
+                dataIndex: 'teamPlayers',
+                align: 'left' as 'left',
+              }, {
+                dataIndex: 'description',
+                align: 'right' as 'right',
+                width: 'auto',
+              }
+            ],
+          });
+        })
+      });
+    } else if (GameType === 'basketball') {
+
+    }
+  }
+
   public render(): React.ReactNode {
     const { classes } = this.props;
+    const { homePlayersData, awayPlayersData, columns } = this.state;
+    console.log('state', this.state);
+
     return (
       <Grid container direction="row">
         <Grid container item xs={4} justify={'flex-start'}>
@@ -131,8 +100,9 @@ class GamePlayersStat extends Component<any, any> {
                      return classes.substitutePlayer
                    }
                  }}
-                 dataSource={team1TableData}
-                 columns={teamTableColumns}
+
+                 dataSource={homePlayersData}
+                 columns={columns}
                  showHeader={false}
                  pagination={false}
           />
@@ -145,8 +115,8 @@ class GamePlayersStat extends Component<any, any> {
                      return classes.substitutePlayer
                    }
                  }}
-                 dataSource={team1TableData}
-                 columns={teamTableColumns}
+                 dataSource={awayPlayersData}
+                 columns={columns}
                  showHeader={false}
                  pagination={false}
           />

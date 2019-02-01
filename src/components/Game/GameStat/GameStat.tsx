@@ -37,6 +37,7 @@ class GameStat extends Component<any, any> {
         const new_columns = prevState.columns;
         new_columns[0].title = response.data.home.team.name;
         new_columns[2].title = response.data.away.team.name;
+
         const statisticsItems = [
           ['possession', 'Possession'],
           ['shots_on_target', 'Shots (On target)'],
