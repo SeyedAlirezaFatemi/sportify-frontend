@@ -22,6 +22,7 @@ export enum API {
   LEAGUE_TABLE_INFO = 'sport/league/stats/',
 
   GAME_STATISTICS = '/sport/game/statistics/',
+  GAME_PHOTOS = '/sport/game/images/',
 
   TEAM_PLAYERS = 'sport/team/players/',
   TEAM_INFO = 'sport/team/info/',
@@ -70,6 +71,8 @@ export const ConfirmedAccount = (id: number, code: string) => `${API.CONFIRM_ACC
 export const TeamSubscribed = (id: number, sport: string) => `${API.TEAM_SUBSCRIBED}${sport}/${id}/`;
 
 export const GameStatisticsAPI = (sport: string, id: number) => `${API.GAME_STATISTICS}${sport}/${id}/`;
+
+export const GamePhotosAPI = (sport: string, id: number) => `${API.GAME_PHOTOS}${sport}/${id}/`;
 
 export const TeamVideos = (id: number, sport: string) => `${API.TEAM_VIDEO}${sport}/${id}/`;
 
