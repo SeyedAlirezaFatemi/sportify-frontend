@@ -13,12 +13,12 @@ const styles = theme => ({
   },
   timeLineItemEntry: {
     margin: '5px',
-  }
+  },
 });
 
 
 // TODO: find icon for 'AT' and 'PY'
-let iconsDictionary = {
+const iconsDictionary = {
   'Red Card': <Icon name="meanpath" color="red" />,
   'Yellow Card': <Icon name="meanpath" color="yellow" />,
   'Substitution in': <Icon name="arrow up" color="green" />,
@@ -33,10 +33,12 @@ function eventTimeParser(eventTime: string) {
 }
 
 function compare(a, b) {
-  if (eventTimeParser(a.eventTime) > eventTimeParser(b.eventTime))
+  if (eventTimeParser(a.eventTime) > eventTimeParser(b.eventTime)) {
     return -1;
-  if (eventTimeParser(a.eventTime) < eventTimeParser(b.eventTime))
+  }
+  if (eventTimeParser(a.eventTime) < eventTimeParser(b.eventTime)) {
     return 1;
+  }
   return 0;
 }
 
@@ -58,7 +60,7 @@ class GameTimeLine extends Component<any, any> {
 
     if (GameType === 'soccer') {
       axios.get(`${API.SOCCER_GAME_EVENTS}${GameId}/`).then(response => {
-        let eventList: any = [];
+        const eventList: any = [];
         for (let i = 0; i < response.data.length; i++) {
           eventList.push({
 
@@ -66,11 +68,11 @@ class GameTimeLine extends Component<any, any> {
 
             eventTime: response.data[i].event_time,
 
-            eventIcon: iconsDictionary[response.data[i].event_type]
+            eventIcon: iconsDictionary[response.data[i].event_type],
           });
         }
         this.setState((prevState) => ({
-            events: eventList.sort(compare)
+            events: eventList.sort(compare),
           })
         );
 
@@ -91,7 +93,7 @@ class GameTimeLine extends Component<any, any> {
         {
           events.map((e) => {
             return (
-              <Timeline.Item dot={e.eventTime.substring(0, 5)} >
+              <Timeline.Item dot={e.eventTime.substring(0, 5)}>
                 <div className={classes.timeLineItemEntry}>
                   {e.eventIcon} {e.eventType}
                 </div>
@@ -102,7 +104,6 @@ class GameTimeLine extends Component<any, any> {
       </Timeline>
     );
   }
-
 }
 
 export default withStyles(styles)(GameTimeLine);
