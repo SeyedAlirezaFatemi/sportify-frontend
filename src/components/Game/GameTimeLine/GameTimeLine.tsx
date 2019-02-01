@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Component } from 'react';
 import Icon from 'semantic-ui-react/dist/commonjs/elements/Icon/Icon';
 import axios from '../../../api';
-import { API } from '../../../utils';
+import { GameEventsAPI, Sports } from '../../../utils';
 
 
 const styles = theme => ({
@@ -24,8 +24,12 @@ const iconsDictionary = {
   'Substitution in': <Icon name="arrow up" color="green" />,
   'Substitution out': <Icon name="arrow down" color="red" />,
   'Goal': <Icon name="soccer" />,
+  '1 Point': '',
+  '2 Point': '',
+  '3 Point': '',
   'Assist': '',
   'Penalty': '',
+  'Substitution': <div><Icon name="arrow up" color="green" /> <Icon name="arrow down" color="red" /></div>,
 };
 
 function eventTimeParser(eventTime: string) {
@@ -56,31 +60,12 @@ class GameTimeLine extends Component<any, any> {
 
 
   public componentDidMount(): void {
-    const { GameId, GameType } = this.props;
+    const { GameId, sport } = this.props;
 
-    if (GameType === 'soccer') {
-      axios.get(`${API.SOCCER_GAME_EVENTS}${GameId}/`).then(response => {
-        const eventList: any = [];
-        for (let i = 0; i < response.data.length; i++) {
-          eventList.push({
-
-            eventType: response.data[i].event_type,
-
-            eventTime: response.data[i].event_time,
-
-            eventIcon: iconsDictionary[response.data[i].event_type],
-          });
-        }
-        this.setState((prevState) => ({
-            events: eventList.sort(compare),
-          })
-        );
-
-      });
-    } else if (GameType === 'basketball') {
-      axios.get(`${API.BASKETBALL_GAME_EVENTS}${GameId}/`).then(response => {
-        this.setState({ events: response.data });
-      });
+    if (sport === Sports.SOCCER) {
+      this.injectEventsIntoState(sport, GameId);
+    } else if (sport === Sports.BASKETBALL) {
+      this.injectEventsIntoState(sport, GameId);
     }
 
   }
@@ -104,6 +89,25 @@ class GameTimeLine extends Component<any, any> {
       </Timeline>
     );
   }
+
+  private injectEventsIntoState(sport: string, gameId: number) {
+    axios.get(GameEventsAPI(sport, gameId)).then(response => {
+      const eventList: any = [];
+      for (let i = 0; i < response.data.length; i++) {
+        eventList.push({
+          eventType: response.data[i].event_type,
+          eventTime: response.data[i].event_time,
+          eventIcon: iconsDictionary[response.data[i].event_type],
+        });
+      }
+      this.setState((prevState) => ({
+          events: eventList.sort(compare),
+        })
+      );
+    });
+
+  }
+
 }
 
 export default withStyles(styles)(GameTimeLine);

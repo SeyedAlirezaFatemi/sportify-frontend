@@ -73,6 +73,8 @@ export const TeamSubscribed = (id: number, sport: string) => `${API.TEAM_SUBSCRI
 
 export const GameStatisticsAPI = (sport: string, id: number) => `${API.GAME_STATISTICS}${sport}/${id}/`;
 
+export const GameEventsAPI = (sport: string, id: number) => `sport/game/${sport}/events/${id}`;
+
 export const GamePhotosAPI = (sport: string, id: number) => `${API.GAME_PHOTOS}${sport}/${id}/`;
 
 export const GameNewsAPI = (sport: string, id: number) => `${API.GAME_NEWS}${sport}/${id}/`;
