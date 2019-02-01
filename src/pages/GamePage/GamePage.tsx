@@ -50,7 +50,7 @@ class GamePage extends Component<any, any> {
               </Tabs>
             </Grid>
             <Grid item xl={4} lg={4} md={4} sm={12} xs={12}>
-              <GameTimeLine />
+              <GameTimeLine  GameId={id} GameType={'soccer'}/>
             </Grid>
           </Grid>
         </Grid>

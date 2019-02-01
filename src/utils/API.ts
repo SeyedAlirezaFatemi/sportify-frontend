@@ -32,6 +32,9 @@ export enum API {
   PLAYER_STATISTICS = 'sport/player/statistics/',
   TEAM_SCHEDULE = 'sport/team/schedule/',
 
+  SOCCER_GAME_EVENTS = 'sport/game/soccer/events/',
+  BASKETBALL_GAME_EVENTS = 'sport/game/basketball/events/',
+
   CONFIRM_ACCOUNT = 'authentication/confirm_account/',
 
 }
