@@ -66,7 +66,32 @@ class GamePlayersStat extends Component<any, any> {
         })
       });
     } else if (sport === Sports.BASKETBALL) {
+      axios.get(statisticsUrl).then(statResponse => {
+        const homeTeamId = statResponse.data.home.id;
+        const awayTeamId = statResponse.data.away.id;
 
+        this.injectPlayersIntoState(sport, homeTeamId, 'homePlayersData');
+        this.injectPlayersIntoState(sport, awayTeamId, 'awayPlayersData');
+
+        this.setState(prevState => {
+          return ({
+            columns: [
+              {
+                dataIndex: 'tShirt',
+                align: 'left' as 'left',
+                width: 'auto',
+              }, {
+                dataIndex: 'teamPlayers',
+                align: 'left' as 'left',
+              }, {
+                dataIndex: 'description',
+                align: 'right' as 'right',
+                width: 'auto',
+              },
+            ],
+          });
+        })
+      });
     }
   }
 
