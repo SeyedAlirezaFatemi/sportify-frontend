@@ -4,7 +4,7 @@ import { Tabs } from 'antd';
 import * as React from 'react';
 import { Component } from 'react';
 import { GameHeader, GamePlayersStat, GameStat, GameTimeLine, ImageGrid, NewsList } from '../../components';
-import { GamePhotosAPI } from '../../utils';
+import { GameNewsAPI, GamePhotosAPI } from '../../utils';
 import { Template } from '../index';
 
 const TabPane = Tabs.TabPane;
@@ -25,6 +25,7 @@ class GamePage extends Component<any, any> {
     const { params } = match;
     const { id } = params;
     const photosUrl = GamePhotosAPI(sport, id);
+    const newsUrl = GameNewsAPI(sport, id);
     return (
       <Template>
         <GameHeader />
@@ -36,7 +37,7 @@ class GamePage extends Component<any, any> {
                   <GameStat gameId={id} sport={sport} />
                 </TabPane>
                 <TabPane tab="Game News" key="2">
-                  <NewsList />
+                  <NewsList url={newsUrl} />
                 </TabPane>
                 <TabPane tab="Game Players Stat" key="3">
                   <GamePlayersStat gameId={id} sport={sport} />

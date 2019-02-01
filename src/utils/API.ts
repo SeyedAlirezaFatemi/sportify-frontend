@@ -23,6 +23,7 @@ export enum API {
 
   GAME_STATISTICS = '/sport/game/statistics/',
   GAME_PHOTOS = '/sport/game/images/',
+  GAME_NEWS = '/sport/game/related_news/',
 
   TEAM_PLAYERS = 'sport/team/players/',
   TEAM_INFO = 'sport/team/info/',
@@ -72,6 +73,8 @@ export const TeamSubscribed = (id: number, sport: string) => `${API.TEAM_SUBSCRI
 
 export const GameStatisticsAPI = (sport: string, id: number) => `${API.GAME_STATISTICS}${sport}/${id}/`;
 
-export const TeamVideos = (id: number, sport: string) => `${API.TEAM_VIDEO}${sport}/${id}/`;
-
 export const GamePhotosAPI = (sport: string, id: number) => `${API.GAME_PHOTOS}${sport}/${id}/`;
+
+export const GameNewsAPI = (sport: string, id: number) => `${API.GAME_NEWS}${sport}/${id}/`;
+
+export const TeamVideos = (id: number, sport: string) => `${API.TEAM_VIDEO}${sport}/${id}/`;
