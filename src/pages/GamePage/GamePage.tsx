@@ -20,9 +20,8 @@ const styles = theme => ({
 class GamePage extends Component<any, any> {
 
   public render(): React.ReactNode {
-    const { classes } = this.props;
-
-    const { params } = this.props.match;
+    const { classes, match, sport } = this.props;
+    const { params } = match;
     const { id } = params;
 
     return (
@@ -39,7 +38,7 @@ class GamePage extends Component<any, any> {
                   <NewsList />
                 </TabPane>
                 <TabPane tab="Game Players Stat" key="3">
-                  <GamePlayersStat  GameId={id} GameType={'soccer'} />
+                  <GamePlayersStat GameId={id} sport={sport} />
                 </TabPane>
                 <TabPane tab="Game Photos" key="4">
                   <ImageGrid />
