@@ -3,9 +3,9 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import Table from 'antd/es/table/Table';
 import * as React from 'react';
 import { Component } from 'react';
-import TShirt from '../../Common/Icons/TShirt';
 import axios from '../../../api';
-import { API } from '../../../utils';
+import { API, Sports } from '../../../utils';
+import TShirt from '../../Common/Icons/TShirt';
 
 const styles = theme => ({
   gamePlayersStatTable: {
@@ -16,10 +16,10 @@ const styles = theme => ({
   },
 });
 
-function GetPlayers(gameType: string, teamId: string) {
-  let players: any = [];
+function GetPlayers(sport: string, teamId: string) {
+  const players: any = [];
 
-  axios.get(`${API.TEAM_PLAYERS}${gameType}/${teamId}/`).then(response => {
+  axios.get(`${API.TEAM_PLAYERS}${sport}/${teamId}/`).then(response => {
     for (let i = 0; i < response.data.length; i++) {
       players.push({
         key: i,
@@ -47,23 +47,23 @@ class GamePlayersStat extends Component<any, any> {
       dataIndex: 'description',
       align: 'right' as 'right',
       width: 'auto',
-    }]
+    }],
   };
 
-  componentDidMount(): void {
-    const { GameType, GameId } = this.props;
-    if (GameType === 'soccer') {
+  public componentDidMount(): void {
+    const { sport, GameId } = this.props;
+    if (sport === Sports.SOCCER) {
       axios.get(`${API.SOCCER_GAME_STATISTICS}${GameId}/`).then(statResponse => {
         const homeTeamId = statResponse.data.home.id;
         const awayTeamId = statResponse.data.away.id;
 
-        let homePlayersData = GetPlayers(GameType, homeTeamId);
-        let awayPlayersData = GetPlayers(GameType, awayTeamId);
+        const homePlayersData = GetPlayers(sport, homeTeamId);
+        const awayPlayersData = GetPlayers(sport, awayTeamId);
 
         this.setState(prevState => {
           return ({
-            homePlayersData: homePlayersData,
-            awayPlayersData: awayPlayersData,
+            homePlayersData,
+            awayPlayersData,
             columns: [
               {
                 dataIndex: 'tShirt',
@@ -76,12 +76,12 @@ class GamePlayersStat extends Component<any, any> {
                 dataIndex: 'description',
                 align: 'right' as 'right',
                 width: 'auto',
-              }
+              },
             ],
           });
         })
       });
-    } else if (GameType === 'basketball') {
+    } else if (sport === Sports.BASKETBALL) {
 
     }
   }
@@ -124,7 +124,6 @@ class GamePlayersStat extends Component<any, any> {
       </Grid>
     );
   }
-
 }
 
 export default withStyles(styles)(GamePlayersStat);
