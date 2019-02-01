@@ -11,31 +11,45 @@ const styles = theme => ({
   root: {
     marginTop: '50px',
   },
+  timeLineItemEntry: {
+    margin: '5px',
+  }
 });
 
 
 // TODO: find icon for 'AT' and 'PY'
 let iconsDictionary = {
-   'Red Card': <Icon name="meanpath" color="red" /> ,
-   'Yellow Card': <Icon name="meanpath" color="yellow" /> ,
-   'Substitution in': <Icon name="arrow up" color="green" /> ,
-   'Substitution out': <Icon name="arrow down" color="red" /> ,
-   'Goal': <Icon name="soccer" /> ,
-   'Assist': '' ,
-   'Penalty': '' ,
+  'Red Card': <Icon name="meanpath" color="red" />,
+  'Yellow Card': <Icon name="meanpath" color="yellow" />,
+  'Substitution in': <Icon name="arrow up" color="green" />,
+  'Substitution out': <Icon name="arrow down" color="red" />,
+  'Goal': <Icon name="soccer" />,
+  'Assist': '',
+  'Penalty': '',
 };
 
+function eventTimeParser(eventTime: string) {
+  return parseFloat(`${eventTime.substring(0, 2)}.${eventTime.substring(3, 5)}`);
+}
+
 function compare(a, b) {
-  if (a.eventTime < b.eventTime)
+  if (eventTimeParser(a.eventTime) > eventTimeParser(b.eventTime))
     return -1;
-  if (a.eventTime > b.eventTime)
+  if (eventTimeParser(a.eventTime) < eventTimeParser(b.eventTime))
     return 1;
   return 0;
 }
 
 class GameTimeLine extends Component<any, any> {
-  public states = {
-    events: [],
+
+  public state = {
+    events: [
+      {
+        eventType: '',
+        eventTime: '',
+        eventIcon: null,
+      },
+    ],
   };
 
 
@@ -47,14 +61,19 @@ class GameTimeLine extends Component<any, any> {
         let eventList: any = [];
         for (let i = 0; i < response.data.length; i++) {
           eventList.push({
+
             eventType: response.data[i].event_type,
+
             eventTime: response.data[i].event_time,
+
             eventIcon: iconsDictionary[response.data[i].event_type]
           });
         }
         this.setState((prevState) => ({
-          events: eventList.sort(compare)
-        }));
+            events: eventList.sort(compare)
+          })
+        );
+
       });
     } else if (GameType === 'basketball') {
       axios.get(`${API.BASKETBALL_GAME_EVENTS}${GameId}/`).then(response => {
@@ -66,11 +85,19 @@ class GameTimeLine extends Component<any, any> {
 
   public render(): React.ReactNode {
     const { classes } = this.props;
-    const { events } = this.states;
+    const { events } = this.state;
     return (
       <Timeline className={classes.root} mode="alternate">
         {
-
+          events.map((e) => {
+            return (
+              <Timeline.Item dot={e.eventTime.substring(0, 5)} >
+                <div className={classes.timeLineItemEntry}>
+                  {e.eventIcon} {e.eventType}
+                </div>
+              </Timeline.Item>
+            )
+          })
         }
       </Timeline>
     );
