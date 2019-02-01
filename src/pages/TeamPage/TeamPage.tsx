@@ -54,7 +54,7 @@ class TeamPage extends React.Component<any, any> {
             </Grid>
           </TabPane>
           <TabPane tab="Team Players" key="2">
-            <TeamPlayersList players={players} />
+            <TeamPlayersList players={players} sport={sport} />
           </TabPane>
           <TabPane tab="Team News" key="3">
             <NewsList url={newsUrl} />
