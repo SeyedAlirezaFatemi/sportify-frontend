@@ -17,6 +17,7 @@ class TeamPlayersList extends Component<any, any> {
   private searchInput = createRef<HTMLInputElement>();
 
   public render(): React.ReactNode {
+    const { sport } = this.props;
     const columns = [{
       title: 'Name',
       dataIndex: 'name',
@@ -45,16 +46,16 @@ class TeamPlayersList extends Component<any, any> {
           });
         }
       },
-      render: (text) => {
+      render: (name, player) => {
         const { searchText } = this.state;
         return searchText ? (
-          <Link to={`/player/${text}`}>
-            {text.split(new RegExp(`(?<=${searchText})|(?=${searchText})`, 'i')).map((fragment, i) => (
+          <Link to={`/player/${sport}/${player.id}`}>
+            {name.split(new RegExp(`(?<=${searchText})|(?=${searchText})`, 'i')).map((fragment, i) => (
               fragment.toLowerCase() === searchText.toLowerCase()
                 ? <span key={i} className="highlight">{fragment}</span> : fragment // eslint-disable-line
             ))}
           </Link>
-        ) : <Link to={`/player/${text}`}>{text}</Link>;
+        ) : <Link to={`/player/${sport}/${player.id}`}>{name}</Link>;
       },
     }, {
       title: 'Age',
