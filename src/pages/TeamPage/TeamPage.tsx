@@ -61,9 +61,10 @@ class TeamPage extends React.Component<any, any> {
     const { info, players, games } = this.state;
     const newsUrl = PlayerNewsAPI(id);
     const photosUrl = TeamPhotosAPI(sport, id);
+    const subscribed = TeamScheduleAPI(id, sport);
     return (
       <Template>
-        <TeamHeader info={info} />
+        <TeamHeader info={info} subscribed={subscribed} />
         <Tabs defaultActiveKey="1">
           <TabPane tab="Team Game Schedule" key="1">
             <Grid container justify="center">
