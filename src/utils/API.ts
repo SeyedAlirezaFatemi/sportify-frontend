@@ -59,7 +59,7 @@ export const TomorrowGamesAPI = (sport: Sports) => `sport/game/${sport}/tomorrow
 
 export const TeamScheduleAPI = (sport: string, id: number) => `${API.TEAM_SCHEDULE}${sport}/${id}/`;
 
-export const ConfirmedAccount = (id: number, code:string) => `${API.CONFIRM_ACCOUNT}${id}/${code}/`;
+export const ConfirmedAccount = (id: number, code: string) => `${API.CONFIRM_ACCOUNT}${id}/${code}/`;
 
 export const TeamSubscribed = (id: number, sport: string) => `${API.TEAM_SUBSCRIBED}${sport}/${id}/`;
 
