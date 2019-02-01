@@ -38,7 +38,7 @@ class GamePage extends Component<any, any> {
                   <NewsList />
                 </TabPane>
                 <TabPane tab="Game Players Stat" key="3">
-                  <GamePlayersStat GameId={id} sport={sport} />
+                  <GamePlayersStat gameId={id} sport={sport} />
                 </TabPane>
                 <TabPane tab="Game Photos" key="4">
                   <ImageGrid />
