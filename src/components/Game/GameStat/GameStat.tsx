@@ -1,15 +1,14 @@
 import withStyles from '@material-ui/core/es/styles/withStyles';
-import {Table} from 'antd';
+import { Table } from 'antd';
 import * as React from 'react';
-import {Component} from 'react';
+import { Component } from 'react';
 import axios from '../../../api';
-import {API} from '../../../utils';
+import { API } from '../../../utils';
 
 const styles = theme => ({});
 
 
 class GameStat extends Component<any, any> {
-
   public state = {
     columnsProperties: {},
     columns: [{
@@ -29,7 +28,7 @@ class GameStat extends Component<any, any> {
   };
 
   public componentDidMount(): void {
-    const {GameId} = this.props;
+    const { GameId } = this.props;
 
     axios.get(`${API.SOCCER_GAME_STATISTICS}${GameId}/`).then(response => {
 
@@ -50,7 +49,7 @@ class GameStat extends Component<any, any> {
         ];
 
         // TODO: implement displaying percent on statisticsData and other prettify stuff
-        let statisticsDataArray: any = [];
+        const statisticsDataArray: any = [];
         for (let i = 0; i < statisticsItems.length; i++) {
           statisticsDataArray.push({
             key: i,
@@ -66,22 +65,20 @@ class GameStat extends Component<any, any> {
           statisticsData: statisticsDataArray,
         });
       });
-
     });
   }
 
   public render(): React.ReactNode {
-    const {classes} = this.props;
-    const {columns} = this.state;
-    const {statisticsData} = this.state;
+    const { classes } = this.props;
+    const { columns } = this.state;
+    const { statisticsData } = this.state;
 
     return (
       // @ts-ignore
       <Table dataSource={statisticsData} columns={columns} pagination={false}
-             rowClassName={(record, index) => (index % 2 ? 'even' : 'odd')}/>
+             rowClassName={(record, index) => (index % 2 ? 'even' : 'odd')} />
     )
   }
-
 }
 
 export default withStyles(styles)(GameStat);

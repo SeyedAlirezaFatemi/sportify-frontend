@@ -15,11 +15,11 @@ class NewsPage extends Component<any, any> {
     const config = {
       headers: {
         'Content-Type': 'application/json',
-        'accept':'application/json'
+        'accept': 'application/json'
       },
     };
 
-    axios.get(`${API.NEWS_DETAILS}${id}/`,config).then(response => {
+    axios.get(`${API.NEWS_DETAILS}${id}/`, config).then(response => {
       this.setState({ news: response.data })
     })
   }
