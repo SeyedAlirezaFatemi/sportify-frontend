@@ -12,7 +12,7 @@ import {
   NewsPage,
   NotFoundPage,
   PlayerPage,
-  TeamPage
+  TeamPage,
 } from './pages';
 import rootReducer from './reducers';
 import { Sports } from './utils';

@@ -9,6 +9,8 @@ import NewsList from './NewsList/NewsList';
 import SignInForm from './SignInForm/SignInForm';
 import SignUpForm from './SignUpForm/SignUpForm';
 import TagList from './TagList/TagList';
+import VideoComponent from './VideoComponent/VideoComponent';
+import VideoList from './VideoList/VideoList';
 
 export * from './Player';
 export * from './Team';
@@ -25,5 +27,7 @@ export {
   ImageGrid,
   SignInForm,
   SignUpForm,
+  VideoList,
+  VideoComponent,
   Commenter,
 };

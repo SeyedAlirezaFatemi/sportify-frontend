@@ -5,6 +5,7 @@ import * as React from 'react';
 import { Component } from 'react';
 import { GameHeader, GamePlayersStat, GameStat, GameTimeLine, ImageGrid, NewsList } from '../../components';
 import { Template } from '../index';
+import { GamePhotosAPI } from '../../utils';
 
 const TabPane = Tabs.TabPane;
 
@@ -23,6 +24,7 @@ class GamePage extends Component<any, any> {
     const { classes, match, sport } = this.props;
     const { params } = match;
     const { id } = params;
+    const photosUrl = GamePhotosAPI(sport, id);
     return (
       <Template>
         <GameHeader />
@@ -40,7 +42,7 @@ class GamePage extends Component<any, any> {
                   <GamePlayersStat gameId={id} sport={sport} />
                 </TabPane>
                 <TabPane tab="Game Photos" key="4">
-                  <ImageGrid />
+                  <ImageGrid url={photosUrl} />
                 </TabPane>
                 <TabPane tab="Game Videos" key="5">
                   Game Videos
