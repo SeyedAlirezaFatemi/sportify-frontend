@@ -31,7 +31,7 @@ class GameGrid extends React.Component<any, any> {
         // extra={<a href="#">More</a>}
         style={{ width: 100, margin: 20 }}
       >
-        <p style={{backgroundColor: 'red'}}>{game.home.team.name}</p>
+        <p style={{ backgroundColor: 'red' }}>{game.home.team.name}</p>
         <p>Vs.</p>
         <p>{game.away.team.name}</p>
       </Card>

@@ -1,9 +1,9 @@
-import * as React from 'react';
 import { Alert } from 'antd';
+import { AxiosResponse } from 'axios';
+import * as React from 'react';
 import { Template } from '..';
-import {ConfirmedAccount, TeamInfoAPI, TeamPlayersAPI, TeamScheduleAPI} from '../../utils'
-import api from "../../api";
-import {AxiosResponse} from "axios";
+import api from '../../api';
+import { ConfirmedAccount } from '../../utils'
 
 
 class ConfirmAccount extends React.Component<any, any> {
@@ -14,26 +14,24 @@ class ConfirmAccount extends React.Component<any, any> {
     const { params } = match;
     const { id, code } = params;
     const confirmed = ConfirmedAccount(id, code);
-    api.get(confirmed).then(response => {
-      console.log(response.data.activate);
+    api.get(confirmed).then((response: AxiosResponse) => {
       this.setState({ activate: response.data.activate })
     });
   }
 
   public render(): React.ReactNode {
     return this.state.activate ?
-    (
-      <Template>
-        <Alert message="Success" description="Your account has been activated successfully!" type="success" showIcon/>
-      </Template>
-    ) : (
-      <Template>
-        <Alert message="Error" description="The link is either wrong or expired!" type="error" showIcon/>
-      </Template>
+      (
+        <Template>
+          <Alert message="Success" description="Your account has been activated successfully!" type="success"
+                 showIcon />
+        </Template>
+      ) : (
+        <Template>
+          <Alert message="Error" description="The link is either wrong or expired!" type="error" showIcon />
+        </Template>
       );
-
   }
-
 }
 
 export default ConfirmAccount;

@@ -3,7 +3,17 @@ import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import { createStore } from 'redux';
 import './App.css';
-import { GamePage, HomePage, LeagueHomePage, LeaguePage, NewsPage, NotFoundPage, PlayerPage, TeamPage, ConfirmPage } from './pages';
+import {
+  ConfirmPage,
+  GamePage,
+  HomePage,
+  LeagueHomePage,
+  LeaguePage,
+  NewsPage,
+  NotFoundPage,
+  PlayerPage,
+  TeamPage
+} from './pages';
 import rootReducer from './reducers';
 import { Sports } from './utils';
 
