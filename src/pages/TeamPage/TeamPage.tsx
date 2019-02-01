@@ -5,7 +5,15 @@ import * as React from 'react';
 import { Template } from '..';
 import api from '../../api';
 import { GameGrid, ImageGrid, NewsList, TeamHeader, TeamPlayersList, VideoList } from '../../components';
-import { PlayerNewsAPI, TeamInfoAPI, TeamPhotosAPI, TeamPlayersAPI, TeamScheduleAPI, TeamVideos } from '../../utils';
+import {
+  PlayerNewsAPI,
+  TeamInfoAPI,
+  TeamPhotosAPI,
+  TeamPlayersAPI,
+  TeamScheduleAPI,
+  TeamSubscribed,
+  TeamVideos
+} from '../../utils';
 
 const styles = theme => ({
   root: {
@@ -16,7 +24,14 @@ const styles = theme => ({
 const TabPane = Tabs.TabPane;
 
 class TeamPage extends React.Component<any, any> {
-  public state: any = { players: [], info: { name: '', logo: { address: '' } }, images: [], games: [], videos: [] };
+  public state: any = {
+    players: [],
+    info: { name: '', logo: { address: '' } },
+    images: [],
+    games: [],
+    videos: [],
+    subscribed: false
+  };
 
   public componentDidMount(): void {
     const { sport, match } = this.props;
@@ -31,8 +46,8 @@ class TeamPage extends React.Component<any, any> {
     api.get(TeamScheduleAPI(sport, id)).then(response => {
       this.setState({ games: response.data })
     });
-    api.get(TeamVideos(id, sport)).then(response => {
-      this.setState({ videos: response.data })
+    api.get(TeamSubscribed(sport, id)).then(response => {
+      this.setState({ subscribed: response.data })
     });
   }
 
@@ -40,10 +55,10 @@ class TeamPage extends React.Component<any, any> {
     const { sport, match } = this.props;
     const { params } = match;
     const { id } = params;
-    const { info, players, games, videos } = this.state;
+    const { info, players, games, subscribed } = this.state;
     const newsUrl = PlayerNewsAPI(id);
     const photosUrl = TeamPhotosAPI(sport, id);
-    const subscribed = TeamScheduleAPI(id, sport);
+    const videosUrl = TeamVideos(id, sport);
     return (
       <Template>
         <TeamHeader info={info} subscribed={subscribed} />
@@ -63,7 +78,7 @@ class TeamPage extends React.Component<any, any> {
             <ImageGrid url={photosUrl} />
           </TabPane>
           <TabPane tab="Team Videos" key="5">
-            <VideoList videosId={videos} />
+            <VideoList url={videosUrl} />
           </TabPane>
         </Tabs>
       </Template>
