@@ -7,7 +7,6 @@ import api from '../../api';
 import { GameGrid, ImageGrid, NewsList, TeamHeader, TeamPlayersList, VideoList } from '../../components';
 import { PlayerNewsAPI, TeamInfoAPI, TeamPhotosAPI, TeamPlayersAPI, TeamScheduleAPI, TeamVideos } from '../../utils';
 
-
 const styles = theme => ({
   root: {
     flexGrow: 1,

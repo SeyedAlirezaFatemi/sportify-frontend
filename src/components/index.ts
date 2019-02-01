@@ -1,3 +1,4 @@
+import Commenter from './Commenter/Comenter';
 import CommentList from './CommentList/CommentList';
 import EventTimeline from './EventTimeline/EventTimeline';
 import Headline from './Headline/Headline';
@@ -27,5 +28,6 @@ export {
   SignInForm,
   SignUpForm,
   VideoList,
-  VideoComponent
+  VideoComponent,
+  Commenter,
 };
