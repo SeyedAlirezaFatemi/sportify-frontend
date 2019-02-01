@@ -36,7 +36,9 @@ export enum API {
   BASKETBALL_GAME_EVENTS = 'sport/game/basketball/events/',
 
   CONFIRM_ACCOUNT = 'authentication/confirm_account/',
-  TEAM_SUBSCRIBED = 'sport/team/subscribed/'
+  TEAM_SUBSCRIBED = 'sport/team/subscribed/',
+
+  COMMENT = 'news/comment/',
 
 }
 
