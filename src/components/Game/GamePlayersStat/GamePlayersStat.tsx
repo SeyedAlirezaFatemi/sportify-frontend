@@ -23,7 +23,7 @@ function GetPlayers(gameType: string, teamId: string) {
     for (let i = 0; i < response.data.length; i++) {
       players.push({
         key: i,
-        tShirt: (<TShirt />),
+        tShirt: <TShirt />,
         teamPlayers: response.data[i].name,
         description: '',
       })
