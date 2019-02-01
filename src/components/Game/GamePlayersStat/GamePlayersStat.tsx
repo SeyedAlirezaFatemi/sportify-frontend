@@ -4,7 +4,7 @@ import Table from 'antd/es/table/Table';
 import * as React from 'react';
 import { Component } from 'react';
 import axios from '../../../api';
-import { API, Sports } from '../../../utils';
+import { API, GameStatisticsAPI, Sports } from '../../../utils';
 import TShirt from '../../Common/Icons/TShirt';
 
 const styles = theme => ({
@@ -51,9 +51,10 @@ class GamePlayersStat extends Component<any, any> {
   };
 
   public componentDidMount(): void {
-    const { sport, GameId } = this.props;
+    const { sport, gameId } = this.props;
+    const statisticsUrl = GameStatisticsAPI(sport,gameId);
     if (sport === Sports.SOCCER) {
-      axios.get(`${API.SOCCER_GAME_STATISTICS}${GameId}/`).then(statResponse => {
+      axios.get(statisticsUrl).then(statResponse => {
         const homeTeamId = statResponse.data.home.id;
         const awayTeamId = statResponse.data.away.id;
 

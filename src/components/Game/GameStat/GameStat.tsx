@@ -30,7 +30,7 @@ class GameStat extends Component<any, any> {
   public componentDidMount(): void {
     const { GameId } = this.props;
 
-    axios.get(`${API.SOCCER_GAME_STATISTICS}${GameId}/`).then(response => {
+    axios.get(`${API.GAME_STATISTICS}${GameId}/`).then(response => {
 
       this.setState(prevState => {
         const new_columns = prevState.columns;
