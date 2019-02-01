@@ -62,7 +62,7 @@ class TeamPage extends React.Component<any, any> {
           <TabPane tab="Team Photos" key="4">
             <ImageGrid url={photosUrl} />
           </TabPane>
-          <TabPane tab="Team Videos" key="4">
+          <TabPane tab="Team Videos" key="5">
             <VideoList videosId={videos} />
           </TabPane>
         </Tabs>

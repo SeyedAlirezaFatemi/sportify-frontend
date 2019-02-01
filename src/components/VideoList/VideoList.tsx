@@ -5,7 +5,7 @@ import { VideoComponent } from '../../components';
 class VideoList extends React.Component<any, any> {
   // videoId = 'Xbu65rbtNgU';
   public render(): React.ReactNode {
-    const { videosId } = this.state;
+    const { videosId } = this.props;
     return (
       <div>
         {videosId.map((videoId: any) => (
