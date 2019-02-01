@@ -104,13 +104,13 @@ const team1TableData = [{
   teamPlayers: 'Player 12',
   description: (<Icon type="arrow-up" style={{ color: 'green' }} />),
 
-}, , {
+}, {
   key: '13',
   tShirt: (<TShirt />),
   teamPlayers: 'Player 13',
   description: (<Icon type="arrow-up" style={{ color: 'green' }} />),
 
-}, , {
+}, {
   key: '14',
   tShirt: (<TShirt />),
   teamPlayers: 'Player 14',
