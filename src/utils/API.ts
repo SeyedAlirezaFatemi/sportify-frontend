@@ -74,8 +74,4 @@ export const GameStatisticsAPI = (sport: string, id: number) => `${API.GAME_STAT
 
 export const TeamVideos = (id: number, sport: string) => `${API.TEAM_VIDEO}${sport}/${id}/`;
 
-
 export const GamePhotosAPI = (sport: string, id: number) => `${API.GAME_PHOTOS}${sport}/${id}/`;
-
-export const TeamVideos = (id: number, sport: string) => `${API.TEAM_VIDEO}${sport}/${id}/`;
-
