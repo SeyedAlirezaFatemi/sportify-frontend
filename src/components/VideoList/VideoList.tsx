@@ -1,19 +1,27 @@
 import * as React from 'react';
-import YouTube from 'react-youtube';
+import api from '../../api';
 import { VideoComponent } from '../../components';
 
 class VideoList extends React.Component<any, any> {
-  // videoId = 'Xbu65rbtNgU';
+  public state = { videos: [] };
+
+  public componentDidMount(): void {
+    const { url } = this.props;
+    api.get(url).then(response => {
+      this.setState({ videos: response.data })
+    });
+  }
+
   public render(): React.ReactNode {
-    const { videosId } = this.props;
+    const { videos } = this.state;
     return (
       <div>
-        {videosId.map((videoId: any) => (
+        {videos.map((videoId: any) => (
           <VideoComponent videoId={videoId} alt="Image" />
         ))}
       </div>
     );
   }
-
 }
+
 export default VideoList;

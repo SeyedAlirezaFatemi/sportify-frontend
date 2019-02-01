@@ -2,8 +2,8 @@ import * as React from 'react';
 import YouTube from 'react-youtube';
 
 class VideoComponent extends React.Component<any, any> {
-  videoIdTest = 'Xbu65rbtNgU';
   public render() {
+    const { videoId } = this.props;
     const opts = {
       height: '390',
       width: '640',
@@ -11,19 +11,19 @@ class VideoComponent extends React.Component<any, any> {
         autoplay: 0,
       },
     };
-
     return (
       <YouTube
-        videoId={this.videoIdTest}
+        videoId={videoId}
         opts={opts}
-        onReady={this._onReady}
+        onReady={this.onReady}
       />
     );
   }
 
-  public _onReady(event) {
+  private onReady(event) {
     // access to player in all event handlers via event.target
     event.target.pauseVideo();
   }
 }
+
 export default VideoComponent;
