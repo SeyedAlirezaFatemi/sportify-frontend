@@ -60,12 +60,12 @@ class GameTimeLine extends Component<any, any> {
 
 
   public componentDidMount(): void {
-    const { GameId, sport } = this.props;
+    const { GameId: gameId, sport } = this.props;
 
     if (sport === Sports.SOCCER) {
-      this.injectEventsIntoState(sport, GameId);
+      this.injectEventsIntoState(sport, gameId);
     } else if (sport === Sports.BASKETBALL) {
-      this.injectEventsIntoState(sport, GameId);
+      this.injectEventsIntoState(sport, gameId);
     }
 
   }
