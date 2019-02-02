@@ -30,7 +30,7 @@ class GamePage extends Component<any, any> {
     const videosUrl = GameVideosAPI(sport, id);
     return (
       <Template>
-        <GameHeader />
+        <GameHeader sport={sport} gameId={id} />
         <Grid container direction="row" className={classes.root}>
           <Grid item container className={classes.tabsStyles}>
             <Grid item xl={8} lg={8} md={8} sm={12} xs={12}>

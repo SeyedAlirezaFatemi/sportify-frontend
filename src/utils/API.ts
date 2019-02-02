@@ -21,10 +21,10 @@ export enum API {
   ALL_LEAGUES = 'sport/leagues/',
   LEAGUE_TABLE_INFO = 'sport/league/stats/',
 
-  GAME_STATISTICS = '/sport/game/statistics/',
-  GAME_PHOTOS = '/sport/game/images/',
-  GAME_NEWS = '/sport/game/related_news/',
-  GAME_VIDEOS = '/sport/game/videos/',
+  GAME_VIDEOS = 'sport/game/videos/',
+  GAME_STATISTICS = 'sport/game/statistics/',
+  GAME_PHOTOS = 'sport/game/images/',
+  GAME_NEWS = 'sport/game/related_news/',
 
   TEAM_PLAYERS = 'sport/team/players/',
   TEAM_INFO = 'sport/team/info/',
