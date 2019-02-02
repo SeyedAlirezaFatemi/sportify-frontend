@@ -1,7 +1,7 @@
 import { withStyles } from '@material-ui/core/styles';
 import { BackTop, Drawer, Icon, Layout, Menu } from 'antd';
 import * as React from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import { Link, Route } from 'react-router-dom';
 import { signOut } from '../../actions';
 import { SignInForm, SignUpForm } from '../../components';

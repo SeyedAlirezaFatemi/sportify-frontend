@@ -40,7 +40,7 @@ class HomePage extends React.Component<any, any> {
           <GameList sport={sport} />
         </Grid>
         <Grid item xl={8} lg={8} md={8} sm={12} xs={12}>
-          <NewsList url={url} />
+          <NewsList url={url} subscribed />
         </Grid>
       </Grid>
     )

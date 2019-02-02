@@ -1,5 +1,6 @@
 import { Avatar, Button, Icon, List, Tabs } from 'antd';
 import * as React from 'react';
+import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom';
 import axios from '../../api';
 
@@ -25,7 +26,7 @@ class NewsList extends React.Component<any, any> {
   }
 
   public render(): React.ReactNode {
-    const { subscribed } = this.props;
+    const { subscribed, token } = this.props;
     return (
       <div style={{ padding: '8px' }}>
         {subscribed ?
@@ -33,7 +34,7 @@ class NewsList extends React.Component<any, any> {
             <TabPane tab="All" key="1">
               {this.renderNewsList()}
             </TabPane>
-            <TabPane tab="Subscribed" disabled key="2">
+            <TabPane tab="Subscribed" disabled={!Boolean(token)} key="2">
               {/*If user is logged in*/}
             </TabPane>
           </Tabs> :
@@ -65,7 +66,7 @@ class NewsList extends React.Component<any, any> {
                         src={item.image_address} />}
           >
             <List.Item.Meta
-              avatar={<Avatar src={item.avatar} />}
+              avatar={<Avatar src={"https://i.guim.co.uk/img/media/cb11a8712d24f20990c7148c252cad6c6bdd3290/0_0_1645_2165/master/1645.jpg?width=300&quality=45&auto=format&fit=max&dpr=2&s=d116aa2a0b89426fdb2e0e5514f42e23"} />}
               title={<a>{item.title}</a>}
               description={item.pub_date}
             />
@@ -77,4 +78,8 @@ class NewsList extends React.Component<any, any> {
   }
 }
 
-export default withRouter(NewsList);
+const mapStateToProps = state => ({
+  token: state.auth.token,
+});
+
+export default connect(mapStateToProps, null)(withRouter(NewsList));
