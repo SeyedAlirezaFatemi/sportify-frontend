@@ -5,15 +5,7 @@ import * as React from 'react';
 import { Template } from '..';
 import api from '../../api';
 import { GameGrid, ImageGrid, NewsList, TeamHeader, TeamPlayersList, VideoList } from '../../components';
-import {
-  PlayerNewsAPI,
-  TeamInfoAPI,
-  TeamPhotosAPI,
-  TeamPlayersAPI,
-  TeamScheduleAPI,
-  TeamSubscribed,
-  TeamVideos
-} from '../../utils';
+import { PlayerNewsAPI, TeamInfoAPI, TeamPhotosAPI, TeamPlayersAPI, TeamScheduleAPI, TeamVideosAPI } from '../../utils';
 
 const styles = theme => ({
   root: {
@@ -30,7 +22,6 @@ class TeamPage extends React.Component<any, any> {
     images: [],
     games: [],
     videos: [],
-    subscribed: false
   };
 
   public componentDidMount(): void {
@@ -46,22 +37,19 @@ class TeamPage extends React.Component<any, any> {
     api.get(TeamScheduleAPI(sport, id)).then(response => {
       this.setState({ games: response.data })
     });
-    api.get(TeamSubscribed(sport, id)).then(response => {
-      this.setState({ subscribed: response.data })
-    });
   }
 
   public render(): React.ReactNode {
     const { sport, match } = this.props;
     const { params } = match;
     const { id } = params;
-    const { info, players, games, subscribed } = this.state;
+    const { info, players, games } = this.state;
     const newsUrl = PlayerNewsAPI(id);
     const photosUrl = TeamPhotosAPI(sport, id);
-    const videosUrl = TeamVideos(id, sport);
+    const videosUrl = TeamVideosAPI(id, sport);
     return (
       <Template>
-        <TeamHeader info={info} subscribed={subscribed} />
+        <TeamHeader info={info} sport={sport} teamId={id} />
         <Tabs defaultActiveKey="1">
           <TabPane tab="Team Game Schedule" key="1">
             <Grid container justify="center">

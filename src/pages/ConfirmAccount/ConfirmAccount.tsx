@@ -3,7 +3,7 @@ import { AxiosResponse } from 'axios';
 import * as React from 'react';
 import { Template } from '..';
 import api from '../../api';
-import { ConfirmedAccount } from '../../utils'
+import { ConfirmAccountAPI } from '../../utils'
 
 
 class ConfirmAccount extends React.Component<any, any> {
@@ -13,7 +13,7 @@ class ConfirmAccount extends React.Component<any, any> {
     const { match } = this.props;
     const { params } = match;
     const { id, code } = params;
-    const confirmed = ConfirmedAccount(id, code);
+    const confirmed = ConfirmAccountAPI(id, code);
     api.get(confirmed).then((response: AxiosResponse) => {
       this.setState({ activate: response.data.activate })
     });
