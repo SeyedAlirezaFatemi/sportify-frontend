@@ -71,9 +71,7 @@ class GameResult extends Component<any, any> {
         </Grid>
       </Grid>
     </Card>;
-
   }
-
 }
 
 export default withStyles(styles)(GameResult);

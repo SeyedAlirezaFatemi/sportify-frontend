@@ -3,8 +3,8 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import { Tabs } from 'antd';
 import * as React from 'react';
 import { Component } from 'react';
-import { GameHeader, GamePlayersStat, GameStat, GameTimeLine, ImageGrid, NewsList } from '../../components';
-import { GameNewsAPI, GamePhotosAPI } from '../../utils';
+import { GameHeader, GamePlayersStat, GameStat, GameTimeLine, ImageGrid, NewsList, VideoList } from '../../components';
+import { GameNewsAPI, GamePhotosAPI, GameVideosAPI } from '../../utils';
 import { Template } from '../index';
 
 const TabPane = Tabs.TabPane;
@@ -27,6 +27,7 @@ class GamePage extends Component<any, any> {
     const { id } = params;
     const photosUrl = GamePhotosAPI(sport, id);
     const newsUrl = GameNewsAPI(sport, id);
+    const videosUrl = GameVideosAPI(sport, id);
     return (
       <Template>
         <GameHeader />
@@ -47,7 +48,7 @@ class GamePage extends Component<any, any> {
                   <ImageGrid url={photosUrl} />
                 </TabPane>
                 <TabPane tab="Game Videos" key="5">
-                  Game Videos
+                  <VideoList url={videosUrl} />
                 </TabPane>
               </Tabs>
             </Grid>
