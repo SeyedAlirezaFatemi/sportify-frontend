@@ -1,6 +1,6 @@
 import { Avatar, Button, Icon, List, Tabs } from 'antd';
 import * as React from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import axios from '../../api';
 

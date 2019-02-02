@@ -7,6 +7,7 @@ import { Tabs } from 'antd';
 import { AxiosResponse } from 'axios';
 import classnames from 'classnames';
 import * as React from 'react';
+import { connect } from 'react-redux'
 import { Link, Route, withRouter } from 'react-router-dom';
 import api from '../../../api';
 import { TodayGamesAPI, TomorrowGamesAPI, YesterdayGamesAPI } from '../../../utils';
@@ -54,6 +55,7 @@ class GameList extends React.Component<any, any> {
   }
 
   public render(): React.ReactNode {
+    const { token } = this.props;
     return (
       <div style={{ padding: '8px' }}>
         <Tabs
@@ -63,7 +65,7 @@ class GameList extends React.Component<any, any> {
           <TabPane tab="All" key="1">
             {this.renderResults()}
           </TabPane>
-          <TabPane tab="Subscribed" key="2">
+          <TabPane tab="Subscribed" disabled={!Boolean(token)} key="2">
             {this.renderResults()}
           </TabPane>
         </Tabs>
@@ -139,5 +141,9 @@ class GameList extends React.Component<any, any> {
   }
 }
 
+const mapStateToProps = state => ({
+  token: state.auth.token,
+});
+
 // @ts-ignore
-export default withRouter(withStyles(styles)(GameList));
+export default connect(mapStateToProps, null)(withRouter(withStyles(styles)(GameList)));
