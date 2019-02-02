@@ -18,6 +18,7 @@ const styles = theme => ({
   },
 });
 
+// @ts-ignore
 class GamePage extends Component<any, any> {
 
   public render(): React.ReactNode {

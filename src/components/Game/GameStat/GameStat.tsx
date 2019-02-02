@@ -1,4 +1,4 @@
-import withStyles from '@material-ui/core/es/styles/withStyles';
+import withStyles from '@material-ui/core/styles/withStyles';
 import { Table } from 'antd';
 import * as React from 'react';
 import { Component } from 'react';
@@ -8,6 +8,7 @@ import { GameStatisticsAPI, Sports } from '../../../utils';
 const styles = theme => ({});
 
 
+// @ts-ignore
 class GameStat extends Component<any, any> {
   public state = {
     columnsProperties: {},
