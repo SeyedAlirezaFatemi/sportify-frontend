@@ -5,7 +5,7 @@ import { Avatar } from 'antd';
 import * as React from 'react';
 import { Component } from 'react';
 import api from '../../../api'
-import { GameStatisticsAPI, Sports } from '../../../utils';
+import { GameStatisticsAPI, Sports, TeamInfoAPI } from '../../../utils';
 
 const styles = theme => ({
   root: {
@@ -17,24 +17,45 @@ class GameHeader extends Component<any, any> {
   public state = {
     homeTeamLogo: '',
     awayTeamLogo: '',
+    homeTeamId: 0,
+    awayTeamId: 0,
     homeTeamGoals: '',
     awayTeamGoals: '',
   };
+
+  private injectLogoToState(sport: string) {
+    api.get(TeamInfoAPI(sport, this.state.homeTeamId)).then(response => {
+      this.setState({
+        homeTeamLogo: response.data.logo.address,
+      });
+    });
+
+    api.get(TeamInfoAPI(sport, this.state.awayTeamId)).then(response => {
+      this.setState({
+        awayTeamLogo: response.data.logo.address,
+      });
+    });
+  }
 
   componentDidMount(): void {
     const { sport, gameId } = this.props;
     api.get(GameStatisticsAPI(sport, gameId)).then(response => {
       if (sport === Sports.SOCCER) {
         this.setState({
+          homeTeamId: response.data.home.id,
+          awayTeamId: response.data.away.id,
           homeTeamGoals: response.data.home.goals,
           awayTeamGoals: response.data.away.goals,
         });
       } else if (sport === Sports.BASKETBALL) {
         this.setState({
+          homeTeamId: response.data.home.id,
+          awayTeamId: response.data.away.id,
           homeTeamGoals: response.data.home.points,
           awayTeamGoals: response.data.away.points,
         });
       }
+      this.injectLogoToState(sport);
     });
   }
 
@@ -52,6 +73,7 @@ class GameHeader extends Component<any, any> {
           <Avatar
             size={300}
             icon={'user'}
+            src={homeTeamLogo}
           />
         </Grid>
         <Grid item alignContent="center">
@@ -63,6 +85,7 @@ class GameHeader extends Component<any, any> {
           <Avatar
             size={300}
             icon={'user'}
+            src={awayTeamLogo}
           />
         </Grid>
       </Grid>
