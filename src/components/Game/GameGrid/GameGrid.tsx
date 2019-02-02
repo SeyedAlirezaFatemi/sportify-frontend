@@ -1,6 +1,6 @@
 import { withStyles } from '@material-ui/core/styles';
-import { Card } from 'antd';
 import * as React from 'react';
+import GameResult from '../GameResult/GameResult';
 
 const styles = theme => ({
   root: {
@@ -25,17 +25,13 @@ const styles = theme => ({
 class GameGrid extends React.Component<any, any> {
   public render(): React.ReactNode {
     const { games } = this.props;
+    console.log('games',games);
     return games.map(game => {
-      return <Card
-        title={game.play_date}
-        // extra={<a href="#">More</a>}
-        style={{ width: 100, margin: 20 }}
-      >
-        <p style={{ backgroundColor: 'red' }}>{game.home.team.name}</p>
-        <p>Vs.</p>
-        <p>{game.away.team.name}</p>
-      </Card>
-    })
+        return <GameResult
+          Game={game}
+        />;
+      }
+    )
   }
 }
 

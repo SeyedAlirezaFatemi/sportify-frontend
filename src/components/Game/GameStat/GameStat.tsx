@@ -110,8 +110,7 @@ class GameStat extends Component<any, any> {
 
   public render(): React.ReactNode {
     const { classes } = this.props;
-    const { columns } = this.state;
-    const { statisticsData } = this.state;
+    const { columns, statisticsData } = this.state;
     return (
       // @ts-ignore
       <Table dataSource={statisticsData} columns={columns} pagination={false}
