@@ -25,7 +25,7 @@ const styles = theme => ({
 class GameGrid extends React.Component<any, any> {
   public render(): React.ReactNode {
     const { games } = this.props;
-    console.log('games',games);
+    console.log('games', games);
     return games.map(game => {
         return <GameResult
           Game={game}
