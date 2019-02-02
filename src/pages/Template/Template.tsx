@@ -41,7 +41,14 @@ class Template extends React.Component<any, any> {
             <Menu.Item key="3"><Link to="/league">League</Link></Menu.Item>
             <Menu.Item key="4"><Link to="/player/soccer/1">Player</Link></Menu.Item>
             <Menu.Item key="5"><Link to="/news/1">News</Link></Menu.Item>
-            <Menu.Item key="6"><Link to="/game">Game</Link></Menu.Item>
+            <SubMenu title={'Games'}>
+              <Menu.Item key="6">
+                <Link to="/game/soccer/1">Soccer</Link>
+              </Menu.Item>
+              <Menu.Item key="10">
+                <Link to="/game/basketball/1">Basketball</Link>
+              </Menu.Item>
+            </SubMenu>
             {email ?
               <Menu.Item className={classes.auth} key="9" onClick={this.onSignOut}>
                 Sign Out
@@ -55,7 +62,8 @@ class Template extends React.Component<any, any> {
                 <Menu.Item key="8" onClick={() => this.showDrawer('UP')}>
                   Sign Up
                 </Menu.Item>
-              </SubMenu>}
+              </SubMenu>
+            }
           </Menu>
         </Header>
         <Content style={{ padding: '0 50px', margin: '16px 0' }}>
