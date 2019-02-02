@@ -15,7 +15,6 @@ class LeaguePage extends Component<any, any> {
     const { params } = match;
     const { id } = params;
     api.get(`${API.LEAGUE_TABLE_INFO}${sport}/${id}`).then(response => {
-      console.log(response.data);
       this.setState({ data: response.data })
     });
   }
