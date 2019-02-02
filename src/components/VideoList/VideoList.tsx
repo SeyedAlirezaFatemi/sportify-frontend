@@ -14,13 +14,9 @@ class VideoList extends React.Component<any, any> {
 
   public render(): React.ReactNode {
     const { videos } = this.state;
-    return (
-      <div>
-        {videos.map((videoId: any) => (
-          <VideoComponent videoId={videoId} alt="Image" />
-        ))}
-      </div>
-    );
+    return videos.map((videoId: any) => (
+      <VideoComponent videoId={videoId} alt="Video" />
+    ));
   }
 }
 

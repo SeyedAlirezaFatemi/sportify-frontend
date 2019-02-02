@@ -3,7 +3,7 @@ import { Button, Card, Icon, Row } from 'antd';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import api from '../../../api';
-import { TeamIsSubscribedAPI, TeamSubscribAPI } from '../../../utils';
+import { TeamIsSubscribedAPI, TeamSubscribeAPI } from '../../../utils';
 
 class TeamInfo extends React.Component<any, any> {
   public state = { subscribed: false, };
@@ -45,7 +45,7 @@ class TeamInfo extends React.Component<any, any> {
 
   private onSubscribe = () => {
     const { teamId, token, sport } = this.props;
-    api.post(TeamSubscribAPI(sport), {
+    api.post(TeamSubscribeAPI(sport), {
       team_id: teamId,
     }, { headers: { Authorization: `Token ${token}` } }).then(response => {
       this.setState({ subscribed: response.data.is_subscribed })
