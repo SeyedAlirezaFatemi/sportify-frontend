@@ -10,9 +10,6 @@ export enum API {
   LATEST_NEWS_BASKETBALL = 'news/latest/basketball/',
   LATEST_NEWS_SOCCER = 'news/latest/soccer/',
 
-  RELATED_NEWS_SOCCER_GAME = 'sport/game/soccer/related_news/',
-  RELATED_NEWS_BASKETBALL_GAME = 'sport/game/basketball/related_news/',
-
   ALL_LEAGUES = 'sport/leagues/',
   LEAGUE_TABLE_INFO = 'sport/league/stats/',
 
@@ -20,6 +17,7 @@ export enum API {
   GAME_STATISTICS = 'sport/game/statistics/',
   GAME_PHOTOS = 'sport/game/images/',
   GAME_NEWS = 'sport/game/related_news/',
+  GAME_EVENTS = 'sport/game/events/',
 
   TEAM_PLAYERS = 'sport/team/players/',
   TEAM_INFO = 'sport/team/info/',
@@ -36,9 +34,6 @@ export enum API {
   TEAM_SCHEDULE = 'sport/team/schedule/',
   TEAM_IS_SUBSCRIBED = 'sport/team/subscribed/',
   TEAM_SUBSCRIBE = 'sport/team/subscribe/',
-
-  SOCCER_GAME_EVENTS = 'sport/game/soccer/events/',
-  BASKETBALL_GAME_EVENTS = 'sport/game/basketball/events/',
 
   CONFIRM_ACCOUNT = 'authentication/confirm_account/',
 
@@ -73,7 +68,7 @@ export const ConfirmAccountAPI = (id: number, code: string) => `${API.CONFIRM_AC
 
 export const GameStatisticsAPI = (sport: string, id: number) => `${API.GAME_STATISTICS}${sport}/${id}/`;
 
-export const GameEventsAPI = (sport: string, id: number) => `sport/game/${sport}/events/${id}`;
+export const GameEventsAPI = (sport: string, id: number) => `${API.GAME_EVENTS}${sport}/${id}/`;
 
 export const GamePhotosAPI = (sport: string, id: number) => `${API.GAME_PHOTOS}${sport}/${id}/`;
 
