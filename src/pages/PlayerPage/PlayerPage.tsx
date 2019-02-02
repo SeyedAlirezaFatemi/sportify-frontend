@@ -2,7 +2,7 @@ import { Tabs } from 'antd';
 import * as React from 'react';
 import { Template } from '..';
 import { ImageGrid, NewsList, PlayerHeader, PlayerStatistics, VideoList } from '../../components';
-import { PlayerInfoAPI, PlayerNewsAPI, PlayerPhotosAPI, PlayerStatisticsAPI, PlayerVideosAPI } from '../../utils'
+import { PlayerInfoAPI, PlayerPhotosAPI, PlayerRelatedNewsAPI, PlayerStatisticsAPI, PlayerVideosAPI } from '../../utils'
 
 const TabPane = Tabs.TabPane;
 
@@ -14,7 +14,7 @@ class PlayerPage extends React.Component<any, any> {
     const { params } = match;
     const { id } = params;
     const infoUrl = PlayerInfoAPI(sport, id);
-    const newsUrl = PlayerNewsAPI(id);
+    const newsUrl = PlayerRelatedNewsAPI(id);
     const photosUrl = PlayerPhotosAPI(sport, id);
     const statisticsUrl = PlayerStatisticsAPI(sport, id);
     const videosUrl = PlayerVideosAPI(id);

@@ -5,7 +5,14 @@ import * as React from 'react';
 import { Template } from '..';
 import api from '../../api';
 import { GameGrid, ImageGrid, NewsList, TeamHeader, TeamPlayersList, VideoList } from '../../components';
-import { PlayerNewsAPI, TeamInfoAPI, TeamPhotosAPI, TeamPlayersAPI, TeamScheduleAPI, TeamVideosAPI } from '../../utils';
+import {
+  TeamInfoAPI,
+  TeamPhotosAPI,
+  TeamPlayersAPI,
+  TeamRelatedNewsAPI,
+  TeamScheduleAPI,
+  TeamVideosAPI
+} from '../../utils';
 
 const styles = theme => ({
   root: {
@@ -44,7 +51,7 @@ class TeamPage extends React.Component<any, any> {
     const { params } = match;
     const { id } = params;
     const { info, players, games } = this.state;
-    const newsUrl = PlayerNewsAPI(id);
+    const newsUrl = TeamRelatedNewsAPI(sport, id);
     const photosUrl = TeamPhotosAPI(sport, id);
     const videosUrl = TeamVideosAPI(id, sport);
     return (

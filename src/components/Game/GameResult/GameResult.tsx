@@ -1,9 +1,9 @@
-import { withStyles } from '@material-ui/core/styles';
-import * as React from 'react';
-import { Component } from 'react';
-import { Card } from 'antd';
 import { Grid } from '@material-ui/core';
 import Typography from '@material-ui/core/es/Typography';
+import { withStyles } from '@material-ui/core/styles';
+import { Card } from 'antd';
+import * as React from 'react';
+import { Component } from 'react';
 
 
 const styles = theme => ({
@@ -17,12 +17,12 @@ const styles = theme => ({
 });
 
 class GameResult extends Component<any, any> {
-  render(): React.ReactNode {
-    const { classes, Game } = this.props;
+  public render(): React.ReactNode {
+    const { classes, game } = this.props;
     return <Card
       headStyle={{ textAlign: 'center' }}
       title={
-        Game.play_date.substring(0, 10)
+        game.play_date.substring(0, 10)
       }
       className={classes.root}>
       <Grid
@@ -40,14 +40,14 @@ class GameResult extends Component<any, any> {
             color={'primary'}
             variant={'h5'}
           >
-            {Game.home.team.name}
+            {game.home.team.name}
           </Typography>
           <Typography
             align={'left'}
             color={'secondary'}
             variant={'h5'}
           >
-            {Game.home_score}
+            {game.home_score >= 0 ? game.gome_score : '?'}
           </Typography>
         </Grid>
         <Grid
@@ -59,14 +59,14 @@ class GameResult extends Component<any, any> {
             color={'primary'}
             variant={'h5'}
           >
-            {Game.away.team.name}
+            {game.away.team.name}
           </Typography>
           <Typography
             align={'right'}
             color={'secondary'}
             variant={'h5'}
           >
-            {Game.away_score}
+            {game.away_score >= 0 ? game.away_score : '?'}
           </Typography>
         </Grid>
       </Grid>
